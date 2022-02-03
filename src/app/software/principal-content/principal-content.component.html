@@ -1,0 +1,6 @@
+<p>Liste des utilisateurs</p>
+<div *ngFor="let user of users">
+    <p>prenom : {{ user.name }}</p>
+    <p>nom : {{ user.lastName }}</p>
+    <!-- <button type="button" (click)="getUserById(user.id)">information utilisateur</button> -->
+</div>
