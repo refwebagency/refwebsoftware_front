@@ -3,21 +3,21 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule } from '@nebular/theme';
+import { NbThemeModule, NbLayoutModule, NbSidebarModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { AppRoutingModule } from './app-routing.module';
 import { SoftwareModule } from './software/software.module';
 import { ContentComponent } from './template/content/content.component';
 import { FooterComponent } from './template/footer/footer.component';
-import { TemplateModule } from './template/template.module';
-import { PrincipalContentComponent } from './software/principal-content/principal-content.component';
-import { SecondaryContentComponent } from './software/secondary-content/secondary-content.component';
+import { SidebarComponent } from './template/sidebar/sidebar.component';
+import { ColumnComponent } from './template/column/column.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ContentComponent,
-    PrincipalContentComponent,
+    SidebarComponent,
+    ColumnComponent,
     FooterComponent,
   ],
   imports: [
@@ -25,6 +25,7 @@ import { SecondaryContentComponent } from './software/secondary-content/secondar
     SoftwareModule,
     BrowserAnimationsModule,
     NbThemeModule.forRoot({ name: 'dark' }),
+    NbSidebarModule.forRoot(),
     NbLayoutModule,
     NbEvaIconsModule,
     AppRoutingModule

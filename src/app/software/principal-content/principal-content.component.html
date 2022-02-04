@@ -2,5 +2,8 @@
 <div *ngFor="let user of users">
     <p>prenom : {{ user.name }}</p>
     <p>nom : {{ user.lastName }}</p>
-    <!-- <button type="button" (click)="getUserById(user.id)">information utilisateur</button> -->
+
+    <a [routerLink]="['', { outlets: { test: ['user', user.id ] } }]">clic</a>
+
 </div>
+

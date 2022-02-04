@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from '../models/user';
 import { SoftwareService } from '../software.service';
 
@@ -11,10 +12,12 @@ export class PrincipalContentComponent implements OnInit {
 
   //represente ma liste de Users
   users: User[] = []
+  user: User = {} as User
 
   //Initialisation d'une variable pour récuperer le typage du service
   constructor(
-    private myService: SoftwareService
+    private myService: SoftwareService,
+    private router: Router
   ) { }
 
   /**
@@ -26,9 +29,10 @@ export class PrincipalContentComponent implements OnInit {
     
   }
 
-  // getUserById(id: number)
-  // {
-  //   this.myService.getUser(id).subscribe(res => console.log(res));
-  // }
+  getInfoUser(id: number)
+  {
+    console.log(id);
+    this.router.navigate([{ outlets: { test: [ id ] }}]);
+  }
 
 }
