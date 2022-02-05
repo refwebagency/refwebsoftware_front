@@ -1,0 +1,10 @@
+<p>Liste des utilisateurs</p>
+<div *ngFor="let user of users">
+    <p>prenom : {{ user.name }}</p>
+    <p>nom : {{ user.lastName }}</p>
+
+    <!-- charge le rooter outlet ayant le path user/:id et comme name userdetail -->
+    <a [routerLink]="['', { outlets: { userdetail: ['user', user.id ], userwriting: null } }]">détail</a>
+    <button type="button" (click)="deleteUserById(user.id)">supprimer</button>
+</div>
+

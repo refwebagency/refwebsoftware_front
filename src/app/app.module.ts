@@ -6,11 +6,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NbThemeModule, NbLayoutModule, NbSidebarModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { AppRoutingModule } from './app-routing.module';
-import { SoftwareModule } from './software/software.module';
 import { ContentComponent } from './template/content/content.component';
-import { FooterComponent } from './template/footer/footer.component';
 import { SidebarComponent } from './template/sidebar/sidebar.component';
 import { ColumnComponent } from './template/column/column.component';
+import { TemplateModule } from './template/template.module';
 
 @NgModule({
   declarations: [
@@ -18,17 +17,17 @@ import { ColumnComponent } from './template/column/column.component';
     ContentComponent,
     SidebarComponent,
     ColumnComponent,
-    FooterComponent,
   ],
   imports: [
     BrowserModule,
-    SoftwareModule,
+    TemplateModule,
     BrowserAnimationsModule,
-    NbThemeModule.forRoot({ name: 'dark' }),
+    NbThemeModule.forRoot({ name: 'default' }),
     NbSidebarModule.forRoot(),
     NbLayoutModule,
     NbEvaIconsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

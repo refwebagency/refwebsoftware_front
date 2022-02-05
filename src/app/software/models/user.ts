@@ -8,7 +8,6 @@ export interface User
     email: string,
     password: string,
     experience: number,
-    meetId?: number,
     specializationId: number
 
 }
