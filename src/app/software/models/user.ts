@@ -3,7 +3,7 @@ export interface User
     id: number,
     name: string,
     lastName: string,
-    adress: string,
+    address: string,
     phone: string,
     email: string,
     password: string,
