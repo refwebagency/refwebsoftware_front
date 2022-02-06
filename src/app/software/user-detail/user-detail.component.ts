@@ -57,4 +57,16 @@ export class UserDetailComponent implements OnInit {
     
   }
 
+  /**
+   * Au clic du bouton deleteById dans le component html user
+   * souscrit à la méthode deleteUser du service software
+   */
+   deleteUserById(id: number)
+   {
+     if(window.confirm("Supprimer cet utilisateur ?"))
+     {
+      this.myService.deleteUser(id).subscribe();
+     }  
+   }
+
 }

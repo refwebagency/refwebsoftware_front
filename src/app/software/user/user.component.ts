@@ -13,6 +13,7 @@ export class UserComponent implements OnInit {
   //represente ma liste de Users
   users: User[] = []
   user: User = {} as User
+  searchTerm!: string;
 
   //Initialisation d'une variable pour récuperer le typage du service
   constructor(
@@ -27,15 +28,6 @@ export class UserComponent implements OnInit {
 
     this.myService.getUsers().subscribe(u => this.users = u);
     
-  }
-
-  /**
-   * Au clic du bouton deleteById dans le component html user
-   * souscrit à la méthode deleteUser du service software
-   */
-  deleteUserById(id: number)
-  {
-    this.myService.deleteUser(id).subscribe();
   }
 
 }
