@@ -1,0 +1,18 @@
+<h5 class="my-3 fs-5 text-white text-center">Liste des clients</h5>
+<hr class="my-2">
+<div class="row justify-content-center">
+    <p class="text-center mb-2">Recherche par Nom</p>
+    <input class="col-10 rounded" type="text" [(ngModel)]="searchClient">
+</div>
+<hr class="my-2">
+<div *ngFor="let client of clients | clientFilter:searchClient">
+    <a class="text-decoration-none" [routerLink]="['/client', client.id]">
+        <div class="row">
+            <div class="col-8 text-black">
+                <p>Nom : {{ client.lastName }}</p>
+                <p>Company : {{ client.company }}</p>      
+            </div>
+        <hr class="text-dark my-2">
+        </div>
+    </a>
+</div>

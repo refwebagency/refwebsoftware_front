@@ -1,0 +1,22 @@
+<h1 class="mt-3 text-white">Détail du client</h1>
+<div class="client-card ps-4 border border-white col-11 mx-auto rounded mt-5 pt-5 pb-5 fs-5">
+    <div class="row justify-content-around text-start">
+        <p class="col-4">Nom : {{ client.lastName }}</p>
+        <p class="col-4">Prénom : {{ client.name }}</p>
+        <p class="col-4">Email : {{ client.email }}</p>
+    </div>
+    <div class="row justify-content-around text-start mt-4"> 
+        <p class="col-4">Société : {{ client.company }}</p>
+        <p class="col-4">Téléphone : {{ client.phone }}</p>
+        <p class="col-4">Adresse : {{ client.address }}</p>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-2 mx-auto">
+        <button class="form-control mt-5 btn-success" [routerLink]="['/client/updateClient/', client.id]">Update Client</button>
+    </div>
+    <div class="col-2 mx-auto">
+        <button class="form-control mt-5 btn-danger" (click)="deleteClient(client.id)">Delete Client</button>
+    </div>
+</div>

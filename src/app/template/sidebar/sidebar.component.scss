@@ -1,13 +1,60 @@
-a:link 
-{ 
- text-decoration:none; 
+#sidebar {
+    background-color: #7386D5;
+    height: 100vh;
+}
+#sidebar .amenu{
+    text-decoration: none;
+    font-size: 22px;
+    color:white;
+    display: block;
+}
+#sidebar a:hover{
+    color:rgb(255, 174, 0);
 }
 
-a:hover 
-{ 
- color: #8a8c90; 
-} 
+.asubmenu {
+    text-decoration: none;
+    color: black;
+    font-size: 17px;
+}
 
-a{
- color: darkblue; 
+#sidebar2 {
+    margin-left: 5px;
+    border-radius: 10px;
+    background-color: #7386D5;
+    height: 90vh;
+}
+#sidebar2 .amenu{
+    text-decoration: none;
+    font-size: 25px;
+    text-align: center;
+    color:white;
+    display: block;
+    margin: 5%;
+}
+#sidebar2 a:hover{
+    color:rgb(255, 174, 0);
+}
+
+#sidebar3 {
+    border-radius: 10px;
+    margin-left: 5px;
+    background-color: #7386D5;
+    text-align: center;
+    height: 90vh;
+}
+#sidebar3 .amenu{
+    text-decoration: none;
+    font-size: 25px;
+    text-align: center;
+    color:white;
+    display: block;
+    margin: 5%;
+}
+#sidebar3 a:hover{
+    color:rgb(255, 174, 0);
+}
+
+#logo {
+    width: 8%;
 }

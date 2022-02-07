@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { delay, Observable, repeat } from 'rxjs';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Client } from '../models/client';
 
 @Injectable({
@@ -8,28 +9,36 @@ import { Client } from '../models/client';
 })
 export class ClientService {
 
-  //clients represente ma liste de Client
-  private clients: Client[] = []
+  constructor(private http: HttpClient, private router: Router) { }
 
-   
-  /** 
-    * @param Injection de la dependance HttpClient, en private  
-    * pour eviter de devoir déclarer une proprieté et ainsi de faire une
-    * initialisation du service http pour faire des requêtes http
-  */ 
-  constructor(
+  // CLIENTS
+  getClients(): Observable<Client[]>
+  {
+    return this.http.get<Client[]>("https://localhost:1001/client");
+  }
 
-    private http : HttpClient
-    
-  ) { }
+  getClient(): Observable<Client>
+  {
+    var route = this.router.url;
+    var id = route.match(/\d+/g);
+    let clientById = "https://localhost:1001/client/" + id;
+    return this.http.get<Client>(clientById);
+  }
 
-  /**
-   * @returns l'observable dans lequel on va avoir la liste des clients
-   */
-   getClients(): Observable<Client[]>
-   {
-     return this.http.get<Client[]>("https://localhost:1001/client").pipe(
-       delay(1000),repeat()
-     );
-   }
+  addClient(newFormData: any)
+  {
+    return this.http.post("https://localhost:1001/client", newFormData);
+  }
+
+  updateClient(clientId: any, updateFormData: any)
+  {
+    return this.http.put("https://localhost:1001/client/" + clientId, updateFormData);
+  }
+
+  deleteClient(clientId: any): Observable<Client>
+  {
+    let clientDelete = "https://localhost:2001/Client/" + clientId;
+    return this.http.delete<Client>(clientDelete);
+  }
+
 }

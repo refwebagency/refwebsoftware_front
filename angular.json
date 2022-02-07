@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-refweb": {
+    "front-service-refwebsoftware": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -41,8 +41,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -73,10 +73,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "angular-refweb:build:production"
+              "browserTarget": "front-service-refwebsoftware:build:production"
             },
             "development": {
-              "browserTarget": "angular-refweb:build:development"
+              "browserTarget": "front-service-refwebsoftware:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -84,7 +84,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-refweb:build"
+            "browserTarget": "front-service-refwebsoftware:build"
           }
         },
         "test": {
@@ -109,5 +109,5 @@
       }
     }
   },
-  "defaultProject": "angular-refweb"
+  "defaultProject": "front-service-refwebsoftware"
 }

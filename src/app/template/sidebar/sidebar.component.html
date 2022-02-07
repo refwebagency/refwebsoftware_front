@@ -1,10 +1,97 @@
-<p>sidebar works!</p>
-    <a routerLink="client">client</a>
-    <br>
-    <a routerLink="user">user</a>
-    <br>
-    <a [routerLink]="[ { outlets: { primary:'user', userwriting:'writing', userdetail:null, userupdate: null  } }]">ajouter un utilisateur</a>
-    
-    
+<div class="row">
+    <nav id="sidebar" class="col-2">
 
-    
+        <div class="sidebar-header">
+
+            <h2 class="mt-2 text-center"><img id="logo" class="me-3" src="https://i.ibb.co/d29MnQW/logo.png" />RefWeb <strong>Logiciel</strong></h2>
+
+        </div>
+
+        <ul class="list-unstyled components ms-3">
+
+            <li>
+            <a href="#" class="amenu">Planning</a>
+            </li>
+
+            <li class="active">
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle amenu mt-3">Projet</a>
+                <ul class="collapse list-unstyled mt-2" id="homeSubmenu">
+                    <li class="asubmenu">Nouveau projet</li>
+                    <li class="asubmenu">Voir les projets</li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle amenu mt-3">Utilisateur</a>
+                <ul class="collapse list-unstyled mt-2" id="pageSubmenu">
+                    <li><a class="asubmenu" routerLink="user">Voir les users</a></li>
+                    <li><a class="asubmenu" routerLink="user/addUser">Nouveau user</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#clientSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle amenu mt-3">Client</a>
+                <ul class="collapse list-unstyled mt-2" id="clientSubmenu">
+                    <li><a class="asubmenu" routerLink="client">Voir les clients</a></li>
+                    <li><a class="asubmenu" routerLink="client/addClient">Nouveau client</a></li>
+                </ul>
+            </li>
+
+        </ul>
+
+        <ul class="list-unstyled CTAs">
+            <li>
+                <a href="#" class="download amenu text-center mt-4">Deconnexion</a>
+            </li>
+        </ul>
+
+    </nav>
+
+    <nav id="sidebar2" class="col-2 mt-5 overflow-auto">
+
+        <ul class="list-unstyled components">
+
+            <div *ngIf="user && !client">
+                <app-user></app-user>
+            </div>
+
+            <div *ngIf="client && !user">
+                <app-client></app-client>
+            </div>
+        </ul>  
+
+    </nav>
+
+    <nav id="sidebar3" style="display:block;" class="col-7 mt-5">
+
+        <ul class="list-unstyled components">
+
+            <div *ngIf="detailUser && !client">
+                <app-detail-user></app-detail-user>
+            </div>
+
+            <div *ngIf="detailClient && !user">
+                <app-detail-client></app-detail-client>
+            </div>      
+            
+            <div *ngIf="addClient && !detailClient && !user">
+                <app-add-client></app-add-client>
+            </div>  
+
+            <div *ngIf="addUser && !detailUser && !client">
+                <app-add-user></app-add-user>
+            </div> 
+
+            <div *ngIf="updateClient && !addClient && !detailClient && !user">
+                <app-update-client></app-update-client>
+            </div>  
+
+            <div *ngIf="updateUser && !addUser && !detailUser && !client">
+                <app-update-user></app-update-user>
+            </div> 
+
+        </ul>  
+
+    </nav>
+
+</div>

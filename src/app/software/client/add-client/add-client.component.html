@@ -1,0 +1,61 @@
+<h1 class="mt-4 text-white">Créer un nouveau client</h1>
+
+<div class="container">
+    <form #newClientForm="ngForm" (submit)="addClient(newClientForm)">
+    <div class="form-group">
+        <label for="Email">Email</label>
+        <div class="col-md-5 mx-auto">
+            <input id="Email" type="email" class="form-control" name="email" ngModel />
+        </div>
+    </div>
+    <div class="form-group mt-3">
+        <label class="col-md-3 control-label" for="Name">Name</label>
+        <div class="col-md-5 mx-auto">
+            <input id="Name" type="text" class="form-control" name="name" ngModel />
+        </div> 
+    </div>
+    <div class="form-group mt-3">
+        <label class="col-md-3 control-label" for="LastName">Last Name</label>
+        <div class="col-md-5 mx-auto">
+            <input id="LastName" type="text" class="form-control" name="lastname" ngModel />
+        </div> 
+    </div>
+    <div class="form-group mt-3">
+        <label class="col-md-3 control-label" for="Phone">Phone</label>
+        <div class="col-md-5 mx-auto">
+            <input id="Phone" type="text" class="form-control" name="phone" ngModel />
+        </div> 
+    </div>
+    <div class="form-group mt-3">
+        <label class="col-md-3 control-label" for="Company">Company</label>
+        <div class="col-md-5 mx-auto">
+            <input id="Company" type="text" class="form-control" name="company" ngModel />
+        </div> 
+    </div>
+    <div class="form-group mt-3">
+        <label class="col-md-3 control-label" for="Address">Address</label>
+        <div class="col-md-5 mx-auto">
+            <input id="Address" type="text" class="form-control" name="address" ngModel />
+        </div> 
+    </div>
+    <div class="form-group mt-3">
+        <label class="col-md-3 control-label" for="Password">Password</label>
+        <div class="col-md-5 mx-auto">
+            <input id="Password" type="password" class="form-control" name="password" ngModel />
+        </div> 
+    </div>
+    <div class="form-group mt-3">
+        <label class="col-md-3 control-label" for="ConfirmPassword">Confirm Password</label>
+        <div class="col-md-5 mx-auto">
+            <input id="ConfirmPassword" type="password" class="form-control" name="confirmPassword" ngModel />
+        </div>
+    </div>
+    <div class="col-3 mx-auto">
+        <button class="form-control mt-5 btn-success" [disabled]="!newClientForm.valid">Add new client</button>
+    </div>
+    </form>
+ </div>
+
+ <div *ngIf="msgTrue" class="text-warning fs-4 mt-2">
+     <p>Client added !</p>
+</div>
