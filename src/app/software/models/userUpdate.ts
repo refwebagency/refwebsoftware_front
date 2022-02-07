@@ -1,6 +1,4 @@
-import { Specialization } from "./specialization";
-
-export interface User
+export interface UserUpdate
 {
     id: number,
     name: string,
@@ -10,6 +8,5 @@ export interface User
     email: string,
     password: string,
     experience: number,
-    specializationId: number,
-    specialization: Specialization
+    specializationId: number
 }

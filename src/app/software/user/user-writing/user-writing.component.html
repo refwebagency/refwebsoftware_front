@@ -1,0 +1,108 @@
+<form [formGroup] = "newUser" (ngSubmit) = "post()" novalidate>
+
+    <div class="container-fluid">
+
+        <div class=" col-md-6 offset-md-2 container">
+
+            <div class="row">
+
+                <h2 class=" col-md-6 offset-md-3">Ajouter un utilisateur</h2>
+                
+
+                    <mat-form-field class="col-md-8 offset-md-2 form-group" appearance="fill">
+
+                        <mat-label for="subject">Prénom</mat-label>
+                        <input matInput formControlName="name" type="text" class="form-control">
+
+                    </mat-form-field>
+            </div>
+
+            <div class="row">
+
+                <mat-form-field class="col-md-8 offset-md-2 form-group">
+
+                    <mat-label for="body">Nom de famille</mat-label>
+                    <input matInput formControlName="lastName" type="text" class="form-control">
+
+                </mat-form-field>
+
+            </div>
+
+            <div class="row">
+
+                <mat-form-field class="col-md-8 offset-md-2 form-group">
+
+                    <mat-label for="sender">Adresse</mat-label>
+                    <input matInput formControlName="address" type="text" class="form-control">
+
+                </mat-form-field>
+
+            </div>
+
+            <div class="row">
+
+                <mat-form-field class="col-md-8 offset-md-2 form-group">
+
+                    <mat-label for="receiver">Téléphone</mat-label>
+                    <input matInput formControlName="phone" type="text" class="form-control">
+
+                </mat-form-field>
+
+            </div>
+
+            <div class="row">
+
+                <mat-form-field class="col-md-8 offset-md-2 form-group">
+
+                    <mat-label for="receiver">Mail</mat-label>
+                    <input matInput formControlName="email" type="text" class="form-control">
+
+                </mat-form-field>
+
+            </div>
+
+            <div class="row">
+
+                <mat-form-field class="col-md-8 offset-md-2 form-group">
+
+                    <mat-label for="receiver">Mot de passe</mat-label>
+                    <input matInput formControlName="password" type="password" class="form-control">
+
+                </mat-form-field>
+
+            </div>
+
+            <div class="row">
+
+                <mat-form-field class="col-md-8 offset-md-2 form-group">
+
+                    <mat-label for="receiver">Expérience</mat-label>
+                    <input matInput formControlName="experience" type="number" class="form-control">
+
+                </mat-form-field>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-8 offset-md-2 form-group">
+                    <div class="selector">
+                        <label>Spécialité du développeur</label>
+                        <select formControlName="specializationId">             
+                            <option *ngFor="let spec of specializations"  [ngValue]="spec.id" >{{ spec.name }}</option>                
+                        </select>
+                    </div>
+                </div> 
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6 offset-md-4">
+
+                    <button type="submit" class="btn btn-danger">Envoyer</button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>

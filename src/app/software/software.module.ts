@@ -1,11 +1,11 @@
 import { NgModule, Pipe } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { ClientComponent } from './client/client.component';
+import { ClientListComponent } from './client/client-list/client-list.component';
 import { RouterModule } from '@angular/router';
-import { UserComponent } from './user/user.component';
-import { UserDetailComponent } from './user-detail/user-detail.component';
-import { UserWritingComponent } from './user-writing/user-writing.component';
+import { UserListComponent } from './user/user-list/user-list.component';
+import { UserDetailComponent } from './user/user-detail/user-detail.component';
+import { UserWritingComponent } from './user/user-writing/user-writing.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NbActionsModule, NbButtonModule, NbLayoutModule, NbOptionComponent } from '@nebular/theme';
 import {MatFormFieldModule } from '@angular/material/form-field';
@@ -14,17 +14,19 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
-import { UserFilterPipe } from './user/user-filter';
+import { UserListFilterPipe } from './user/user-list/user-filter';
+import { UserUpdateComponent } from './user/user-update/user-update.component';
 // pour  chaque component ou module, j'importe
 
 
 @NgModule({
   declarations: [
-    UserComponent,
+    UserListComponent,
     UserDetailComponent,
     UserWritingComponent,
-    ClientComponent,
-    UserFilterPipe
+    UserListFilterPipe,
+    ClientListComponent,
+    UserUpdateComponent
   ],
   imports: [
     CommonModule,
