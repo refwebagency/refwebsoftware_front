@@ -1,9 +1,0 @@
-<p>Liste des utilisateurs</p>
-<div *ngFor="let user of users">
-    <p>prenom : {{ user.name }}</p>
-    <p>nom : {{ user.lastName }}</p>
-
-    <a [routerLink]="['', { outlets: { test: ['user', user.id ] } }]">clic</a>
-
-</div>
-
