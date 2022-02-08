@@ -8,8 +8,7 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     SoftwareModule,
-    RouterModule,
-    
+    RouterModule,  
   ]
 })
 export class TemplateModule { }

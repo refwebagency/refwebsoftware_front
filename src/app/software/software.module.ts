@@ -16,6 +16,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { UserListFilterPipe } from './user/user-list/user-filter';
 import { UserUpdateComponent } from './user/user-update/user-update.component';
+import { TodoTemplateComponent } from './todo-template/todo-template.component';
+import { ProjectTypeListComponent } from './project-type/project-type-list/project-type-list.component';
+import { ProjectTypeDetailComponent } from './project-type/project-type-detail/project-type-detail.component';
+import { ProjectTypeWritingComponent } from './project-type/project-type-writing/project-type-writing.component';
+import { ProjectTypeUpdateComponent } from './project-type/project-type-update/project-type-update.component';
+import { ProjectTypeListFilterPipe } from './project-type/project-type-list/project-type-list';
 // pour  chaque component ou module, j'importe
 
 
@@ -26,7 +32,13 @@ import { UserUpdateComponent } from './user/user-update/user-update.component';
     UserWritingComponent,
     UserListFilterPipe,
     ClientListComponent,
-    UserUpdateComponent
+    UserUpdateComponent,
+    TodoTemplateComponent,
+    ProjectTypeListComponent,
+    ProjectTypeDetailComponent,
+    ProjectTypeWritingComponent,
+    ProjectTypeUpdateComponent,
+    ProjectTypeListFilterPipe
   ],
   imports: [
     CommonModule,

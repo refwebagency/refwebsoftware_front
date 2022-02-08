@@ -4,6 +4,15 @@
     <a routerLink="user">user</a>
     <br>
     <a [routerLink]="[ { outlets: { primary:'user', userwriting:'writing', userdetail:null, userupdate: null  } }]">ajouter un utilisateur</a>
+    <br>
+    <a routerLink="projecttype">type de projet</a>
+    <br>
+    <a [routerLink]="[ { outlets: { primary:'projecttype', projecttypewriting:'writingprojecttype', userwriting:null, userdetail:null, userupdate: null  } }]">ajouter un type de projet</a>
+    <nb-card>
+        <nb-menu [items]="items">
+        </nb-menu>
+    </nb-card>
+      
     
     
 
