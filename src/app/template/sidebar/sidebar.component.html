@@ -8,6 +8,10 @@
     <a routerLink="projecttype">type de projet</a>
     <br>
     <a [routerLink]="[ { outlets: { primary:'projecttype', projecttypewriting:'writingprojecttype', userwriting:null, userdetail:null, userupdate: null  } }]">ajouter un type de projet</a>
+    <br>
+    <a routerLink="todotemplate">modèle de projet</a>
+    <br>
+    <a [routerLink]="[ { outlets: { primary:'todotemplate', todotemplatewriting:'writingtodotemplate', userwriting:null, userdetail:null, userupdate: null  } }]">ajouter un modèle de tâche</a>
     <nb-card>
         <nb-menu [items]="items">
         </nb-menu>

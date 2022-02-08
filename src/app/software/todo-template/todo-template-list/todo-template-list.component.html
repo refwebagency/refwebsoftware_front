@@ -1,0 +1,14 @@
+<p>Liste des modèles de tâches</p>
+<input type="text" class="form-control" placeholder="nom d'une tâche" [(ngModel)]="searchTerm">
+<ul>
+    <li *ngFor="let t of todoTemplates | todoTemplateFilter:searchTerm">
+        <mat-card class="todotemplatelist">
+            <h4 class="mat-title">{{ t.name }}</h4>
+            <p>{{ t.description}}</p>
+            <div *ngIf="t.specialization && t.projectType">
+            <p class="mat-caption">{{ t.specialization.name }} | {{ t.projectType.name }} | {{ t.time}} minutes</p>
+            </div>
+        </mat-card>
+    
+    </li>  
+</ul>

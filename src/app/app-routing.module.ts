@@ -9,6 +9,8 @@ import { ProjectTypeListComponent } from './software/project-type/project-type-l
 import { ProjectTypeWritingComponent } from './software/project-type/project-type-writing/project-type-writing.component';
 import { ProjectTypeDetailComponent } from './software/project-type/project-type-detail/project-type-detail.component';
 import { ProjectTypeUpdateComponent } from './software/project-type/project-type-update/project-type-update.component';
+import { TodoTemplateListComponent } from './software/todo-template/todo-template-list/todo-template-list.component';
+import { TodoTemplateWritingComponent } from './software/todo-template/todo-template-writing/todo-template-writing.component';
 
 const routes: Routes = [
   //vue pour user
@@ -22,6 +24,10 @@ const routes: Routes = [
   {path: 'projecttype/:id', component: ProjectTypeDetailComponent, outlet: 'projecttypedetail'},
   {path: 'projecttypeupdate/:id', component: ProjectTypeUpdateComponent, outlet: 'projecttypeupdate'},
   {path: 'writingprojecttype', component: ProjectTypeWritingComponent, outlet: 'projecttypewriting'},
+
+  //vue pour todoTemplate
+  {path: 'todotemplate', component: TodoTemplateListComponent},
+  {path: 'writingtodotemplate', component: TodoTemplateWritingComponent, outlet: 'todotemplatewriting'},
   
   //vue pour client
   {path: 'client', component: ClientListComponent},

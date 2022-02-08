@@ -47,6 +47,12 @@ export class ProjectTypeService {
     return this.http.post<ProjectType>('https://localhost:5001/projecttype', projectType);
   }
 
+  /**
+   * 
+   * @param id 
+   * @param updateFromData 
+   * @returns un type de projet mis à jour
+   */
   updateProjectType(id: number, updateFromData: any): Observable<ProjectType>
   {
     return this.http.put<ProjectType>("https://localhost:5001/projecttype/" + id, updateFromData);
