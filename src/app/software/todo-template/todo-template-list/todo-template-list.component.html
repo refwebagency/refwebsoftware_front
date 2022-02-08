@@ -3,11 +3,13 @@
 <ul>
     <li *ngFor="let t of todoTemplates | todoTemplateFilter:searchTerm">
         <mat-card class="todotemplatelist">
-            <h4 class="mat-title">{{ t.name }}</h4>
-            <p>{{ t.description}}</p>
-            <div *ngIf="t.specialization && t.projectType">
-            <p class="mat-caption">{{ t.specialization.name }} | {{ t.projectType.name }} | {{ t.time}} minutes</p>
-            </div>
+            <a [routerLink]="['', { outlets: { todotemplatedetail: ['todotemplate', t.id ], userwriting: null, userupdate: null } }]" class="link primary">
+                <h4 class="mat-title">{{ t.name }}</h4>
+                <p>{{ t.description}}</p>
+                <div *ngIf="t.specialization && t.projectType">
+                <p class="mat-caption">{{ t.specialization.name }} | {{ t.projectType.name }} | {{ t.time}} minutes</p>
+                </div>
+            </a>
         </mat-card>
     
     </li>  

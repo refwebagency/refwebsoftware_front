@@ -11,6 +11,7 @@ import { ProjectTypeDetailComponent } from './software/project-type/project-type
 import { ProjectTypeUpdateComponent } from './software/project-type/project-type-update/project-type-update.component';
 import { TodoTemplateListComponent } from './software/todo-template/todo-template-list/todo-template-list.component';
 import { TodoTemplateWritingComponent } from './software/todo-template/todo-template-writing/todo-template-writing.component';
+import { TodoTemplateDetailComponent } from './software/todo-template/todo-template-detail/todo-template-detail.component';
 
 const routes: Routes = [
   //vue pour user
@@ -27,6 +28,7 @@ const routes: Routes = [
 
   //vue pour todoTemplate
   {path: 'todotemplate', component: TodoTemplateListComponent},
+  {path: 'todotemplate/:id', component: TodoTemplateDetailComponent, outlet: 'todotemplatedetail'},
   {path: 'writingtodotemplate', component: TodoTemplateWritingComponent, outlet: 'todotemplatewriting'},
   
   //vue pour client

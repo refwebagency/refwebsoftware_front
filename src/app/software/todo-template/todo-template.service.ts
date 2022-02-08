@@ -35,7 +35,7 @@ export class TodoTemplateService {
   * @param todoTemplate 
   * @returns un modèle de tache par son id
   */
-   getTodoTemplate(id: number): Observable<TodoTemplate>
+   getTodoTemplate(id: string): Observable<TodoTemplate>
    {
     let todoTemplate = "https://localhost:7001/todotemplate/" + id;
     return this.http.get<TodoTemplate>(todoTemplate);
@@ -68,5 +68,11 @@ export class TodoTemplateService {
     getProjectTypes(): Observable<ProjectType[]>
     { 
       return this.http.get<ProjectType[]>("https://localhost:5001/projecttype");
+    }
+
+    deleteTodoTemplate(id: number): Observable<TodoTemplate>
+    {
+      let todoTemplateDelete = "https://localhost:7001/todotemplate/" + id;
+      return this.http.delete<TodoTemplate>(todoTemplateDelete);
     }
 }
