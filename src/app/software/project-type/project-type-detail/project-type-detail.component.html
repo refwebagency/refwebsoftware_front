@@ -1,0 +1,9 @@
+<mat-card class="user">
+    <mat-card-header>
+      <mat-card-title>{{  projectType.name }}</mat-card-title>
+
+    </mat-card-header>
+      <button mat-button (click)="deleteProjectTypeById(projectType.id)">SUPPRIMER</button>
+      <a ><button mat-button [routerLink]="['', { outlets: { projecttypeupdate: ['projecttypeupdate', projectType.id ], userwriting:null, userdetail:null  } }]">METTRE A JOUR</button></a>
+    
+  </mat-card>

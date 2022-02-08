@@ -1,0 +1,89 @@
+<p>todo-template-writing works!</p>
+<form #newTodoTemplateForm="ngForm" (submit)="post(newTodoTemplateForm)">
+
+    <div class="container-fluid">
+
+        <div class=" col-md-6 offset-md-2 container">
+
+            <div class="row">
+
+                <h2 class=" col-md-6 offset-md-3">Nouveau modèle de tâche</h2>
+                
+
+                    <div class="col-md-8 offset-md-2 form-group" appearance="fill">
+
+                        <mat-label for="todotemplate">Nom</mat-label>
+                        <input name="name" type="text" class="form-control" ngModel>
+
+                    </div>
+            </div>
+
+            <div class="row">             
+
+                    <div class="col-md-8 offset-md-2 form-group" appearance="fill">
+
+                        <mat-label for="todotemplate">Expérience nécessaire</mat-label>
+                        <input name="experience" type="number" class="form-control" ngModel>
+
+                    </div>
+            </div>
+
+            <div class="row">
+
+                    <div class="col-md-8 offset-md-2 form-group" appearance="fill">
+
+                        <mat-label for="todotemplate">Déscription de la tâche</mat-label>
+                        <input name="description" type="text" class="form-control" ngModel>
+
+                    </div>
+            </div>
+
+            <div class="row">
+
+                    <div class="col-md-8 offset-md-2 form-group" appearance="fill">
+
+                        <mat-label for="todotemplate">Temps de la tâche(en minutes)</mat-label>
+                        <input name="time" type="number" class="form-control" ngModel>
+
+                    </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-8 offset-md-2 form-group">
+                    <div class="selector">
+                        <label>Spécialité du modèle de tâches</label>
+                        <select name="specialization" ngModel>             
+                            <option *ngFor="let spec of specializations" [ngValue]="spec.id" >{{ spec.name }}</option>                
+                        </select>
+                    </div>
+                </div> 
+            </div>
+
+            <div class="row">
+                <div class="col-md-8 offset-md-2 form-group">
+                    <div class="selector">
+                        <label>Pour quel type de projet</label>
+                        <select name="projectType" ngModel>             
+                            <option *ngFor="let pt of projectType" type="number" [ngValue]="pt.id" >{{ pt.name }}</option>                
+                        </select>
+                    </div>
+                </div> 
+            </div>
+
+
+            <div class="row">
+
+                <div class="col-md-6 offset-md-4">
+
+                    <button type="submit" class="btn btn-danger"  [disabled]="!newTodoTemplateForm.valid">Envoyer</button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
+
+<div *ngIf="msgTrue" class="text-warning fs-4 mt-2">
+    <p>Type de projet rajouté !</p>
+</div>

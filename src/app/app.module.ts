@@ -33,6 +33,16 @@ import { LoginComponent } from './software/login/login/login.component';
 import { TodoUpdateComponent } from './software/todo/todo-update/todo-update.component';
 import { TodoListComponent } from './software/todo/todo-list/todo-list.component';
 import { TodoDetailComponent } from './software/todo/todo-detail/todo-detail.component';
+import { ProjectTypeListComponent } from './software/project-type/project-type-list/project-type-list.component';
+import { ProjectTypeDetailComponent } from './software/project-type/project-type-detail/project-type-detail.component';
+import { ProjectTypeWritingComponent } from './software/project-type/project-type-writing/project-type-writing.component';
+import { ProjectTypeUpdateComponent } from './software/project-type/project-type-update/project-type-update.component';
+import { ProjectTypeListFilterPipe } from './software/project-type/project-type-list/project-type-list';
+import { TodoTemplateWritingComponent } from './software/todo-template/todo-template-writing/todo-template-writing.component';
+import { TodoTemplateListComponent } from './software/todo-template/todo-template-list/todo-template-list.component';
+import { TodoTemplateListFilterPipe } from './software/todo-template/todo-template-list/todo-template-filter';
+import { TodoTemplateDetailComponent } from './software/todo-template/todo-template-detail/todo-template-detail.component';
+import { TodoTemplateUpdateComponent } from './software/todo-template/todo-template-update/todo-template-update.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +67,23 @@ import { TodoDetailComponent } from './software/todo/todo-detail/todo-detail.com
     LoginComponent,
     TodoListComponent,
     TodoUpdateComponent,
-    TodoDetailComponent
+    TodoDetailComponent,
+    UserListComponent,
+    UserDetailComponent,
+    UserWritingComponent,
+    UserListFilterPipe,
+    ClientListComponent,
+    UserUpdateComponent,
+    ProjectTypeListComponent,
+    ProjectTypeDetailComponent,
+    ProjectTypeWritingComponent,
+    ProjectTypeUpdateComponent,
+    ProjectTypeListFilterPipe,
+    TodoTemplateListComponent,
+    TodoTemplateListFilterPipe,
+    TodoTemplateWritingComponent,
+    TodoTemplateDetailComponent,
+    TodoTemplateUpdateComponent
   ],
   imports: [
     BrowserModule,
@@ -65,6 +91,10 @@ import { TodoDetailComponent } from './software/todo/todo-detail/todo-detail.com
     BrowserAnimationsModule,
     NbThemeModule.forRoot({ name: 'default' }),
     NbSidebarModule.forRoot(),
+    NbCardModule,
+    NbIconModule, 
+    NbInputModule, 
+    NbTreeGridModule,
     NbLayoutModule,
     NbEvaIconsModule,
     AppRoutingModule,

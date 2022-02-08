@@ -16,8 +16,31 @@ import { LoginComponent } from './software/login/login/login.component';
 import { TodoUpdateComponent } from './software/todo/todo-update/todo-update.component';
 import { TodoListComponent } from './software/todo/todo-list/todo-list.component';
 import { TodoDetailComponent } from './software/todo/todo-detail/todo-detail.component';
+import { ProjectTypeListComponent } from './software/project-type/project-type-list/project-type-list.component';
+import { ProjectTypeWritingComponent } from './software/project-type/project-type-writing/project-type-writing.component';
+import { ProjectTypeDetailComponent } from './software/project-type/project-type-detail/project-type-detail.component';
+import { ProjectTypeUpdateComponent } from './software/project-type/project-type-update/project-type-update.component';
+import { TodoTemplateListComponent } from './software/todo-template/todo-template-list/todo-template-list.component';
+import { TodoTemplateWritingComponent } from './software/todo-template/todo-template-writing/todo-template-writing.component';
+import { TodoTemplateDetailComponent } from './software/todo-template/todo-template-detail/todo-template-detail.component';
 
 const routes: Routes = [
+  //vue pour user
+  {path: 'user', component: UserListComponent},
+  {path: 'user/:id', component: UserDetailComponent, outlet: 'userdetail'},
+  {path: 'update/:id', component: UserUpdateComponent, outlet: 'userupdate'},
+  {path: 'writing', component: UserWritingComponent, outlet: 'userwriting'},
+
+  //vue pour projectType
+  {path: 'projecttype', component: ProjectTypeListComponent},
+  {path: 'projecttype/:id', component: ProjectTypeDetailComponent, outlet: 'projecttypedetail'},
+  {path: 'projecttypeupdate/:id', component: ProjectTypeUpdateComponent, outlet: 'projecttypeupdate'},
+  {path: 'writingprojecttype', component: ProjectTypeWritingComponent, outlet: 'projecttypewriting'},
+
+  //vue pour todoTemplate
+  {path: 'todotemplate', component: TodoTemplateListComponent},
+  {path: 'todotemplate/:id', component: TodoTemplateDetailComponent, outlet: 'todotemplatedetail'},
+  {path: 'writingtodotemplate', component: TodoTemplateWritingComponent, outlet: 'todotemplatewriting'},
   
   {path: 'login', component: LoginComponent},
 
@@ -25,7 +48,7 @@ const routes: Routes = [
   {path: 'user/:id', component: UserDetailComponent},
   {path: 'user/update/:id', component: UserUpdateComponent},
   {path: 'user/writing', component: UserWritingComponent},
-
+  //vue pour client
   {path: 'client', component: ClientListComponent},
   {path: 'client/:id', component: ClientDetailComponent},
   {path: 'client/update/:id', component: ClientUpdateComponent},

@@ -1,0 +1,22 @@
+ul
+{
+    margin-top: 10px;
+    padding:0; 
+    list-style: none;
+}
+
+a:link 
+{ 
+ text-decoration:none; 
+} 
+
+.todotemplatelist{
+    margin-top: 5px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.todotemplatelist:hover
+{
+    background-color: #B8DDFF;
+}

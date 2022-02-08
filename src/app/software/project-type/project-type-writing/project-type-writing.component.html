@@ -1,0 +1,36 @@
+<form #newProjectTypeForm="ngForm" (submit)="post(newProjectTypeForm)">
+
+    <div class="container-fluid">
+
+        <div class=" col-md-6 offset-md-2 container">
+
+            <div class="row">
+
+                <h2 class=" col-md-6 offset-md-3">Nouveau type de projet</h2>
+                
+
+                    <div class="col-md-8 offset-md-2 form-group" appearance="fill">
+
+                        <mat-label for="subject">Nom du type de projet</mat-label>
+                        <input id="projecttype" name="name" type="text" class="form-control" ngModel>
+
+                    </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-6 offset-md-4">
+
+                    <button type="submit" class="btn btn-danger" [disabled]="!newProjectTypeForm.valid">Envoyer</button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
+
+<div *ngIf="msgTrue" class="text-warning fs-4 mt-2">
+    <p>Type de projet rajouté !</p>
+</div>
+
