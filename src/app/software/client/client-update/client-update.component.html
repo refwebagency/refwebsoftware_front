@@ -1,0 +1,47 @@
+<h2>Modifier un client</h2>
+
+<form #updateClientForm="ngForm" (submit)="updateClientById(client.id, updateClientForm)">
+
+    <div class="row justify-content-around">
+
+        <div class="col-4 form-group" appearance="fill">
+            <mat-label for="subject">Prénom</mat-label>
+            <input id="name" name="name" type="text" class="form-control" [(ngModel)]="client.name">
+        </div>
+      
+        <div class="col-4 form-group">
+            <mat-label for="body">Nom de famille</mat-label>
+            <input id="lastName" name="lastName" type="text" class="form-control" [(ngModel)]="client.lastName">
+        </div>
+
+        <div class="col-4 form-group">
+            <mat-label for="sender">Adresse</mat-label>
+            <input id="address" name="address" type="text" class="form-control" [(ngModel)]="client.address">
+        </div>
+
+    </div>
+
+    <div class="row justify-content-around mt-3">
+
+        <div class="col-4 form-group">
+            <mat-label for="receiver">Téléphone</mat-label>
+            <input id="phone" name="phone" type="text" class="form-control" [(ngModel)]="client.phone">
+        </div>
+    
+        <div class="col-4 form-group">
+            <mat-label for="receiver">Mail</mat-label>
+            <input id="email" name="email" type="text" class="form-control" [(ngModel)]="client.email">
+        </div>
+
+        <div class="col-4 form-group">
+            <mat-label for="receiver">Société</mat-label>
+            <input id="company" name="company" type="text" class="form-control" [(ngModel)]="client.company">
+        </div>
+
+    </div>           
+
+    <div class="col-4 mt-4">
+        <button type="submit" class="btn btn-danger" [disabled]="!updateClientForm.valid">Envoyer</button>
+    </div>
+       
+</form>

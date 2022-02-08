@@ -1,0 +1,19 @@
+<h2>Ajouter une spécialisation</h2>  
+
+<form [formGroup] = "newSpecialization" (ngSubmit) = "post()" novalidate>
+
+    <div class="row">
+        <mat-form-field class="col-4 form-group">
+            <mat-label for="subject">Nom</mat-label>
+            <input matInput formControlName="name" type="text" class="form-control">
+        </mat-form-field>
+    </div>
+
+    <div class="row">
+        <div class="col-4 mt-4">
+            <button type="submit" class="btn btn-danger">Envoyer</button>
+        </div>
+    </div>
+  
+
+</form>

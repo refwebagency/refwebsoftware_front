@@ -1,22 +1,27 @@
-<nb-layout>
+<div *ngIf="login">
+  <app-login></app-login>
+</div>
 
-  <nb-layout-header fixed>
-  </nb-layout-header>
+<div *ngIf="!login">
+  <nb-layout>
 
-  <nb-sidebar>
-    <h1>colonne 1</h1>
-    <app-sidebar></app-sidebar>
-  </nb-sidebar>
+    <nb-sidebar>
+      <div class="row justify-content-around">
+        <h2 class="text-center">RefWeb Logiciel</h2>
+      </div>
+      <app-sidebar></app-sidebar>
+    </nb-sidebar>
+  
+    <nb-sidebar>
+      <app-column></app-column>
+    </nb-sidebar>
 
-  <nb-sidebar>
-    <h1>colonne 2</h1>
-    <app-column></app-column>
-  </nb-sidebar>
+    <nb-layout-column>
+      <app-content></app-content>
+    </nb-layout-column>
+  
+  </nb-layout>
+</div>
 
 
-  <nb-layout-column>
-    <h1>Interface test</h1>
-    <app-content></app-content>
-  </nb-layout-column>
-
-</nb-layout>
+   

@@ -1,0 +1,18 @@
+<h2>Modifier une spécialisation</h2>
+
+<form #updateSpecializationForm="ngForm" (submit)="updateSpecializationById(specialization.id, updateSpecializationForm)">
+
+    <div class="row">
+
+        <div class="col-4 form-group">
+            <mat-label for="subject">Nom</mat-label>
+            <input id="name" name="name" type="text" class="form-control" [(ngModel)]="specialization.name">
+        </div>
+      
+    </div>
+
+    <div class="col-4 mt-4">
+        <button type="submit" class="btn btn-danger" [disabled]="!updateSpecializationForm.valid">Envoyer</button>
+    </div>
+       
+</form>

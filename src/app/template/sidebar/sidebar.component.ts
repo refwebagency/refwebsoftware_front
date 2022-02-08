@@ -1,66 +1,84 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { NbMenuItem, NbMenuService } from '@nebular/theme';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
 
   items: NbMenuItem[] = [
     {
-      title: 'Profile',
+      title: 'User',
       expanded: true,
       children: [
         {
-          title: 'créer un user',
-          link: '',
-          
+          title: 'Show users',
+          link: 'user'
         },
         {
-          title: 'Privacy Policy',
-        },
-        {
-          title: 'Logout',
+          title: 'Create user'
         },
       ],
     },
     {
-      title: 'Shopping Bag',
+      title: 'Client',
+      expanded: true,
+      children: [
+        {
+          title: 'Show clients',
+          link: 'client'
+        },
+        {
+          title: 'Create client',
+        }
+      ]
     },
     {
-      title: 'Orders',
+      title: 'Specialization',
+      expanded: true,
+      children: [
+        {
+          title: 'Show specializations',
+          link: 'specialization'
+        },
+        {
+          title: 'Create specialization'
+        }
+      ]
     },
+    {
+      title: 'Todo',
+      expanded: true,
+      children: [
+        {
+          title: 'Show todos',
+          link: 'todo'
+        }
+      ]
+    }
   ];
 
-  constructor(
-
-    menu: NbMenuService,
-    private router: Router
-  ) {
-
+  constructor(menu: NbMenuService, private router: Router) { 
     menu.onItemClick().subscribe((event) => {
       console.log(event);
-      if (event.item.title === 'créer un user') {
-        console.log('test')
-        this.router.navigate([ { outlets: { primary:'user', userwriting:'writing', userdetail:null, userupdate: null  } }]);
-        // item.click();
+      if (event.item.title === 'Create user') {
+        this.router.navigate(['user/writing']);
+      }
+      if (event.item.title === 'Create client') {
+        this.router.navigate(['client/writing']);
+      }
+      if (event.item.title === 'Create specialization') {
+        this.router.navigate(['specialization/writing']);
       }
     }); 
-
-}
-
-
-  ngOnInit(): void {
-
-    
-
-  
   }
 
-
-
+  ngOnInit(): void {
+      
+  }
 
 }

@@ -1,12 +1,11 @@
 export interface Client
-{
+{ 
     id: number,
     name: string,
     lastName: string,
-    adress: string,
+    address: string,
     phone: string,
     email: string,
-    company: number,
-    meetId?: number,
-
+    company: string,
+    meetId?: number
 }

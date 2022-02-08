@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Specialization } from '../../models/specialization';
 ;
 import { User } from '../../models/user';
@@ -24,12 +24,12 @@ export class UserUpdateComponent implements OnInit {
   constructor(
 
     private myService: UserService,
-    private route: ActivatedRoute
+    private route: Router
   ) { }
 
   ngOnInit(): void {
-    var id = this.route.snapshot.url[1].path;
-    this.myService.getUser(id).subscribe((u => this.user = u));
+    // var id = this.route.snapshot.url[1].path;
+    this.myService.getUser().subscribe((u => this.user = u));
     this.myService.getSpecializations().subscribe(s => this.specializations = s);
 
   }
@@ -52,6 +52,7 @@ export class UserUpdateComponent implements OnInit {
     this.myService.updateUser(userId, newForm).subscribe(data => {
       this.msgTrue = true;
     })
+    this.route.navigateByUrl("/user");
   }
 
 }

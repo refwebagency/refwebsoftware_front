@@ -1,7 +1,7 @@
 import { Specialization } from "./specialization";
 
-export interface User
-{
+export interface User 
+{ 
     id: number,
     name: string,
     lastName: string,
@@ -10,6 +10,7 @@ export interface User
     email: string,
     password: string,
     experience: number,
+    meetId?: number,
     specializationId: number,
     specialization: Specialization
 }

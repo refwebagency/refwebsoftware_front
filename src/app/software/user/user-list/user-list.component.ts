@@ -4,7 +4,7 @@ import { User } from '../../models/user';
 import { UserService } from '../user.service';
 
 @Component({
-  selector: 'app-user',
+  selector: 'app-user-list',
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.scss']
 })
@@ -17,8 +17,7 @@ export class UserListComponent implements OnInit {
 
   //Initialisation d'une variable pour récuperer le typage du service
   constructor(
-    private myService: UserService,
-    private router: Router
+    private myService: UserService
   ) { }
 
   /**

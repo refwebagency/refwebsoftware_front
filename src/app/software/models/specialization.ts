@@ -1,4 +1,4 @@
-export interface Specialization
+export interface Specialization 
 {
     id: number,
     name: string

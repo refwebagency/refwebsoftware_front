@@ -1,10 +1,54 @@
-<router-outlet name="userdetail"></router-outlet> <!--lié au component user-detail -->
-<router-outlet name="userwriting"></router-outlet> <!--lié au component user-writing -->
-<router-outlet name="userupdate"></router-outlet> <!--lié au component user-update -->
 
-<router-outlet name='projecttypewriting'></router-outlet><!--lié au component project-type-writing -->
-<router-outlet name="projecttypedetail"></router-outlet><!--lié au component project-type-detail -->
-<router-outlet name="projecttypeupdate"></router-outlet><!--lié au component project-type-update -->
+<!-- USER -->
+<div *ngIf="detailUser && !detailClient">
+    <app-user-detail></app-user-detail>
+</div>
 
-<router-outlet name="todotemplatewriting"></router-outlet><!--lié au component todo-template-writing -->
-<router-outlet name="todotemplatedetail"></router-outlet><!--lié au component todo-template-detail -->
+<div *ngIf="router.url === '/user/writing'">
+    <app-user-writing></app-user-writing>
+</div>
+
+<div *ngIf="updateUser">
+    <app-user-update></app-user-update>
+</div>
+
+<!-- CLIENT -->
+<div *ngIf="detailClient && !detailUser">
+    <app-client-detail></app-client-detail>
+</div>
+
+<div *ngIf="router.url === '/client/writing'">
+    <app-client-writing></app-client-writing>
+</div>
+
+<div *ngIf="updateClient">
+    <app-client-update></app-client-update>
+</div>
+
+<!-- SPECIALIZATION -->
+<div *ngIf="detailSpecialization">
+    <app-specialization-detail></app-specialization-detail>
+</div>
+
+<div *ngIf="router.url === '/specialization/writing'">
+    <app-specialization-writing></app-specialization-writing>
+</div>
+
+<div *ngIf="updateSpecialization">
+    <app-specialization-update></app-specialization-update>
+</div>
+
+<!-- TODO -->
+<div *ngIf="detailTodo">
+    <app-todo-detail></app-todo-detail>
+</div>
+
+<div *ngIf="updateTodo">
+    <app-todo-update></app-todo-update>
+</div>
+
+
+
+
+
+

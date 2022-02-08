@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { delay, Observable, repeat } from 'rxjs';
 import { Specialization } from '../models/specialization';
 import { User } from '../models/user';
@@ -12,14 +13,13 @@ export class UserService {
 
    //Users represente la liste des users
    private user: User[] = []
-   private id!: User
    /** 
     * @param Injection de la dependance HttpClient, en private  
     * pour eviter de devoir déclarer une proprieté et ainsi de faire une
     * initialisation du service http pour faire des requêtes http
   */  
   constructor(
-
+    private route: Router,
     private http: HttpClient
 
   ) { }
@@ -31,17 +31,17 @@ export class UserService {
    getUsers(): Observable<User[]>
    {
      return this.http.get<User[]>("https://localhost:2001/user").pipe(
-       delay(1000),repeat()
-     );
+       delay(1000), repeat()
+     )
    } 
 
    /**
     * @returns un observable de User
     */
-    getUser(id: string): Observable<User>
+    getUser(): Observable<User>
     {
-      // var stringUrl = this.route.url;
-      // var id = stringUrl.match(/\d+/g);
+      var stringUrl = this.route.url;
+      var id = stringUrl.match(/\d+/g);
       // console.log(id);
       let userById = "https://localhost:2001/user/" + id;
       return this.http.get<User>(userById);
