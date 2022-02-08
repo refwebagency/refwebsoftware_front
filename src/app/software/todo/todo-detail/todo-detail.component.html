@@ -1,0 +1,14 @@
+<mat-card class="todo">
+    <mat-card-header>
+      <mat-card-title>{{ todo.name }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Description : {{ todo.description}} | Experience : {{ todo.experience}} ans</p>
+      <p>Status : {{ todo.status }}</p>
+      <p>UserId : {{ todo.userId }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <a ><button mat-button [routerLink]="['/todo/update/', todo.id]">METTRE A JOUR</button></a>
+    </mat-card-actions>
+  </mat-card>
+  

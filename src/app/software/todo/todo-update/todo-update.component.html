@@ -1,0 +1,64 @@
+<h2>Modifier une tâche</h2>
+
+<form #updateTodoForm="ngForm" (submit)="updateTodoById(todo.id, updateTodoForm)">
+
+    <div class="row justify-content-around">
+
+        <div class="col-4 form-group" appearance="fill">
+            <mat-label for="Nom">Nom</mat-label>
+            <input id="name" name="name" type="text" class="form-control" [(ngModel)]="todo.name">
+        </div>
+           
+        <div class="col-4 form-group" appearance="fill">
+            <mat-label for="Experience">Experience</mat-label>
+            <input id="experience" name="experience" type="number" class="form-control" [(ngModel)]="todo.experience">
+        </div>
+
+        <div class="col-4 form-group" appearance="fill">
+            <mat-label for="Time">Time</mat-label>
+            <input id="time" name="time" type="number" class="form-control" [(ngModel)]="todo.time">
+        </div>
+
+    </div>
+
+    <div class="row justify-content-around mt-3">
+
+        <div class="col-4 form-group" appearance="fill">
+            <mat-label for="Description">Description</mat-label>
+            <input id="description" name="description" type="text" class="form-control" [(ngModel)]="todo.description">
+        </div>
+
+        <div class="col-4 form-group" appearance="fill">
+            <mat-label for="Status">Status</mat-label>
+            <input id="status" name="status" type="text" class="form-control" [(ngModel)]="todo.status">
+        </div>
+
+        <div class="col-4 form-group" appearance="fill">
+            <mat-label for="Utilisateur">Utilisateur</mat-label>
+            <input id="userId" name="userId" type="number" class="form-control" [(ngModel)]="todo.userId">
+        </div>
+
+    </div>
+
+    <div class="row mt-3">
+
+        <div class="col-4 form-group">
+            <mat-label for="Projet">Projet</mat-label>
+            <input id="projectId" name="projectId" type="number" class="form-control" [(ngModel)]="todo.projectId">
+        </div>
+  
+        <div class="col-5 form-group">
+            <div class="selector ">
+                <label>Spécialité du développeur</label>
+                <select [(ngModel)]="todo.specializationId" name="specialization">             
+                    <option *ngFor="let spec of specializations" [ngValue]="spec.id" >{{ spec.name }}</option>                
+                </select>
+            </div>
+        </div> 
+    </div>
+
+    <div class="col-4 mt-4">
+        <button type="submit" class="btn btn-danger" [disabled]="!updateTodoForm.valid">Envoyer</button>
+    </div>
+
+</form>

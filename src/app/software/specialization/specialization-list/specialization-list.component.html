@@ -1,0 +1,14 @@
+<p class="text-center fs-5 mt-2">Liste des spécialisations</p>
+    <ul>
+        <li *ngFor="let specialization of specializations">
+            <a [routerLink]="['/specialization', specialization.id]" class="link primary">
+            <mat-card class="specializationlist">
+            <!-- charge le rooter outlet ayant le path specialization/:id et comme name specializationdetail -->  
+                <h4 class="mat-title">{{ specialization.name }}</h4>   
+            </mat-card>
+            </a>
+        
+        </li>  
+    </ul>
+
+

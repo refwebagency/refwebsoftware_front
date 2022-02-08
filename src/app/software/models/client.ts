@@ -6,6 +6,6 @@ export interface Client
     address: string,
     phone: string,
     email: string,
-    company: number,
+    company: string,
     meetId?: number
 }

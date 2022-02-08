@@ -53,8 +53,8 @@ export class UserDetailComponent implements OnInit {
      * souscrit à la méthode getUser dans le service avec comme 
      * parametre l'id récuperé depuis l'url
      */
-    var id = this.route.snapshot.url[1].path;
-    this.myService.getUser(id).subscribe((u => this.user = u));
+    // var id = this.route.snapshot.url[1].path;
+    this.myService.getUser().subscribe((u => this.user = u));
     //console.log(id);
     
   }
@@ -68,7 +68,7 @@ export class UserDetailComponent implements OnInit {
      if(window.confirm("Supprimer cet utilisateur ?"))
      {
       this.myService.deleteUser(id).subscribe();
-      this.router.navigate([{ outlets: { userdetail:null }}]);
+      this.router.navigateByUrl("/user");
      }  
    }
 

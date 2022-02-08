@@ -1,110 +1,64 @@
+<h2>Modifier un utilisateur</h2>
+
 <form #updateUserForm="ngForm" (submit)="updateUserById(user.id, updateUserForm)">
 
-    <div class="container-fluid">
+    <div class="row justify-content-around">
 
-        <div class=" col-md-6 offset-md-2 container">
-
-            <div class="row">
-
-                <h2 class=" col-md-6 offset-md-3">Ajouter un utilisateur</h2>
-                
-
-                    <div class="col-md-8 offset-md-2 form-group" appearance="fill">
-
-                        <mat-label for="subject">Prénom</mat-label>
-                        <input id="name" name="name" type="text" class="form-control" [(ngModel)]="user.name">
-
-                    </div>
-            </div>
-
-            <div class="row">
-
-                <div class="col-md-8 offset-md-2 form-group">
-
-                    <mat-label for="body">Nom de famille</mat-label>
-                    <input id="lastName" name="lastName" type="text" class="form-control" [(ngModel)]="user.lastName">
-
-                </div>
-
-            </div>
-
-            <div class="row">
-
-                <div class="col-md-8 offset-md-2 form-group">
-
-                    <mat-label for="sender">Adresse</mat-label>
-                    <input id="address" name="address" type="text" class="form-control" [(ngModel)]="user.address">
-
-                </div>
-
-            </div>
-
-            <div class="row">
-
-                <div class="col-md-8 offset-md-2 form-group">
-
-                    <mat-label for="receiver">Téléphone</mat-label>
-                    <input id="phone" name="phone" type="text" class="form-control" [(ngModel)]="user.phone">
-
-                </div>
-
-            </div>
-
-            <div class="row">
-
-                <div class="col-md-8 offset-md-2 form-group">
-
-                    <mat-label for="receiver">Mail</mat-label>
-                    <input id="email" name="email" type="text" class="form-control" [(ngModel)]="user.email">
-
-                </div>
-
-            </div>
-
-            <div class="row">
-
-                <div class="col-md-8 offset-md-2 form-group">
-
-                    <mat-label for="receiver">Mot de passe</mat-label>
-                    <input id="password" name="password" type="password" class="form-control" [(ngModel)]="user.password">
-
-                </div>
-
-            </div>
-
-            <div class="row">
-
-                <div class="col-md-8 offset-md-2 form-group">
-
-                    <mat-label for="receiver">Expérience</mat-label>
-                    <input id="experience" name="experience" type="number" class="form-control" [(ngModel)]="user.experience">
-
-                </div>
-
-            </div>
-
-            <div class="row">
-                <div class="col-md-8 offset-md-2 form-group">
-                    <div class="selector">
-                        <label>Spécialité du développeur</label>
-                        <select [(ngModel)]="user.specializationId" name="specialization">             
-                            <option *ngFor="let spec of specializations"   [ngValue]="spec.id" >{{ spec.name }}</option>                
-                        </select>
-                    </div>
-                </div> 
-            </div>
-
-            
-
-            <div class="row">
-
-                <div class="col-md-6 offset-md-4">
-
-                    <button type="submit" class="btn btn-danger" [disabled]="!updateUserForm.valid">Envoyer</button>
-
-                </div>
-
-            </div>
+        <div class="col-4 form-group" appearance="fill">
+            <mat-label for="subject">Prénom</mat-label>
+            <input id="name" name="name" type="text" class="form-control" [(ngModel)]="user.name">
         </div>
+           
+        <div class="col-4 form-group">
+            <mat-label for="body">Nom de famille</mat-label>
+            <input id="lastName" name="lastName" type="text" class="form-control" [(ngModel)]="user.lastName">
+        </div>
+          
+        <div class="col-4 form-group">
+            <mat-label for="sender">Adresse</mat-label>
+            <input id="address" name="address" type="text" class="form-control" [(ngModel)]="user.address">
+        </div>
+
     </div>
+
+    <div class="row justify-content-around mt-3">
+
+        <div class="col-4 form-group">
+            <mat-label for="receiver">Téléphone</mat-label>
+            <input id="phone" name="phone" type="text" class="form-control" [(ngModel)]="user.phone">
+        </div>
+
+        <div class="col-4 form-group">
+            <mat-label for="receiver">Mail</mat-label>
+            <input id="email" name="email" type="text" class="form-control" [(ngModel)]="user.email">
+        </div>
+
+        <div class="col-4 form-group">
+            <mat-label for="receiver">Mot de passe</mat-label>
+            <input id="password" name="password" type="text" class="form-control" [(ngModel)]="user.password">
+        </div>
+
+    </div>
+
+    <div class="row mt-3">
+
+        <div class="col-4 form-group">
+            <mat-label for="receiver">Expérience</mat-label>
+            <input id="experience" name="experience" type="number" class="form-control" [(ngModel)]="user.experience">
+        </div>
+  
+        <div class="col-5 form-group">
+            <div class="selector ">
+                <label>Spécialité du développeur</label>
+                <select [(ngModel)]="user.specializationId" name="specialization">             
+                    <option *ngFor="let spec of specializations" [ngValue]="spec.id" >{{ spec.name }}</option>                
+                </select>
+            </div>
+        </div> 
+    </div>
+
+    <div class="col-4 mt-4">
+        <button type="submit" class="btn btn-danger" [disabled]="!updateUserForm.valid">Envoyer</button>
+    </div>
+
 </form>

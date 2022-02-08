@@ -17,3 +17,11 @@ $nb-themes: nb-register-theme((
   // color-primary-900: #091c7a,
 
 ), dark, dark);
+
+.menu-title {
+  margin-left: 20px;
+}
+
+.scrollable {
+  margin-top: -85px !important;
+}

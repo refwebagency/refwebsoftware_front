@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Specialization } from '../../models/specialization';
 import { UserService } from '../user.service';
 
@@ -14,7 +15,7 @@ export class UserWritingComponent implements OnInit {
   specializations: Specialization[] = []
 
   constructor(
-
+    private route: Router,
     private myService: UserService
   ) { }
 
@@ -43,9 +44,11 @@ export class UserWritingComponent implements OnInit {
    * Au clic du bouton submit dans le formulaire, récupere les valeurs
    * de newUser
    */
-   post(){
-     console.log(this.newUser.value.id);
+   post(){ 
+    console.log(this.newUser.value.id);
     this.myService.addUser(this.newUser.value).subscribe();
+    this.route.navigateByUrl("/user");
+    
   }
 
 }

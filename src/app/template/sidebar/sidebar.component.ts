@@ -1,125 +1,83 @@
-import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, NavigationError, NavigationStart, Router, Event } from '@angular/router';
-import { SoftwareService } from 'src/app/software/software.service';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Router } from '@angular/router';
+import { NbMenuItem, NbMenuService } from '@nebular/theme';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
 
-  client:boolean = false;
-  detailClient: boolean = false;
-  addClient: boolean = false;
-  updateClient: boolean = false;
-
-  user:boolean = false;
-  detailUser: boolean = false;
-  addUser: boolean = false;
-  updateUser: boolean = false;
-  
-  constructor(private myService: SoftwareService, private router: Router)
-  { 
-    this.router.events.subscribe((event: Event) => {
-      if (event instanceof NavigationStart) 
-      {
-        console.log("start ouk ouk")
-      }
-      if (event instanceof NavigationEnd) {
-
-        var route = this.router.url;
-        var id = route.match(/\d+/g);
-        const currentRoute = this.router.url;
-
-        // list-user component
-        if(currentRoute == "/user" || currentRoute == "/user/"+id)
-        { 
-          this.user = true;
-        }
-        else
+  items: NbMenuItem[] = [
+    {
+      title: 'User',
+      expanded: true,
+      children: [
         {
-          this.user = false;
-        }
-
-        // detail-user component
-        if(currentRoute == "/user/"+id)
-        { 
-          this.detailUser = true;
-        }
-        else
+          title: 'Show users',
+          link: 'user'
+        },
         {
-          this.detailUser = false;
-        }
-
-        // add-user component
-        if(currentRoute == "/user/addUser")
-        { 
-          this.addUser = true;
-        }
-        else
-        { 
-          this.addUser = false;
-        }
-
-        // update-user component
-        if(currentRoute == "/user/updateUser/"+id)
-        { 
-          this.updateUser = true;
-        }
-        else
-        { 
-          this.updateUser = false;
-        }
-
-        // list-client component
-        if(currentRoute == "/client" || currentRoute == "/client/"+id)
+          title: 'Create user'
+        },
+      ],
+    },
+    {
+      title: 'Client',
+      expanded: true,
+      children: [
         {
-          this.client = true;
+          title: 'Show clients',
+          link: 'client'
+        },
+        {
+          title: 'Create client',
         }
-        else
-        { 
-          this.client = false;
+      ]
+    },
+    {
+      title: 'Specialization',
+      expanded: true,
+      children: [
+        {
+          title: 'Show specializations',
+          link: 'specialization'
+        },
+        {
+          title: 'Create specialization'
         }
+      ]
+    },
+    {
+      title: 'Todo',
+      expanded: true,
+      children: [
+        {
+          title: 'Show todos',
+          link: 'todo'
+        }
+      ]
+    }
+  ];
 
-        // detail-client component
-        if(currentRoute == "/client/"+id)
-        { 
-          this.detailClient = true;
-        }
-        else
-        { 
-          this.detailClient = false;
-        }
-
-        // add-client component
-        if(currentRoute == "/client/addClient")
-        { 
-          this.addClient = true;
-        }
-        else
-        { 
-          this.addClient = false;
-        }
-
-        // update-client component
-        if(currentRoute == "/client/updateClient/"+id)
-        { 
-          this.updateClient = true;
-        }
-        else
-        { 
-          this.updateClient = false;
-        }
-        console.log("CurrentRoute : " + currentRoute); 
+  constructor(menu: NbMenuService, private router: Router) { 
+    menu.onItemClick().subscribe((event) => {
+      console.log(event);
+      if (event.item.title === 'Create user') {
+        this.router.navigate(['user/writing']);
       }
-      if (event instanceof NavigationError) {
-        console.log(event.error);
+      if (event.item.title === 'Create client') {
+        this.router.navigate(['client/writing']);
       }
-    })
+      if (event.item.title === 'Create specialization') {
+        this.router.navigate(['specialization/writing']);
+      }
+    }); 
   }
 
   ngOnInit(): void {
   }
-    
+
 }

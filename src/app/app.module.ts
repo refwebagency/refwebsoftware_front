@@ -1,56 +1,88 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavComponent } from './template/nav/nav.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NbThemeModule, NbLayoutModule, NbSidebarModule, NbCardModule, NbIconModule, NbInputModule, NbTreeGridModule, NbActionsModule, NbMenuModule, NbButtonModule } from '@nebular/theme';
+import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { AppRoutingModule } from './app-routing.module';
 import { ContentComponent } from './template/content/content.component';
 import { SidebarComponent } from './template/sidebar/sidebar.component';
-import { HeaderComponent } from './template/header/header.component';
-import { FooterComponent } from './template/footer/footer.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SoftwareModule } from './software/software.module';
-import { UserComponent } from './software/user/list-user/user.component';
-import { ClientComponent } from './software/client/list-client/client.component';
-import { DetailClientComponent } from './software/client/detail-client/detail-client.component';
-import { DetailUserComponent } from './software/user/detail-user/detail-user.component';
-import { AddClientComponent } from './software/client/add-client/add-client.component';
+import { ColumnComponent } from './template/column/column.component';
+import { TemplateModule } from './template/template.module';
+import { UserListComponent } from './software/user/user-list/user-list.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AddUserComponent } from './software/user/add-user/add-user.component';
-import { UpdateUserComponent } from './software/user/update-user/update-user.component';
-import { UpdateClientComponent } from './software/client/update-client/update-client.component';
-import { UserSearch } from './software/user/list-user/user-search';
-import { ClientSearch } from './software/client/list-client/client-search';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { UserUpdateComponent } from './software/user/user-update/user-update.component';
+import { ClientDetailComponent } from './software/client/client-detail/client-detail.component';
+import { ClientWritingComponent } from './software/client/client-writing/client-writing.component';
+import { ClientListFilterPipe } from './software/client/client-list/client-filter';
+import { ClientUpdateComponent } from './software/client/client-update/client-update.component';
+import { ClientListComponent } from './software/client/client-list/client-list.component';
+import { UserListFilterPipe } from './software/user/user-list/user-filter';
+import { UserWritingComponent } from './software/user/user-writing/user-writing.component';
+import { UserDetailComponent } from './software/user/user-detail/user-detail.component';
+import { SpecializationWritingComponent } from './software/specialization/specialization-writing/specialization-writing.component';
+import { SpecializationListComponent } from './software/specialization/specialization-list/specialization-list.component';
+import { SpecializationUpdateComponent } from './software/specialization/specialization-update/specialization-update.component';
+import { SpecializationDetailComponent } from './software/specialization/specialization-detail/specialization-detail.component';
+import { LoginComponent } from './software/login/login/login.component';
+import { TodoUpdateComponent } from './software/todo/todo-update/todo-update.component';
+import { TodoListComponent } from './software/todo/todo-list/todo-list.component';
+import { TodoDetailComponent } from './software/todo/todo-detail/todo-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent,
     ContentComponent,
-    FooterComponent,
-    HeaderComponent,
     SidebarComponent,
-    UserComponent,
-    ClientComponent,
-    DetailClientComponent,
-    DetailUserComponent,
-    AddClientComponent,
-    AddUserComponent,
-    UpdateClientComponent,
-    UpdateUserComponent,
-    UserSearch,
-    ClientSearch
+    ColumnComponent,
+    UserListComponent,
+    UserDetailComponent,
+    UserWritingComponent,
+    UserListFilterPipe,
+    UserUpdateComponent,
+    ClientListComponent,
+    ClientDetailComponent,
+    ClientWritingComponent,
+    ClientListFilterPipe,
+    ClientUpdateComponent,
+    SpecializationDetailComponent,
+    SpecializationUpdateComponent,
+    SpecializationListComponent,
+    SpecializationWritingComponent,
+    LoginComponent,
+    TodoListComponent,
+    TodoUpdateComponent,
+    TodoDetailComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    TemplateModule, 
     BrowserAnimationsModule,
-    SoftwareModule,
+    NbThemeModule.forRoot({ name: 'default' }),
+    NbSidebarModule.forRoot(),
+    NbLayoutModule,
+    NbEvaIconsModule,
+    AppRoutingModule,
+    NbCardModule,
+    NbIconModule, 
+    NbInputModule, 
+    NbTreeGridModule,
+    NbLayoutModule,
+    NbActionsModule,
+    NbMenuModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule,
+    NbButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    FormsModule,
-    ReactiveFormsModule
+    MatSelectModule,
+    MatCardModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

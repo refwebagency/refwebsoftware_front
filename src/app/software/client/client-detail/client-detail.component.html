@@ -1,0 +1,16 @@
+<mat-card class="client">
+    <mat-card-header>
+      <mat-card-title>{{ client.name }} {{ client.lastName }}</mat-card-title>
+      <mat-card-subtitle>Développeur</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Société : {{ client.company}}</p>
+      <p>Mail : {{ client.email }} | téléphone : {{ client.phone }}</p>
+      <p>Adresse : {{ client.address }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="deleteclientById(client.id)">SUPPRIMER</button>
+      <a ><button mat-button [routerLink]="['/client/update/', client.id]">METTRE A JOUR</button></a>
+    </mat-card-actions>
+  </mat-card>
+  

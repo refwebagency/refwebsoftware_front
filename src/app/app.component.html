@@ -1,1 +1,27 @@
-<app-sidebar></app-sidebar>
+<div *ngIf="login">
+  <app-login></app-login>
+</div>
+
+<div *ngIf="!login">
+  <nb-layout>
+
+    <nb-sidebar>
+      <div class="row justify-content-around">
+        <h2 class="text-center">RefWeb Logiciel</h2>
+      </div>
+      <app-sidebar></app-sidebar>
+    </nb-sidebar>
+  
+    <nb-sidebar>
+      <app-column></app-column>
+    </nb-sidebar>
+
+    <nb-layout-column>
+      <app-content></app-content>
+    </nb-layout-column>
+  
+  </nb-layout>
+</div>
+
+
+   
