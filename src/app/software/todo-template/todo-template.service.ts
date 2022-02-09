@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { delay, Observable, repeat } from 'rxjs';
 import { ProjectType } from '../models/projectType';
 import { Specialization } from '../models/specialization';
@@ -15,7 +16,8 @@ export class TodoTemplateService {
 
   constructor(
 
-    private http: HttpClient
+    private http: HttpClient,
+    private route: Router
 
   ) { }
 
@@ -35,8 +37,10 @@ export class TodoTemplateService {
   * @param todoTemplate 
   * @returns un modèle de tache par son id
   */
-   getTodoTemplate(id: string): Observable<TodoTemplate>
+   getTodoTemplate(): Observable<TodoTemplate>
    {
+    let stringUrl = this.route.url;
+    let id = stringUrl.match(/\d+/g);
     let todoTemplate = "https://localhost:7001/todotemplate/" + id;
     return this.http.get<TodoTemplate>(todoTemplate);
    }
@@ -45,7 +49,7 @@ export class TodoTemplateService {
   * @param todoTemplate pour créer un nouveau modèle de tache, omit permet d'exclure l'id
   * car il est auto incrementé lors de sa création
   */
-   addTodoTemplate(todoTemplate: Omit<TodoTemplate, 'id'>): Observable<TodoTemplate>
+   addTodoTemplate(todoTemplate: any): Observable<TodoTemplate>
    {
      return this.http.post<TodoTemplate>('https://localhost:7001/todotemplate', todoTemplate)
    }

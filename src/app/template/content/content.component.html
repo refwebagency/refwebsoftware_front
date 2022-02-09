@@ -38,6 +38,32 @@
     <app-specialization-update></app-specialization-update>
 </div>
 
+<!-- TODOTEMPLATE -->
+<div *ngIf="detailTodotemplate">
+    <app-todo-template-detail></app-todo-template-detail>
+</div>
+
+<div *ngIf="router.url === '/todotemplate/writing'">
+    <app-todo-template-writing></app-todo-template-writing>
+</div>
+
+<div *ngIf="updateTodotemplate">
+    <app-todo-template-update></app-todo-template-update>
+</div>
+
+<!-- PROJECTTYPE -->
+<div *ngIf="detailProjecttype">
+    <app-project-type-detail></app-project-type-detail>
+</div>
+
+<div *ngIf="router.url === '/projecttype/writing'">
+    <app-project-type-writing></app-project-type-writing>
+</div>
+
+<div *ngIf="updateProjecttype">
+    <app-project-type-update></app-project-type-update>
+</div>
+
 <!-- TODO -->
 <div *ngIf="detailTodo">
     <app-todo-detail></app-todo-detail>
@@ -46,6 +72,15 @@
 <div *ngIf="updateTodo">
     <app-todo-update></app-todo-update>
 </div>
+
+<!-- QUOTEPDF -->
+<div *ngIf="router.url === '/quotepdf/writing'">
+    <app-quote-pdf-detail></app-quote-pdf-detail>
+</div>
+
+
+
+
 
 
 

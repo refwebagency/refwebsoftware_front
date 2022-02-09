@@ -15,7 +15,8 @@ export class TodoTemplateListFilterPipe implements PipeTransform
             return todotemplates;
         }
 
+        
             return todotemplates.filter(todotemplate => 
-                todotemplate.name.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1);
+            todotemplate.specialization.name.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1);
     }
 }

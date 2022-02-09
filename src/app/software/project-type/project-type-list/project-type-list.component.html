@@ -5,7 +5,7 @@
             <mat-card class="projecttypelist">
             
   
-            <a [routerLink]="['', { outlets: { projecttypedetail: ['projecttype', pt.id ], userwriting: null, userupdate: null } }]" class="link primary">
+                <a [routerLink]="['/projecttype', pt.id]" class="link primary">
                 <h4 class="mat-title">{{ pt.name }}</h4>
             </a>
             </mat-card>

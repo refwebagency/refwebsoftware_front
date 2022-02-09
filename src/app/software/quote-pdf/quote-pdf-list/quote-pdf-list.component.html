@@ -1,0 +1,13 @@
+<p>Liste des devis</p>
+<input type="text" class="form-control" placeholder="Nom d'un projet" [(ngModel)]="searchTerm">   
+<ul>
+    <li *ngFor="let pdf of quotesPdf | quotePdfFilter:searchTerm">
+        <a [routerLink]="['/quotepdf', pdf.id]" class="link primary">
+        <mat-card class="quotepdflist">
+                <h4 class="mat-title">{{ pdf.project.name }}</h4>
+                <p class="mat-caption">Date de début : {{ pdf.project.startDate }}</p>
+                <p class="mat-caption">Date de fin : {{ pdf.project.endtDate }}</p>
+        </mat-card>
+        </a>
+    </li>  
+</ul>

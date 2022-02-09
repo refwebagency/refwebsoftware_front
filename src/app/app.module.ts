@@ -33,6 +33,21 @@ import { LoginComponent } from './software/login/login/login.component';
 import { TodoUpdateComponent } from './software/todo/todo-update/todo-update.component';
 import { TodoListComponent } from './software/todo/todo-list/todo-list.component';
 import { TodoDetailComponent } from './software/todo/todo-detail/todo-detail.component';
+import { ProjectTypeListComponent } from './software/project-type/project-type-list/project-type-list.component';
+import { ProjectTypeDetailComponent } from './software/project-type/project-type-detail/project-type-detail.component';
+import { ProjectTypeWritingComponent } from './software/project-type/project-type-writing/project-type-writing.component';
+import { ProjectTypeUpdateComponent } from './software/project-type/project-type-update/project-type-update.component';
+import { ProjectTypeListFilterPipe } from './software/project-type/project-type-list/project-type-list';
+import { TodoTemplateWritingComponent } from './software/todo-template/todo-template-writing/todo-template-writing.component';
+import { TodoTemplateListComponent } from './software/todo-template/todo-template-list/todo-template-list.component';
+import { TodoTemplateListFilterPipe } from './software/todo-template/todo-template-list/todo-template-filter';
+import { TodoTemplateDetailComponent } from './software/todo-template/todo-template-detail/todo-template-detail.component';
+import { TodoTemplateUpdateComponent } from './software/todo-template/todo-template-update/todo-template-update.component';
+import { QuotePdfListComponent } from './software/quote-pdf/quote-pdf-list/quote-pdf-list.component';
+import { QuotePdfWritingComponent } from './software/quote-pdf/quote-pdf-writing/quote-pdf-writing.component';
+import { QuotePdfDetailComponent } from './software/quote-pdf/quote-pdf-detail/quote-pdf-detail.component';
+import { QuotePdfUpdateComponent } from './software/quote-pdf/quote-pdf-update/quote-pdf-update.component';
+import { QuotePdfListFilterPipe } from './software/quote-pdf/quote-pdf-list/quote-pdf-filter';
 
 @NgModule({
   declarations: [
@@ -57,7 +72,28 @@ import { TodoDetailComponent } from './software/todo/todo-detail/todo-detail.com
     LoginComponent,
     TodoListComponent,
     TodoUpdateComponent,
-    TodoDetailComponent
+    TodoDetailComponent,
+    UserListComponent,
+    UserDetailComponent,
+    UserWritingComponent,
+    UserListFilterPipe,
+    ClientListComponent,
+    UserUpdateComponent,
+    ProjectTypeListComponent,
+    ProjectTypeDetailComponent,
+    ProjectTypeWritingComponent,
+    ProjectTypeUpdateComponent,
+    ProjectTypeListFilterPipe,
+    TodoTemplateListComponent,
+    TodoTemplateListFilterPipe,
+    TodoTemplateWritingComponent,
+    TodoTemplateDetailComponent,
+    TodoTemplateUpdateComponent,
+    QuotePdfListComponent,
+    QuotePdfWritingComponent,
+    QuotePdfDetailComponent,
+    QuotePdfUpdateComponent,
+    QuotePdfListFilterPipe
   ],
   imports: [
     BrowserModule,
@@ -86,7 +122,7 @@ import { TodoDetailComponent } from './software/todo/todo-detail/todo-detail.com
     MatInputModule,
     MatSelectModule,
     MatCardModule,
-    MatButtonModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

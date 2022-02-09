@@ -4,6 +4,6 @@
 
     </mat-card-header>
       <button mat-button (click)="deleteProjectTypeById(projectType.id)">SUPPRIMER</button>
-      <a ><button mat-button [routerLink]="['', { outlets: { projecttypeupdate: ['projecttypeupdate', projectType.id ], userwriting:null, userdetail:null  } }]">METTRE A JOUR</button></a>
+      <a [routerLink]="['/projecttype/update', projectType.id]" class="link primary"><button mat-button>METTRE A JOUR</button></a>
     
   </mat-card>

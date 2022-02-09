@@ -1,9 +1,9 @@
 <p>Liste des modèles de tâches</p>
-<input type="text" class="form-control" placeholder="nom d'une tâche" [(ngModel)]="searchTerm">
+<input type="text" class="form-control" placeholder="nom d'une spécialisation" [(ngModel)]="searchTerm">
 <ul>
     <li *ngFor="let t of todoTemplates | todoTemplateFilter:searchTerm">
         <mat-card class="todotemplatelist">
-            <a [routerLink]="['', { outlets: { todotemplatedetail: ['todotemplate', t.id ], userwriting: null, userupdate: null } }]" class="link primary">
+            <a [routerLink]="['/todotemplate', t.id]" class="link primary">
                 <h4 class="mat-title">{{ t.name }}</h4>
                 <p>{{ t.description}}</p>
                 <div *ngIf="t.specialization && t.projectType">

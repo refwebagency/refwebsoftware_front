@@ -1,15 +1,13 @@
-<div *ngIf="router.url === '/user' || detailUser || updateUser">
-    <app-user-list></app-user-list>
-</div>
+<ng-template [ngIf]="router.url === '/user' || detailUser || updateUser || router.url === '/user/writing'"><app-user-list></app-user-list></ng-template>
 
-<div *ngIf="router.url === '/client' || detailClient || updateClient">
-    <app-client-list></app-client-list>
-</div>
+<ng-template [ngIf]="router.url === '/client' || detailClient || updateClient || router.url === '/client/writing'"><app-client-list></app-client-list></ng-template>
 
-<div *ngIf="router.url === '/specialization' || detailSpecialization || updateSpecialization">
-    <app-specialization-list></app-specialization-list>
-</div>
+<ng-template [ngIf]="router.url === '/specialization' || detailSpecialization || updateSpecialization || router.url === '/specialization/writing'"><app-specialization-list></app-specialization-list></ng-template>
 
-<div *ngIf="router.url === '/todo' || detailTodo || updateTodo">
-    <app-todo-list></app-todo-list>
-</div>
+<ng-template [ngIf]="router.url === '/todo' || detailTodo || updateTodo || router.url === '/todo/writing'"><app-todo-list></app-todo-list></ng-template>
+
+<ng-template [ngIf]="router.url === '/todotemplate' || detailTodotemplate || updateTodotemplate || router.url === '/todotemplate/writing'"><app-todo-template-list></app-todo-template-list></ng-template>
+
+<ng-template [ngIf]="router.url === '/projecttype' || detailProjecttype || updateProjecttype || router.url === '/projecttype/writing'"><app-project-type-list></app-project-type-list></ng-template>
+
+<ng-template [ngIf]="router.url === '/quotepdf' || detailQuotepdf || router.url === '/quotepdf/writing'"><app-quote-pdf-list></app-quote-pdf-list></ng-template>

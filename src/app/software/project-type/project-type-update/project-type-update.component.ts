@@ -21,8 +21,7 @@ export class ProjectTypeUpdateComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    var id = this.route.snapshot.url[1].path;
-    this.myService.getProjectType(id).subscribe((pt => this.projectType = pt));
+    this.myService.getProjectType().subscribe((pt => this.projectType = pt));
 
   }
 

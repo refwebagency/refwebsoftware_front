@@ -23,46 +23,54 @@ import { LoginComponent } from './software/login/login/login.component';
 import { TodoUpdateComponent } from './software/todo/todo-update/todo-update.component';
 import { TodoListComponent } from './software/todo/todo-list/todo-list.component';
 import { TodoDetailComponent } from './software/todo/todo-detail/todo-detail.component';
+import { TodoTemplateUpdateComponent } from './software/todo-template/todo-template-update/todo-template-update.component';
+import { QuotePdfListComponent } from './software/quote-pdf/quote-pdf-list/quote-pdf-list.component';
+import { QuotePdfDetailComponent } from './software/quote-pdf/quote-pdf-detail/quote-pdf-detail.component';
+import { QuotePdfWritingComponent } from './software/quote-pdf/quote-pdf-writing/quote-pdf-writing.component';
 
 const routes: Routes = [
-  //vue pour user
-  {path: 'user', component: UserListComponent},
-  {path: 'user/:id', component: UserDetailComponent, outlet: 'userdetail'},
-  {path: 'update/:id', component: UserUpdateComponent, outlet: 'userupdate'},
-  {path: 'writing', component: UserWritingComponent, outlet: 'userwriting'},
-
   //vue pour projectType
   {path: 'projecttype', component: ProjectTypeListComponent},
-  {path: 'projecttype/:id', component: ProjectTypeDetailComponent, outlet: 'projecttypedetail'},
-  {path: 'projecttypeupdate/:id', component: ProjectTypeUpdateComponent, outlet: 'projecttypeupdate'},
-  {path: 'writingprojecttype', component: ProjectTypeWritingComponent, outlet: 'projecttypewriting'},
+  {path: 'projecttype/:id', component: ProjectTypeDetailComponent},
+  {path: 'projecttype/update/:id', component: ProjectTypeUpdateComponent},
+  {path: 'projecttype/writing', component: ProjectTypeWritingComponent},
 
   //vue pour todoTemplate
   {path: 'todotemplate', component: TodoTemplateListComponent},
-  {path: 'todotemplate/:id', component: TodoTemplateDetailComponent, outlet: 'todotemplatedetail'},
-  {path: 'writingtodotemplate', component: TodoTemplateWritingComponent, outlet: 'todotemplatewriting'},
-  
-  //vue pour client
+  {path: 'todotemplate/:id', component: TodoTemplateDetailComponent},
+  {path: 'todotemplate/writing', component: TodoTemplateWritingComponent},
+  {path: 'todotemplate/update/:id', component: TodoTemplateUpdateComponent},
+
+  //vue pour login
   {path: 'login', component: LoginComponent},
 
+  //vue pour user
   {path: 'user', component: UserListComponent},
   {path: 'user/:id', component: UserDetailComponent},
   {path: 'user/update/:id', component: UserUpdateComponent},
   {path: 'user/writing', component: UserWritingComponent},
 
+  //vue pour client
   {path: 'client', component: ClientListComponent},
   {path: 'client/:id', component: ClientDetailComponent},
   {path: 'client/update/:id', component: ClientUpdateComponent},
   {path: 'client/writing', component: ClientWritingComponent},
 
+  //vue pour specialization
   {path: 'specialization', component: SpecializationListComponent},
   {path: 'specialization/:id', component: SpecializationDetailComponent},
   {path: 'specialization/update/:id', component: SpecializationUpdateComponent},
   {path: 'specialization/writing', component: SpecializationWritingComponent},
 
+  //vue pour todo
   {path: 'todo', component: TodoListComponent},
   {path: 'todo/:id', component: TodoDetailComponent},
   {path: 'todo/update/:id', component: TodoUpdateComponent},
+
+  //vue pour quotePdf
+  {path: 'quotepdf', component: QuotePdfListComponent},
+  {path: 'quotepdf/:id', component: QuotePdfDetailComponent},
+  {path: 'quotepdf/writing', component: QuotePdfWritingComponent},
 
   {path: '', redirectTo:'/login', pathMatch: 'full'}
 ];

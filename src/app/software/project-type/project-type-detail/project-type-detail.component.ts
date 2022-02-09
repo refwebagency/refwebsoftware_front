@@ -48,8 +48,7 @@ ngOnInit(): void {
   * souscrit à la méthode getProjectType dans le service avec comme 
   * parametre l'id récuperé depuis l'url
   */
- var id = this.route.snapshot.url[1].path;
- this.myService.getProjectType(id).subscribe((pt => this.projectType = pt));
+ this.myService.getProjectType().subscribe((pt => this.projectType = pt));
  //console.log(id);
  
 }
