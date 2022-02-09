@@ -1,1 +1,106 @@
-<p>quote-pdf-writing works!</p>
+<h2>Création d'un devis</h2>
+<form [formGroup] = "newQuotePdf" (ngSubmit) = "post()" novalidate>
+    <fieldset formGroupName="project">
+    <div class="row justify-content-around">
+        
+        <mat-form-field class="col-4 form-group">
+           
+            <mat-label for="name">Nom du projet</mat-label>
+            <input matInput formControlName="name" type="text" class="form-control">
+
+        </mat-form-field>
+
+        <mat-form-field class="col-4 form-group">
+
+            <mat-label for="startDate">Date de début</mat-label>
+            <input matInput formControlName="startDate" type="date" class="form-control">
+
+        </mat-form-field>
+
+        <mat-form-field class="col-4 form-group">
+
+            <mat-label for="endtDate">Date de fin</mat-label>
+            <input matInput formControlName="endtDate" type="date" class="form-control">
+
+        </mat-form-field>
+    
+    </div>
+
+    <div class="row">
+        <div class="col-4 form-group">
+            <div class="selector">
+                <label>Pour quel type de projet</label>
+                <select formControlName="projectTypeId">             
+                    <option *ngFor="let pt of projectTypes" [ngValue]="pt.id" >{{ pt.name }}</option>                
+                </select>
+            </div>
+        </div>    
+
+        <div class="col-4 form-group">
+            <div class="selector">
+                <label>Pour quel client</label>
+                <select formControlName="clientId">
+                    <option>un client</option>               
+                    <option *ngFor="let client of clients" [ngValue]="client.id" >{{ client.id }} | {{ client.name }} {{ client.lastName }}</option>                
+                </select>
+            </div>
+        </div>        
+    </div>
+    </fieldset>
+
+    <fieldset formArrayName="todoTemplates">
+        <div class="col-4 form-group">
+            <div class="selector">
+                <label>Pour quel modèle de tâche 1</label>
+                <div [formGroup]="test">
+                <!-- <div formGroupName="todoTemplate"> -->
+                    <select formControlName="id">  
+                        <option>un modèle de tâche</option>           
+                        <option *ngFor="let td of todoTemplates" [ngValue]=td.id >{{ td.name }}</option>                
+                    </select>
+                <!-- </div> -->
+                </div>
+                <label>Pour quel modèle de tâche 2</label>
+                <div [formGroup]="test2">           
+                        <select formControlName="id">  
+                            <option>un modèle de tâche 2</option>           
+                            <option *ngFor="let td of todoTemplates" [ngValue]=td.id >{{ td.name }}</option>                
+                        </select>
+                </div>
+                
+                <label>Pour quel modèle de tâche 3</label>
+                <div [formGroup]="test3">           
+                        <select formControlName="id">  
+                            <option>un modèle de tâche 3</option>           
+                            <option *ngFor="let td of todoTemplates" [ngValue]=td.id >{{ td.name }}</option>                
+                        </select>
+                </div>
+                
+                <label>Pour quel modèle de tâche 4</label>
+                <div [formGroup]="test4">           
+                        <select formControlName="id">  
+                            <option>un modèle de tâche 4</option>           
+                            <option *ngFor="let td of todoTemplates" [ngValue]=td.id >{{ td.name }}</option>                
+                        </select>
+                </div>
+                
+                <label>Pour quel modèle de tâche 5</label>
+                <div [formGroup]="test5">           
+                        <select formControlName="id">  
+                            <option>un modèle de tâche 5</option>           
+                            <option *ngFor="let td of todoTemplates" [ngValue]=td.id >{{ td.name }}</option>                
+                        </select>
+                </div>
+                
+            </div>
+        </div>
+    </fieldset>
+
+
+    <div class="row mt-3">
+        <div class="col-4">
+            <button type="submit" class="btn btn-danger">Envoyer</button>
+        </div>
+    </div>
+
+</form>

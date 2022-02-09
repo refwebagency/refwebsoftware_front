@@ -5,5 +5,5 @@ export interface QuotePdf
 {
     id: number,
     project: Project,
-    todoTemplate: TodoTemplate[]
+    todoTemplates: TodoTemplate[]
 }
