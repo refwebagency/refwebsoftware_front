@@ -1,5 +1,3 @@
-<p>todo-template-detail works!</p>
-
 <mat-card class="todoTemplate">
     <mat-card-header>
       <div *ngIf="todoTemplate.projectType">
@@ -8,13 +6,13 @@
     </mat-card-header>
     <mat-card-content>
       <div *ngIf="todoTemplate.specialization">
-        <p>spécialité : {{ todoTemplate.specialization.name}} | éxperience demandée : {{ todoTemplate.experience}} an</p>
+        <p>spécialité : {{ todoTemplate.specialization.name}} | éxperience demandée : {{ todoTemplate.experience}} ans</p>
       </div>
       <p>désciption : {{ todoTemplate.description }}</p>
      
     </mat-card-content>
     <mat-card-actions>
       <button mat-button (click)="deleteTodoTemplateByid(todoTemplate.id)">SUPPRIMER</button>
-      <button mat-button >METTRE A JOUR</button>
+      <a [routerLink]="['/todotemplate/update/', todoTemplate.id]"><button mat-button >METTRE A JOUR</button></a>
     </mat-card-actions>
   </mat-card>

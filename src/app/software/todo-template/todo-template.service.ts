@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { delay, Observable, repeat } from 'rxjs';
 import { ProjectType } from '../models/projectType';
 import { Specialization } from '../models/specialization';
@@ -11,10 +12,10 @@ import { TodoTemplate } from '../models/todoTemplate';
 export class TodoTemplateService {
 
   //todoTemplate represente ma liste de template de taches
-  todoTemplate: TodoTemplate[] = []
-
+  todoTemplates: TodoTemplate[] = []
+  todoTemplate: TodoTemplate = {} as TodoTemplate
   constructor(
-
+    private route: Router,
     private http: HttpClient
 
   ) { }
@@ -35,8 +36,10 @@ export class TodoTemplateService {
   * @param todoTemplate 
   * @returns un modèle de tache par son id
   */
-   getTodoTemplate(id: string): Observable<TodoTemplate>
+   getTodoTemplate(): Observable<TodoTemplate>
    {
+    var stringUrl = this.route.url;
+    var id = stringUrl.match(/\d+/g);
     let todoTemplate = "https://localhost:7001/todotemplate/" + id;
     return this.http.get<TodoTemplate>(todoTemplate);
    }
@@ -45,7 +48,7 @@ export class TodoTemplateService {
   * @param todoTemplate pour créer un nouveau modèle de tache, omit permet d'exclure l'id
   * car il est auto incrementé lors de sa création
   */
-   addTodoTemplate(todoTemplate: Omit<TodoTemplate, 'id'>): Observable<TodoTemplate>
+   addTodoTemplate(todoTemplate: any): Observable<TodoTemplate>
    {
      return this.http.post<TodoTemplate>('https://localhost:7001/todotemplate', todoTemplate)
    }
@@ -69,6 +72,17 @@ export class TodoTemplateService {
     { 
       return this.http.get<ProjectType[]>("https://localhost:5001/projecttype");
     }
+
+    /**
+     * 
+     * @param id 
+     * @param updateFromData 
+     * @returns pour mettre a jour un todoTemplate
+     */
+     updateTodoTemplate(id: any, updateFromData: any): Observable<TodoTemplate>
+     {
+       return this.http.put<TodoTemplate>("https://localhost:7001/todotemplate/update/" + id, updateFromData);
+     }
 
     deleteTodoTemplate(id: number): Observable<TodoTemplate>
     {

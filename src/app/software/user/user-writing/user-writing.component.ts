@@ -48,7 +48,6 @@ export class UserWritingComponent implements OnInit {
     console.log(this.newUser.value.id);
     this.myService.addUser(this.newUser.value).subscribe();
     this.route.navigateByUrl("/user");
-    
   }
 
 }

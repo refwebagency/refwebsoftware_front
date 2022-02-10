@@ -1,0 +1,14 @@
+<p class="text-center fs-5 mt-2">Liste des tâches</p>
+<!-- <input type="text" class="form-control" placeholder="Nom des tâches" [(ngModel)]="searchTerm">     -->
+    <ul>
+        <li *ngFor="let todo of todos">
+            <a [routerLink]="['//planning/todo', todo.id]" class="link primary">
+            <mat-card class="todolist">
+            <!-- charge le rooter outlet ayant le path todo/:id et comme name tododetail -->
+                <h4 class="mat-title">{{ todo.name }} | {{ todo.experience }}</h4>
+                <p class="mat-caption">{{ todo.description }}</p>
+            </mat-card>
+            </a>
+        
+        </li>  
+    </ul>

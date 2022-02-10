@@ -1,1 +1,54 @@
-<p>todo-template-update works!</p>
+<h2>Modifier un modèle de tâche</h2>
+
+<form #updateTodoTemplateForm="ngForm" (submit)="updateTodoTemplateById(todoTemplate.id, updateTodoTemplateForm)">
+
+    <div class="row justify-content-around">
+
+        <div class="col-4 form-group" appearance="fill">
+            <mat-label for="subject">Nom</mat-label>
+            <input id="name" name="name" type="text" class="form-control" [(ngModel)]="todoTemplate.name">
+        </div>
+           
+        <div class="col-4 form-group">
+            <mat-label for="body">Experience</mat-label>
+            <input id="experience" name="experience" type="number" class="form-control" [(ngModel)]="todoTemplate.experience">
+        </div>
+          
+        <div class="col-4 form-group">
+            <mat-label for="sender">Description</mat-label>
+            <input id="description" name="description" type="text" class="form-control" [(ngModel)]="todoTemplate.description">
+        </div>
+
+    </div>
+
+    <div class="row justify-content-around mt-3">
+
+        <div class="col-4 form-group">
+            <mat-label for="receiver">Time</mat-label>
+            <input id="time" name="time" type="number" class="form-control" [(ngModel)]="todoTemplate.time">
+        </div>
+
+        <div class="col-4 form-group">
+            <div class="selector ">
+                <label>Spécialité du développeur</label>
+                <select [(ngModel)]="todoTemplate.specializationId" name="specialization">             
+                    <option *ngFor="let spec of specializations" [ngValue]="spec.id" >{{ spec.name }}</option>                
+                </select>
+            </div>
+        </div> 
+
+        <div class="col-4 form-group">
+            <div class="selector ">
+                <label>Type du projet</label>
+                <select [(ngModel)]="todoTemplate.projectTypeId" name="projectTypeId">             
+                    <option *ngFor="let pt of projectTypes" [ngValue]="pt.id" >{{ pt.name }}</option>                
+                </select>
+            </div>
+        </div> 
+    </div>
+
+    <div class="col-4 mt-4">
+        <button type="submit" class="btn btn-danger" [disabled]="!updateTodoTemplateForm.valid">Valider</button>
+    </div>
+
+</form>

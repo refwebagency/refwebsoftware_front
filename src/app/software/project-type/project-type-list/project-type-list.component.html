@@ -1,14 +1,14 @@
-<p>Liste des types de projets</p>
-<input type="text" class="form-control" placeholder="nom du type de projet" [(ngModel)]="searchTerm">    
+<p class="text-center fs-6 mt-2">Liste des types de projets</p>
+<input type="text" class="form-control" placeholder="Nom du type de projet" [(ngModel)]="searchTerm">    
     <ul>
         <li *ngFor="let pt of projectTypes | projectTypeFilter:searchTerm">
+            <a [routerLink]="['/projecttype', pt.id]" class="link primary">
             <mat-card class="projecttypelist">
-            
-  
-            <a [routerLink]="['', { outlets: { projecttypedetail: ['projecttype', pt.id ], userwriting: null, userupdate: null } }]" class="link primary">
+         
                 <h4 class="mat-title">{{ pt.name }}</h4>
-            </a>
+           
             </mat-card>
+            </a>
         
         </li>  
     </ul>

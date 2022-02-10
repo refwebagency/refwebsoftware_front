@@ -20,6 +20,17 @@ export class ContentComponent implements OnInit {
   detailTodo: boolean = false;
   updateTodo: boolean = false;
 
+  detailTodotemplate: boolean = false;
+  updateTodotemplate: boolean = false;
+
+  detailProjecttype: boolean = false;
+  updateProjecttype: boolean = false;
+
+  planning: boolean = false;
+  listPlanning: boolean = false;
+  detailPlanning: boolean = false;
+  updatePlanning: boolean = false;
+
   constructor(public router: Router)
   { 
     this.router.events.subscribe((event: Event) => {
@@ -104,6 +115,79 @@ export class ContentComponent implements OnInit {
         {
           this.updateTodo = false;
         }
+
+        // todotemplate components
+        if(currentRoute == "/todotemplate/"+id)
+        { 
+          this.detailTodotemplate = true;
+        }
+        else
+        {
+          this.detailTodotemplate = false;
+        }
+
+        if(currentRoute == "/todotemplate/update/"+id)
+        { 
+          this.updateTodotemplate = true;
+        }
+        else
+        {
+          this.updateTodotemplate = false;
+        }
+
+        // projecttype components
+        if(currentRoute == "/projecttype/"+id)
+        { 
+          this.detailProjecttype = true;
+        }
+        else
+        {
+          this.detailProjecttype = false;
+        }
+
+        if(currentRoute == "/projecttype/update/"+id)
+        { 
+          this.updateProjecttype = true;
+        }
+        else
+        {
+          this.updateProjecttype = false;
+        }
+
+        // planning components
+        if(currentRoute == "/planning")
+        { 
+          this.planning = true;
+        }
+        else
+        {
+          this.planning = false;
+        }
+        if(currentRoute == "/planning/todo")
+        { 
+          this.listPlanning = true;
+        }
+        else
+        {
+          this.listPlanning = false;
+        }
+        if(currentRoute == "/planning/todo/"+id)
+        { 
+          this.detailPlanning = true;
+        }
+        else
+        {
+          this.detailPlanning = false;
+        }
+        if(currentRoute == "/planning/update/todo/"+id)
+        { 
+          this.updatePlanning = true;
+        }
+        else
+        {
+          this.updatePlanning = false;
+        }
+        
       }
       if (event instanceof NavigationError) {
         console.log(event.error);

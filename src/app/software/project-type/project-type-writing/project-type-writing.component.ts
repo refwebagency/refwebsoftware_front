@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ProjectType } from '../../models/projectType';
 import { ProjectTypeService } from '../project-type.service';
 
@@ -9,29 +11,35 @@ import { ProjectTypeService } from '../project-type.service';
 })
 export class ProjectTypeWritingComponent implements OnInit {
 
+  newProjectType!: FormGroup;
   projectType: ProjectType[] = []
 
   msgTrue = false;
 
   constructor(
-
+    private route: Router,
     private myService : ProjectTypeService
 
   ) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { this.newProjectType = this.createFormGroup();
+  }
 
-  
-  post(form: any)
-  {
-    const newFormData = 
-    {
-      name: form.value.name
-    };
-
-    this.myService.addProjectType(newFormData).subscribe(data => {
-      console.log(data);
-      this.msgTrue = true;
+  //Pour génerer mon formulaire, validators permet de rendre la saisie d'un champ
+  //obligatoire, pour chaque proprietés  
+  createFormGroup(): FormGroup {
+    return new FormGroup ({
+      name: new FormControl("",[Validators.required]),
     })
+  }
+
+  /**
+   * Au clic du bouton submit dans le formulaire, récupere les valeurs
+   * de newProjectType
+   */
+   post(){
+     console.log(this.newProjectType.value.id);
+    this.myService.addProjectType(this.newProjectType.value).subscribe();
+    this.route.navigateByUrl("/projecttype");
   }
 }

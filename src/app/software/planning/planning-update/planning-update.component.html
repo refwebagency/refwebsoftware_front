@@ -1,0 +1,81 @@
+<h2>Modifier une tâche</h2>
+
+
+
+    <div class="row justify-content-around">
+
+        <div class="col-4 form-group">
+            <p for="Nom">Nom :</p>
+            <p>{{todo.name}}</p>
+        </div>
+           
+        <div class="col-4 form-group">
+            <p for="Experience">Experience</p>
+            <p>{{todo.experience}}</p>
+        </div>
+
+        <div class="col-4 form-group">
+            <p for="Time">Time: </p>
+            <p>{{todo.time}} minutes</p>
+        </div>
+
+    </div>
+
+    
+    <div class="row justify-content-around">
+
+        <div class="col-4 form-group">
+            <p>Description : </p>
+            <p>{{todo.description}}</p>
+        </div>
+
+        <div class="col-4 form-group">
+            <p>Utilisateur :</p>
+            <p>{{todo.userId}}</p>
+        </div>
+
+        <div class="col-4 form-group">
+            <p>Projet :</p>
+            <p>{{todo.projectId}}</p>
+            
+        </div>
+   
+    </div>
+
+    <div class="row">
+        <div class="col-4 form-group">
+            <div class="selector ">
+                <label>Spécialité du développeur</label>
+                <select [(ngModel)]="todo.specializationId" name="specialization">             
+                    <option *ngFor="let spec of specializations" [ngValue]="spec.id" >{{ spec.name }}</option>                
+                </select>
+            </div>
+        </div> 
+
+      
+
+        <div class="col-4 form-group">
+
+        <form #updateTodoForm="ngForm" (submit)="updateTodoById(todo.id, updateTodoForm)">
+              
+            <p for="Status">Status</p>
+            <!-- <input id="status" name="status" type="text" class="form-control" [(ngModel)]="todo.status"> -->
+
+            <select [(ngModel)]="todo.status" name="status">             
+                <option>A faire</option>      
+                <option>En cours</option>  
+                <option>Fini</option>            
+            </select>
+
+            <div class="col-4 mt-4">
+                <button type="submit" class="btn btn-danger" [disabled]="!updateTodoForm.valid">Valider</button>
+            </div>
+
+        </form>
+    </div>
+    </div>
+         
+       
+
+    
+

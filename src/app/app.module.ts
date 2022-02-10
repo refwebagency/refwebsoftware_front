@@ -43,6 +43,11 @@ import { TodoTemplateListComponent } from './software/todo-template/todo-templat
 import { TodoTemplateListFilterPipe } from './software/todo-template/todo-template-list/todo-template-filter';
 import { TodoTemplateDetailComponent } from './software/todo-template/todo-template-detail/todo-template-detail.component';
 import { TodoTemplateUpdateComponent } from './software/todo-template/todo-template-update/todo-template-update.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { PlanningComponent } from './software/planning/planning/planning.component';
+import { PlanningListComponent } from './software/planning/planning-list/planning-list.component';
+import { PlanningDetailComponent } from './software/planning/planning-detail/planning-detail.component';
+import { PlanningUpdateComponent } from './software/planning/planning-update/planning-update.component';
 
 @NgModule({
   declarations: [
@@ -83,7 +88,13 @@ import { TodoTemplateUpdateComponent } from './software/todo-template/todo-templ
     TodoTemplateListFilterPipe,
     TodoTemplateWritingComponent,
     TodoTemplateDetailComponent,
-    TodoTemplateUpdateComponent
+    TodoTemplateUpdateComponent,
+    PlanningComponent,
+    LoginComponent,
+    AppComponent,
+    PlanningListComponent,
+    PlanningDetailComponent,
+    PlanningUpdateComponent
   ],
   imports: [
     BrowserModule,
@@ -98,11 +109,6 @@ import { TodoTemplateUpdateComponent } from './software/todo-template/todo-templ
     NbLayoutModule,
     NbEvaIconsModule,
     AppRoutingModule,
-    NbCardModule,
-    NbIconModule, 
-    NbInputModule, 
-    NbTreeGridModule,
-    NbLayoutModule,
     NbActionsModule,
     NbMenuModule.forRoot(),
     FormsModule,
@@ -113,6 +119,7 @@ import { TodoTemplateUpdateComponent } from './software/todo-template/todo-templ
     MatSelectModule,
     MatCardModule,
     MatButtonModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]

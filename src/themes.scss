@@ -1,6 +1,8 @@
 @forward '@nebular/theme/styles/theming';
 @use '@nebular/theme/styles/theming' as *;
 @use '@nebular/theme/styles/themes/dark';
+@use '@nebular/theme/styles/themes/cosmic';
+@use '@nebular/theme/styles/themes/corporate';
 
 $nb-themes: nb-register-theme((
 
@@ -15,6 +17,23 @@ $nb-themes: nb-register-theme((
   // color-primary-700: #1a34b8,
   // color-primary-800: #102694,
   // color-primary-900: #091c7a,
+  // color-basic-700: #091c7a,
+  // color-basic-800: #091c7a,
+  // color-basic-900: #091c7a,
+  // color-basic-100: #091c7a,
+  // background-basic-color-1: #ffb342,
+  // background-basic-color-2: #00ff15,
+  // background-basic-color-3: #f72222,
+  // background-basic-color-4: #7b08ff,
+  // border-basic-color-1: #7b08ff,
+  // border-basic-color-2: #7b08ff,
+  // border-basic-color-3: #7b08ff,
+  // border-basic-color-4: #7b08ff,
+  // border-basic-color-5: #7b08ff,
+  // text-basic-color: #7b08ff,
+  // text-disabled-color: #7b08ff,
+  // text-alternate-color: #7b08ff,
+  // text-hint-color: #7b08ff,
 
 ), dark, dark);
 

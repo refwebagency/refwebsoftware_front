@@ -20,6 +20,12 @@ export class ColumnComponent implements OnInit {
   detailTodo: boolean = false;
   updateTodo: boolean = false;
 
+  detailTodotemplate: boolean = false;
+  updateTodotemplate: boolean = false;
+
+  detailProjecttype: boolean = false;
+  updateProjecttype: boolean = false;
+
   constructor(public router: Router)
   { 
     this.router.events.subscribe((event: Event) => {
@@ -104,6 +110,46 @@ export class ColumnComponent implements OnInit {
         {
           this.updateTodo = false;
         }
+
+        // todotemplate components
+        if(currentRoute == "/todotemplate/"+id)
+        { 
+          this.detailTodotemplate = true;
+        }
+        else
+        {
+          this.detailTodotemplate = false;
+        }
+
+        if(currentRoute == "/todotemplate/update/"+id)
+        { 
+          this.updateTodotemplate = true;
+        }
+        else
+        {
+          this.updateTodotemplate = false;
+        }
+
+        // projecttype components
+        if(currentRoute == "/projecttype/"+id)
+        { 
+          this.detailProjecttype = true;
+        }
+        else
+        {
+          this.detailProjecttype = false;
+        }
+
+        if(currentRoute == "/projecttype/update/"+id)
+        { 
+          this.updateProjecttype = true;
+        }
+        else
+        {
+          this.updateProjecttype = false;
+        }
+
+
       }
       if (event instanceof NavigationError) {
         console.log(event.error);

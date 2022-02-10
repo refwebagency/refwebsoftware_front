@@ -1,5 +1,5 @@
 <p class="text-center fs-5 mt-2">Liste des utilisateurs</p>
-<input type="text" class="form-control" placeholder="Nom d'utilisateur" [(ngModel)]="searchTerm">    
+<input type="text" class="form-control" placeholder="Nom de l'utilisateur" [(ngModel)]="searchTerm">    
     <ul>
         <li *ngFor="let user of users | userFilter:searchTerm">
             <a [routerLink]="['/user', user.id]" class="link primary">

@@ -9,7 +9,7 @@ export interface TodoTemplate
     description: string,
     time: number,
     specializationId: number,
-    specialization?: Specialization,
+    specialization: Specialization,
     projectTypeId: number,
-    projectType?: ProjectType
+    projectType: ProjectType
 }

@@ -11,9 +11,12 @@
 
     <div class="row">
         <div class="col-4 mt-4">
-            <button type="submit" class="btn btn-danger">Envoyer</button>
+            <button type="submit" class="btn btn-danger">Valider</button>
         </div>
     </div>
-  
 
 </form>
+
+<div *ngIf="msgTrue" class="text-success fs-4 mt-2">
+    <p>Spécialisation ajoutée !</p>
+</div>

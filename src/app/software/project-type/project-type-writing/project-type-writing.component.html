@@ -1,36 +1,23 @@
-<form #newProjectTypeForm="ngForm" (submit)="post(newProjectTypeForm)">
+<h2>Ajouter un type de projet</h2>
 
-    <div class="container-fluid">
+<form [formGroup] = "newProjectType" (ngSubmit) = "post()" novalidate>
 
-        <div class=" col-md-6 offset-md-2 container">
+    <div class="row">
+        <mat-form-field class="col-4 form-group">
+            <mat-label for="subject">Nom</mat-label>
+            <input matInput formControlName="name" type="text" class="form-control">
+        </mat-form-field>
+    </div>
 
-            <div class="row">
-
-                <h2 class=" col-md-6 offset-md-3">Nouveau type de projet</h2>
-                
-
-                    <div class="col-md-8 offset-md-2 form-group" appearance="fill">
-
-                        <mat-label for="subject">Nom du type de projet</mat-label>
-                        <input id="projecttype" name="name" type="text" class="form-control" ngModel>
-
-                    </div>
-            </div>
-
-            <div class="row">
-
-                <div class="col-md-6 offset-md-4">
-
-                    <button type="submit" class="btn btn-danger" [disabled]="!newProjectTypeForm.valid">Envoyer</button>
-
-                </div>
-
-            </div>
+    <div class="row">
+        <div class="col-4 mt-4">
+            <button type="submit" class="btn btn-danger">Valider</button>
         </div>
     </div>
+    
 </form>
 
 <div *ngIf="msgTrue" class="text-warning fs-4 mt-2">
-    <p>Type de projet rajouté !</p>
+    <p>Type de projet ajouté !</p>
 </div>
 

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { delay, Observable, repeat } from 'rxjs';
 import { ProjectType } from '../models/projectType';
 
@@ -12,7 +13,7 @@ export class ProjectTypeService {
   private projectTypes: ProjectType[] = []
 
   constructor(
-
+    private route: Router,
     private http : HttpClient
 
   ) { }
@@ -32,8 +33,10 @@ export class ProjectTypeService {
    * @param projectType 
    * @returns un type de projet par son id
    */
-   getProjectType(id: string): Observable<ProjectType>
+   getProjectType(): Observable<ProjectType>
    {
+     var stringUrl = this.route.url;
+     var id = stringUrl.match(/\d+/g);
      let projectTypeId = "https://localhost:5001/projecttype/" + id;
      return this.http.get<ProjectType>(projectTypeId);
    }

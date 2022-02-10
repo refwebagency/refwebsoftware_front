@@ -1,89 +1,69 @@
-<p>todo-template-writing works!</p>
-<form #newTodoTemplateForm="ngForm" (submit)="post(newTodoTemplateForm)">
+<h2>Ajouter un modèle de tâche</h2>
 
-    <div class="container-fluid">
+<form [formGroup] = "newTodoTemplate" (ngSubmit) = "post()" novalidate>
 
-        <div class=" col-md-6 offset-md-2 container">
+    <div class="row justify-content-around">
 
-            <div class="row">
+        <mat-form-field class="col-4 form-group">
 
-                <h2 class=" col-md-6 offset-md-3">Nouveau modèle de tâche</h2>
-                
+            <mat-label for="todotemplate">Nom</mat-label>
+            <input matInput formControlName="name" type="text" class="form-control">
 
-                    <div class="col-md-8 offset-md-2 form-group" appearance="fill">
+        </mat-form-field>
+            
 
-                        <mat-label for="todotemplate">Nom</mat-label>
-                        <input name="name" type="text" class="form-control" ngModel>
+        <mat-form-field class="col-4 form-group">
 
-                    </div>
+            <mat-label for="todotemplate">Expérience nécessaire</mat-label>
+            <input matInput formControlName="experience" type="number" class="form-control">
+
+        </mat-form-field>
+
+
+        <mat-form-field class="col-4 form-group">
+
+            <mat-label for="todotemplate">Déscription de la tâche</mat-label>
+            <input matInput formControlName="description" type="text" class="form-control">
+
+        </mat-form-field>
+    </div>
+
+    <div class="row justify-content-around">
+
+            <mat-form-field class="col-4 form-group">
+
+                <mat-label for="todotemplate">Temps de la tâche(en minutes)</mat-label>
+                <input matInput formControlName="time" type="number" class="form-control">
+
+            </mat-form-field>
+    
+        <div class="col-4 form-group">
+            <div class="selector">
+                <label>Spécialité du modèle de tâches</label>
+                <select formControlName="specializationId">             
+                    <option *ngFor="let spec of specializations" [ngValue]="spec.id" >{{ spec.name }}</option>                
+                </select>
             </div>
-
-            <div class="row">             
-
-                    <div class="col-md-8 offset-md-2 form-group" appearance="fill">
-
-                        <mat-label for="todotemplate">Expérience nécessaire</mat-label>
-                        <input name="experience" type="number" class="form-control" ngModel>
-
-                    </div>
+        </div> 
+    
+        <div class="col-4 form-group">
+            <div class="selector">
+                <label>Pour quel type de projet</label>
+                <select formControlName="projectTypeId">             
+                    <option *ngFor="let pt of projectType" type="number" [ngValue]="pt.id" >{{ pt.name }}</option>                
+                </select>
             </div>
+        </div> 
+    </div>
 
-            <div class="row">
-
-                    <div class="col-md-8 offset-md-2 form-group" appearance="fill">
-
-                        <mat-label for="todotemplate">Déscription de la tâche</mat-label>
-                        <input name="description" type="text" class="form-control" ngModel>
-
-                    </div>
-            </div>
-
-            <div class="row">
-
-                    <div class="col-md-8 offset-md-2 form-group" appearance="fill">
-
-                        <mat-label for="todotemplate">Temps de la tâche(en minutes)</mat-label>
-                        <input name="time" type="number" class="form-control" ngModel>
-
-                    </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-8 offset-md-2 form-group">
-                    <div class="selector">
-                        <label>Spécialité du modèle de tâches</label>
-                        <select name="specialization" ngModel>             
-                            <option *ngFor="let spec of specializations" [ngValue]="spec.id" >{{ spec.name }}</option>                
-                        </select>
-                    </div>
-                </div> 
-            </div>
-
-            <div class="row">
-                <div class="col-md-8 offset-md-2 form-group">
-                    <div class="selector">
-                        <label>Pour quel type de projet</label>
-                        <select name="projectType" ngModel>             
-                            <option *ngFor="let pt of projectType" type="number" [ngValue]="pt.id" >{{ pt.name }}</option>                
-                        </select>
-                    </div>
-                </div> 
-            </div>
-
-
-            <div class="row">
-
-                <div class="col-md-6 offset-md-4">
-
-                    <button type="submit" class="btn btn-danger"  [disabled]="!newTodoTemplateForm.valid">Envoyer</button>
-
-                </div>
-
-            </div>
+    <div class="row">
+        <div class="col-4 mt-4">
+            <button type="submit" class="btn btn-danger">Valider</button>
         </div>
     </div>
+  
 </form>
 
 <div *ngIf="msgTrue" class="text-warning fs-4 mt-2">
-    <p>Type de projet rajouté !</p>
+    <p>Type de projet ajouté !</p>
 </div>

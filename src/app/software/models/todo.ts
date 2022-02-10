@@ -8,5 +8,5 @@ export interface Todo
     specializationId: number,
     projectId: number,
     status: string,
-    description: string
+    description: string,
 }

@@ -1,31 +1,20 @@
+<h2>Modifier un type de projet</h2>
+
 <form #updateProjectTypeForm="ngForm" (submit)="updateProjectType(projectType.id, updateProjectTypeForm)">
 
-    <div class="container-fluid">
+    <div class="row">
 
-        <div class=" col-md-6 offset-md-2 container">
-
-            <div class="row">
-
-                <h2 class=" col-md-6 offset-md-3">Nouveau type de projet</h2>
-                
-
-                    <div class="col-md-8 offset-md-2 form-group" appearance="fill">
-
-                        <mat-label for="subject">Prénom</mat-label>
-                        <input id="projecttype" name="name" type="text" class="form-control" ngModel>
-
-                    </div>
+            <div class="col-4 form-group" appearance="fill">
+                <mat-label for="subject">Nom</mat-label>
+                <input id="projecttype" name="name" type="text" class="form-control" [(ngModel)]="projectType.name">
             </div>
 
-            <div class="row">
+    </div>
 
-                <div class="col-md-6 offset-md-4">
-
-                    <button type="submit" class="btn btn-danger" [disabled]="!updateProjectTypeForm.valid">Envoyer</button>
-
-                </div>
-
-            </div>
+    <div class="row">
+        <div class="col-4 mt-4">
+            <button type="submit" class="btn btn-danger" [disabled]="!updateProjectTypeForm.valid">Valider</button>
         </div>
     </div>
+    
 </form>

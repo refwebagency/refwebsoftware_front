@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ProjectType } from '../../models/projectType';
+import { Specialization } from '../../models/specialization';
+import { TodoTemplate } from '../../models/todoTemplate';
+import { TodoTemplateService } from '../todo-template.service';
 
 @Component({
   selector: 'app-todo-template-update',
@@ -7,9 +12,48 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoTemplateUpdateComponent implements OnInit {
 
-  constructor() { }
+  //TodoTemplate represente mon objet TodoTemplate
+  todoTemplate: TodoTemplate = {} as TodoTemplate
+  updateTodoTemplate!: TodoTemplate
+  //specializations represente une liste de Specialisations
+  specializations: Specialization[] = []
+  specialization: Specialization = {} as Specialization
+  //specializations represente une liste de Specialisations
+  projectTypes: ProjectType[] = []
+  projectType: ProjectType = {} as ProjectType
+
+  msgTrue = false;
+
+  constructor(
+
+    private myService: TodoTemplateService,
+    private route: Router
+  ) { }
 
   ngOnInit(): void {
+    // var id = this.route.snapshot.url[1].path;
+    this.myService.getTodoTemplate().subscribe((u => this.todoTemplate = u));
+    this.myService.getSpecializations().subscribe(s => this.specializations = s);
+    this.myService.getProjectTypes().subscribe(s => this.projectTypes = s);
+
+  }
+
+  updateTodoTemplateById(todoTemplateId: any, form: any)
+  {
+    const newForm = {
+      id: todoTemplateId,
+      name: form.value.name,
+      experience: form.value.experience,
+      description: form.value.description,
+      time: form.value.time,
+      projectId: form.value.projectTypeId,
+      specializationId: form.value.specializationId
+
+    };
+    this.myService.updateTodoTemplate(todoTemplateId, newForm).subscribe(data => {
+      this.msgTrue = true;
+    })
+    this.route.navigateByUrl("/todotemplate");
   }
 
 }

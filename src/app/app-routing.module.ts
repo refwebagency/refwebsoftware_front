@@ -23,31 +23,37 @@ import { ProjectTypeUpdateComponent } from './software/project-type/project-type
 import { TodoTemplateListComponent } from './software/todo-template/todo-template-list/todo-template-list.component';
 import { TodoTemplateWritingComponent } from './software/todo-template/todo-template-writing/todo-template-writing.component';
 import { TodoTemplateDetailComponent } from './software/todo-template/todo-template-detail/todo-template-detail.component';
+import { PlanningComponent } from './software/planning/planning/planning.component';
+import { PlanningListComponent } from './software/planning/planning-list/planning-list.component';
+import { PlanningDetailComponent } from './software/planning/planning-detail/planning-detail.component';
+import { PlanningUpdateComponent } from './software/planning/planning-update/planning-update.component';
 
 const routes: Routes = [
-  //vue pour user
-  {path: 'user', component: UserListComponent},
-  {path: 'user/:id', component: UserDetailComponent, outlet: 'userdetail'},
-  {path: 'update/:id', component: UserUpdateComponent, outlet: 'userupdate'},
-  {path: 'writing', component: UserWritingComponent, outlet: 'userwriting'},
 
   //vue pour projectType
   {path: 'projecttype', component: ProjectTypeListComponent},
-  {path: 'projecttype/:id', component: ProjectTypeDetailComponent, outlet: 'projecttypedetail'},
-  {path: 'projecttypeupdate/:id', component: ProjectTypeUpdateComponent, outlet: 'projecttypeupdate'},
-  {path: 'writingprojecttype', component: ProjectTypeWritingComponent, outlet: 'projecttypewriting'},
+  {path: 'projecttype/:id', component: ProjectTypeDetailComponent},
+  {path: 'projecttype/update/:id', component: ProjectTypeUpdateComponent},
+  {path: 'projecttype/writing', component: ProjectTypeWritingComponent},
 
   //vue pour todoTemplate
   {path: 'todotemplate', component: TodoTemplateListComponent},
-  {path: 'todotemplate/:id', component: TodoTemplateDetailComponent, outlet: 'todotemplatedetail'},
-  {path: 'writingtodotemplate', component: TodoTemplateWritingComponent, outlet: 'todotemplatewriting'},
+  {path: 'todotemplate/:id', component: TodoTemplateDetailComponent},
+  {path: 'todotemplate/update/:id', component: TodoTemplateDetailComponent},
+  {path: 'todotemplate/writing', component: TodoTemplateWritingComponent},
   
   {path: 'login', component: LoginComponent},
+
+  {path: 'planning', component: PlanningComponent},
+  {path: 'planning/todo', component: PlanningListComponent},
+  {path: 'planning/todo/:id', component: PlanningDetailComponent},
+  {path: 'planning/update/todo/:id', component: PlanningUpdateComponent},
 
   {path: 'user', component: UserListComponent},
   {path: 'user/:id', component: UserDetailComponent},
   {path: 'user/update/:id', component: UserUpdateComponent},
   {path: 'user/writing', component: UserWritingComponent},
+  
   //vue pour client
   {path: 'client', component: ClientListComponent},
   {path: 'client/:id', component: ClientDetailComponent},

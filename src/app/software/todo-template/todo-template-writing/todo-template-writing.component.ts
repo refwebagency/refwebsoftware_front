@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProjectType } from '../../models/projectType';
 import { Specialization } from '../../models/specialization';
 import { TodoTemplateService } from '../todo-template.service';
@@ -10,6 +11,7 @@ import { TodoTemplateService } from '../todo-template.service';
 })
 export class TodoTemplateWritingComponent implements OnInit {
 
+  newTodoTemplate!: FormGroup
   specializations: Specialization[] = []
   projectType: ProjectType[] = []
 
@@ -24,23 +26,26 @@ export class TodoTemplateWritingComponent implements OnInit {
   ngOnInit(): void {
     this.myService.getSpecializations().subscribe(s => this.specializations = s);
     this.myService.getProjectTypes().subscribe(pt => this.projectType = pt);
+    this.newTodoTemplate = this.createFormGroup();
   }
 
-  post(form: any)
-  {
-    const newFormData =
-    {
-      name: form.value.name,
-      experience: form.value.experience,
-      description: form.value.description,
-      time: form.value.time,
-      specializationId: form.value.specialization,
-      projectTypeId: form.value.projectType,
-    };
-    console.log(form.value.specialization);
-    console.log(form.value.projectType)
+   //Pour génerer mon formulaire, validators permet de rendre la saisie d'un champ
+  //obligatoire, pour chaque proprietés  
+  createFormGroup(): FormGroup {
+    return new FormGroup ({
+      name: new FormControl("",[Validators.required]),
+      experience: new FormControl("",[Validators.required]),
+      description: new FormControl("",[Validators.required]),
+      time: new FormControl("",[Validators.required]),
+      specializationId: new FormControl("",[Validators.required]),
+      projectTypeId: new FormControl("",[Validators.required])
+    })
+  }
 
-    this.myService.addTodoTemplate(newFormData).subscribe(data => {
+  
+  post()
+  {
+    this.myService.addTodoTemplate(this.newTodoTemplate.value).subscribe(data => {
       console.log(data);
       this.msgTrue = true
     })

@@ -42,13 +42,17 @@ export class LoginComponent implements OnInit {
   */
   post(){ 
     this.myService.getUserByEmail(this.login.value.email).subscribe(u => this.user = u);
-    if(this.login.value.email === this.user.email && this.login.value.password === this.user.password) 
+    if(this.user.email === this.login.value.email  && this.user.password === this.login.value.password) 
     {
-      this.route.navigateByUrl("/user");
+      this.route.navigateByUrl("/planning");
     }
     if(this.login.value.email === "admin" && this.login.value.password === "admin")
     {
       this.route.navigateByUrl("/client");
+    }
+    if(this.login.value.email === "dev" && this.login.value.password === "dev")
+    {
+      this.route.navigateByUrl("/planning");
     }
   }
   

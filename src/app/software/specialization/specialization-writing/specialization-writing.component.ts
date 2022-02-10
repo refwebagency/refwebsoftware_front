@@ -13,6 +13,7 @@ export class SpecializationWritingComponent implements OnInit {
 
   newSpecialization!: FormGroup;
   specializations: Specialization[] = []
+  msgTrue = false;
 
   constructor(
     private route: Router,
@@ -39,7 +40,9 @@ export class SpecializationWritingComponent implements OnInit {
    */
    post(){
      console.log(this.newSpecialization.value.id);
-    this.myService.addSpecialization(this.newSpecialization.value).subscribe();
+    this.myService.addSpecialization(this.newSpecialization.value).subscribe(data => {
+      this.msgTrue = true
+    });
     this.route.navigateByUrl("/specialization");
   }
 

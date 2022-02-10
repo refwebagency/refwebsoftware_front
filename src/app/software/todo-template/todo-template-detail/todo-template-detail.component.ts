@@ -48,8 +48,7 @@ export class TodoTemplateDetailComponent implements OnInit {
      * souscrit à la méthode getUser dans le service avec comme 
      * parametre l'id récuperé depuis l'url
      */
-     var id = this.route.snapshot.url[1].path;
-     this.myService.getTodoTemplate(id).subscribe((t => this.todoTemplate = t));
+     this.myService.getTodoTemplate().subscribe((t => this.todoTemplate = t));
   }
 
   deleteTodoTemplateByid(id: number)
