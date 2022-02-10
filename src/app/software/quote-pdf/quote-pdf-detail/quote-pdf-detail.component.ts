@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationStart, Router, Event, NavigationEnd, NavigationError } from '@angular/router';
+import { Client } from '../../models/client';
+import { QuotePdf } from '../../models/quotePdf';
+import { QuotePdfService } from '../quote-pdf.service';
 
 @Component({
   selector: 'app-quote-pdf-detail',
@@ -7,9 +11,57 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuotePdfDetailComponent implements OnInit {
 
-  constructor() { }
+  quotePdf: QuotePdf = {} as QuotePdf
+  client: Client = {} as Client
+
+  constructor(
+    private myService: QuotePdfService,
+    private router: Router
+  ) {
+    /**
+     * écoute l'url lors du chargement de la page 
+     * et lors de la fermeture de la page.
+     * Ceci permet de fairte un ngOnit à chaque changement d'id dans l'url pour 
+     * ainsi recharger le component en faisant la méthode getQUotePdf
+     * et donc afficher le devis adequat
+     */
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationStart) 
+      {
+        console.log("test")
+      }
+      if (event instanceof NavigationEnd) {
+        this.ngOnInit();
+     }
+      if (event instanceof NavigationError) {
+        
+        console.log(event.error);
+    }
+    })
+
+
+   }
 
   ngOnInit(): void {
+    /**
+     * soucrit aux différentes méthodes lors de l'initialisation du component
+     */
+    this.myService.getQuotePdf().subscribe((pdf => this.quotePdf = pdf));
+    console.log(this.quotePdf.id);
+    this.myService.getClient(this.quotePdf.project.clientId).subscribe((c => this.client = c))
+    if(this.quotePdf.project.clientId === null)
+    {
+      console.log("oukouk")
+    }
+  }
+
+  deleteQuotePdfById(id: number)
+  {
+    if(window.confirm("Spprimer ce devis ?"))
+    {
+      this.myService.deleteQuotePdf(id).subscribe();
+      this.router.navigateByUrl("/quotepdf");
+    }
   }
 
 }

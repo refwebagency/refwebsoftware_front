@@ -5,8 +5,8 @@
         <a [routerLink]="['/quotepdf', pdf.id]" class="link primary">
         <mat-card class="quotepdflist">
                 <h4 class="mat-title">{{ pdf.project.name }}</h4>
-                <p class="mat-caption">Date de début : {{ pdf.project.startDate }}</p>
-                <p class="mat-caption">Date de fin : {{ pdf.project.endtDate }}</p>
+                <p class="mat-caption">Du : {{ pdf.project.startDate | date:'fullDate': 'fr' }}</p>
+                <p class="mat-caption">Jusqu'au : {{ pdf.project.endtDate | date: 'fullDate'  }}</p>
         </mat-card>
         </a>
     </li>  

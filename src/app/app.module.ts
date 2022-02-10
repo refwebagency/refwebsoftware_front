@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -48,6 +48,9 @@ import { QuotePdfWritingComponent } from './software/quote-pdf/quote-pdf-writing
 import { QuotePdfDetailComponent } from './software/quote-pdf/quote-pdf-detail/quote-pdf-detail.component';
 import { QuotePdfUpdateComponent } from './software/quote-pdf/quote-pdf-update/quote-pdf-update.component';
 import { QuotePdfListFilterPipe } from './software/quote-pdf/quote-pdf-list/quote-pdf-filter';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+registerLocaleData(localeFr, 'fr');
 
 @NgModule({
   declarations: [
@@ -122,9 +125,10 @@ import { QuotePdfListFilterPipe } from './software/quote-pdf/quote-pdf-list/quot
     MatInputModule,
     MatSelectModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    
   ],
-  providers: [],
+  providers: [{ provide: LOCALE_ID, useValue: "fr-FR" }], //utilisé pour la localisation fr et ainsi afficher les dates aux format souhaité et en fr
   bootstrap: [AppComponent]
 })
 export class AppModule { }

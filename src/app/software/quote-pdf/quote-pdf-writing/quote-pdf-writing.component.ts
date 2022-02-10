@@ -1,10 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Client } from '../../models/client';
-import { Project } from '../../models/project';
 import { ProjectType } from '../../models/projectType';
-import { QuotePdf } from '../../models/quotePdf';
 import { Specialization } from '../../models/specialization';
 import { TodoTemplate } from '../../models/todoTemplate';
 import { QuotePdfService } from '../quote-pdf.service';
@@ -33,9 +30,10 @@ export class QuotePdfWritingComponent implements OnInit {
     @Inject(FormBuilder) fb: FormBuilder
 
   ) { 
-
+    //Form group de quotePdf contenant un objet project et une liste de todoTemplates
     this.newQuotePdf = fb.group({
       
+      //je genere un formgroup pour l'objet project
       project: fb.group({
           name: new FormControl("",[Validators.required]),
           startDate: new FormControl("",[Validators.required]),
@@ -43,10 +41,11 @@ export class QuotePdfWritingComponent implements OnInit {
           projectTypeId: new FormControl("",[Validators.required]),
           clientId: new FormControl("",[Validators.required])
       }),
+      //je genre un tableau todoTemplate pour lister les formgroup de todoTemplate
       todoTemplates: fb.array([
         this.test = fb.group({
-          id: new FormControl("", [Validators.required]),
-          name:  "string",
+          id: new FormControl("", [Validators.required]), //fait passer les données obligatoires pour la création du todoTemplate
+          name:  "string", // defini sur string car le name et la description seront set dans le serveur
           description: "string",
         }),
         this.test2 = fb.group({
