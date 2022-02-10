@@ -26,6 +26,8 @@ export class ColumnComponent implements OnInit {
   detailProjecttype: boolean = false;
   updateProjecttype: boolean = false;
 
+  detailQuotepdf: boolean = false;
+
   constructor(public router: Router)
   { 
     this.router.events.subscribe((event: Event) => {
@@ -149,7 +151,15 @@ export class ColumnComponent implements OnInit {
           this.updateProjecttype = false;
         }
 
-
+        // quotePdf components
+        if(currentRoute == "/quotepdf/"+id)
+        { 
+          this.detailQuotepdf = true;
+        }
+        else
+        {
+          this.detailQuotepdf = false;
+        }
       }
       if (event instanceof NavigationError) {
         console.log(event.error);

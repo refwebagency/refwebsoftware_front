@@ -30,6 +30,7 @@ export class ContentComponent implements OnInit {
   listPlanning: boolean = false;
   detailPlanning: boolean = false;
   updatePlanning: boolean = false;
+  detailQuotepdf: boolean = false;
 
   constructor(public router: Router)
   { 
@@ -188,6 +189,15 @@ export class ContentComponent implements OnInit {
           this.updatePlanning = false;
         }
         
+        // quotePdf components
+        if(currentRoute == "/quotepdf/"+id)
+        { 
+        this.detailQuotepdf = true;
+        }
+        else
+        {
+        this.detailQuotepdf = false;
+        }
       }
       if (event instanceof NavigationError) {
         console.log(event.error);

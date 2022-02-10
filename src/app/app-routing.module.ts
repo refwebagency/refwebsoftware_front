@@ -27,6 +27,10 @@ import { PlanningComponent } from './software/planning/planning/planning.compone
 import { PlanningListComponent } from './software/planning/planning-list/planning-list.component';
 import { PlanningDetailComponent } from './software/planning/planning-detail/planning-detail.component';
 import { PlanningUpdateComponent } from './software/planning/planning-update/planning-update.component';
+import { TodoTemplateUpdateComponent } from './software/todo-template/todo-template-update/todo-template-update.component';
+import { QuotePdfListComponent } from './software/quote-pdf/quote-pdf-list/quote-pdf-list.component';
+import { QuotePdfDetailComponent } from './software/quote-pdf/quote-pdf-detail/quote-pdf-detail.component';
+import { QuotePdfWritingComponent } from './software/quote-pdf/quote-pdf-writing/quote-pdf-writing.component';
 
 const routes: Routes = [
 
@@ -49,6 +53,13 @@ const routes: Routes = [
   {path: 'planning/todo/:id', component: PlanningDetailComponent},
   {path: 'planning/update/todo/:id', component: PlanningUpdateComponent},
 
+  {path: 'todotemplate/writing', component: TodoTemplateWritingComponent},
+  {path: 'todotemplate/update/:id', component: TodoTemplateUpdateComponent},
+
+  //vue pour login
+  {path: 'login', component: LoginComponent},
+
+  //vue pour user
   {path: 'user', component: UserListComponent},
   {path: 'user/:id', component: UserDetailComponent},
   {path: 'user/update/:id', component: UserUpdateComponent},
@@ -60,14 +71,21 @@ const routes: Routes = [
   {path: 'client/update/:id', component: ClientUpdateComponent},
   {path: 'client/writing', component: ClientWritingComponent},
 
+  //vue pour specialization
   {path: 'specialization', component: SpecializationListComponent},
   {path: 'specialization/:id', component: SpecializationDetailComponent},
   {path: 'specialization/update/:id', component: SpecializationUpdateComponent},
   {path: 'specialization/writing', component: SpecializationWritingComponent},
 
+  //vue pour todo
   {path: 'todo', component: TodoListComponent},
   {path: 'todo/:id', component: TodoDetailComponent},
   {path: 'todo/update/:id', component: TodoUpdateComponent},
+
+  //vue pour quotePdf
+  {path: 'quotepdf', component: QuotePdfListComponent},
+  {path: 'quotepdf/:id', component: QuotePdfDetailComponent},
+  {path: 'quotepdf/writing', component: QuotePdfWritingComponent},
 
   {path: '', redirectTo:'/login', pathMatch: 'full'}
 ];

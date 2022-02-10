@@ -15,8 +15,9 @@ export class TodoTemplateService {
   todoTemplates: TodoTemplate[] = []
   todoTemplate: TodoTemplate = {} as TodoTemplate
   constructor(
-    private route: Router,
-    private http: HttpClient
+
+    private http: HttpClient,
+    private route: Router
 
   ) { }
 
@@ -38,8 +39,8 @@ export class TodoTemplateService {
   */
    getTodoTemplate(): Observable<TodoTemplate>
    {
-    var stringUrl = this.route.url;
-    var id = stringUrl.match(/\d+/g);
+    let stringUrl = this.route.url;
+    let id = stringUrl.match(/\d+/g);
     let todoTemplate = "https://localhost:7001/todotemplate/" + id;
     return this.http.get<TodoTemplate>(todoTemplate);
    }

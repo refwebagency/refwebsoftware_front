@@ -13,6 +13,6 @@
     </mat-card-content>
     <mat-card-actions>
       <button mat-button (click)="deleteTodoTemplateByid(todoTemplate.id)">SUPPRIMER</button>
-      <a [routerLink]="['/todotemplate/update/', todoTemplate.id]"><button mat-button >METTRE A JOUR</button></a>
+      <button mat-button [routerLink]="['/todotemplate/update', todoTemplate.id]" class="link primary">METTRE A JOUR</button>
     </mat-card-actions>
   </mat-card>

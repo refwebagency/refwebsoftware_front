@@ -90,6 +90,20 @@
     <app-planning-update></app-planning-update>
 </div>
 
+<!-- QUOTEPDF -->
+<div *ngIf="detailQuotepdf">
+    <app-quote-pdf-detail></app-quote-pdf-detail>
+</div>
+
+<div *ngIf="router.url === '/quotepdf/writing'">
+    <app-quote-pdf-writing></app-quote-pdf-writing>
+</div>
+
+
+
+
+
+
 
 
 

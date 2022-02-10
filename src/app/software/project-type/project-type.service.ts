@@ -13,8 +13,9 @@ export class ProjectTypeService {
   private projectTypes: ProjectType[] = []
 
   constructor(
-    private route: Router,
-    private http : HttpClient
+
+    private http : HttpClient,
+    private route : Router
 
   ) { }
 
@@ -35,8 +36,8 @@ export class ProjectTypeService {
    */
    getProjectType(): Observable<ProjectType>
    {
-     var stringUrl = this.route.url;
-     var id = stringUrl.match(/\d+/g);
+     let stringUrl = this.route.url;
+     let id = stringUrl.match(/\d+/g);
      let projectTypeId = "https://localhost:5001/projecttype/" + id;
      return this.http.get<ProjectType>(projectTypeId);
    }

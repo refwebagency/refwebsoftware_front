@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -43,11 +43,18 @@ import { TodoTemplateListComponent } from './software/todo-template/todo-templat
 import { TodoTemplateListFilterPipe } from './software/todo-template/todo-template-list/todo-template-filter';
 import { TodoTemplateDetailComponent } from './software/todo-template/todo-template-detail/todo-template-detail.component';
 import { TodoTemplateUpdateComponent } from './software/todo-template/todo-template-update/todo-template-update.component';
-import { DragDropModule } from '@angular/cdk/drag-drop';
 import { PlanningComponent } from './software/planning/planning/planning.component';
 import { PlanningListComponent } from './software/planning/planning-list/planning-list.component';
 import { PlanningDetailComponent } from './software/planning/planning-detail/planning-detail.component';
 import { PlanningUpdateComponent } from './software/planning/planning-update/planning-update.component';
+import { QuotePdfListComponent } from './software/quote-pdf/quote-pdf-list/quote-pdf-list.component';
+import { QuotePdfWritingComponent } from './software/quote-pdf/quote-pdf-writing/quote-pdf-writing.component';
+import { QuotePdfDetailComponent } from './software/quote-pdf/quote-pdf-detail/quote-pdf-detail.component';
+import { QuotePdfUpdateComponent } from './software/quote-pdf/quote-pdf-update/quote-pdf-update.component';
+import { QuotePdfListFilterPipe } from './software/quote-pdf/quote-pdf-list/quote-pdf-filter';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+registerLocaleData(localeFr, 'fr');
 
 @NgModule({
   declarations: [
@@ -94,7 +101,12 @@ import { PlanningUpdateComponent } from './software/planning/planning-update/pla
     AppComponent,
     PlanningListComponent,
     PlanningDetailComponent,
-    PlanningUpdateComponent
+    PlanningUpdateComponent,
+    QuotePdfListComponent,
+    QuotePdfWritingComponent,
+    QuotePdfDetailComponent,
+    QuotePdfUpdateComponent,
+    QuotePdfListFilterPipe
   ],
   imports: [
     BrowserModule,
@@ -119,9 +131,9 @@ import { PlanningUpdateComponent } from './software/planning/planning-update/pla
     MatSelectModule,
     MatCardModule,
     MatButtonModule,
-    DragDropModule
+    
   ],
-  providers: [],
+  providers: [{ provide: LOCALE_ID, useValue: "fr-FR" }], //utilisé pour la localisation fr et ainsi afficher les dates aux format souhaité et en fr
   bootstrap: [AppComponent]
 })
 export class AppModule { }

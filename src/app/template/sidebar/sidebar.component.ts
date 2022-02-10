@@ -51,7 +51,7 @@ export class SidebarComponent implements OnInit {
       ]
     },
     {
-      title: 'Type de projets',
+      title: 'Type de projet',
       expanded: false,
       children: [
         {
@@ -68,7 +68,7 @@ export class SidebarComponent implements OnInit {
       expanded: false,
       children: [
         {
-          title: 'Voir modèle de tâche',
+          title: 'Voir les modèles de tâche',
           link: 'todotemplate'
         },
         {
@@ -77,11 +77,24 @@ export class SidebarComponent implements OnInit {
       ]
     },
     {
-      title: 'Todo',
+      title: 'Devis',
       expanded: false,
       children: [
         {
-          title: 'Voir todos',
+          title: 'Voir les devis',
+          link: 'quotepdf'
+        },
+        {
+          title: 'Créer un devis'
+        }
+      ]
+    },
+    {
+      title: 'Tâche',
+      expanded: false,
+      children: [
+        {
+          title: 'Voir les tâches',
           link: 'todo'
         }
       ]
@@ -112,6 +125,10 @@ export class SidebarComponent implements OnInit {
       if (event.item.title === 'Créer un modèle de tâche') {
         this.router.navigate(['todotemplate/writing']);
       }
+      if (event.item.title === 'Créer un devis') {
+        this.router.navigate(['quotepdf/writing']);
+      }
+      
     }); 
   }
 
