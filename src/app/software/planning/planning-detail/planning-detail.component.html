@@ -4,12 +4,7 @@
     </mat-card-header>
     <mat-card-content>
       <p>Description : {{ todo.description}} | Experience : {{ todo.experience}} ans</p>
-      <p>Status : {{ todo.status }}</p>
+      <p>Durée de la tâche : {{todo.time}} minutes | Status : {{ todo.status }}</p>
+      <p>User Id : {{todo.userId}}</p>
     </mat-card-content>
-    <mat-card-actions>
-      <h4>Status :</h4>
-      <a ><button mat-button [routerLink]="['/planning/update/todo/', todo.id]">A faire</button></a>
-      <a ><button mat-button [routerLink]="['/planning/update/todo/', todo.id]">En cours</button></a>
-      <a ><button mat-button [routerLink]="['/planning/update/todo/', todo.id]">Fini</button></a>
-    </mat-card-actions>
   </mat-card>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, NavigationError, NavigationStart, Router, Event } from '@angular/router';
+import { NavigationEnd, NavigationError, Router, Event } from '@angular/router';
 import { Todo } from '../../models/todo';
 import { TodoService } from '../../todo/todo.service';
 
@@ -17,7 +17,6 @@ export class PlanningDetailComponent implements OnInit {
 
   constructor(
     private myService: TodoService,
-    private route: ActivatedRoute,
     private router: Router
   ) {
       /**
@@ -28,11 +27,6 @@ export class PlanningDetailComponent implements OnInit {
        * et donc afficher le Todo adequat
        */
        this.router.events.subscribe((event: Event) => {
-        if (event instanceof NavigationStart) 
-        {
-          const currentRoute = this.router.url;
-          
-        }
         if (event instanceof NavigationEnd) {
           this.ngOnInit();
        }
@@ -48,9 +42,7 @@ export class PlanningDetailComponent implements OnInit {
      * souscrit à la méthode getTodo dans le service avec comme 
      * parametre l'id récuperé depuis l'url
      */
-    // var id = this.route.snapshot.url[1].path;
     this.myService.getTodo().subscribe((u => this.todo = u));
-    //console.log(id);
     
   }
 

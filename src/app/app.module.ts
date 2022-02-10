@@ -54,6 +54,7 @@ import { QuotePdfUpdateComponent } from './software/quote-pdf/quote-pdf-update/q
 import { QuotePdfListFilterPipe } from './software/quote-pdf/quote-pdf-list/quote-pdf-filter';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+import { SidebarDevComponent } from './template/sidebar-dev/sidebar-dev.component';
 registerLocaleData(localeFr, 'fr');
 
 @NgModule({
@@ -61,6 +62,7 @@ registerLocaleData(localeFr, 'fr');
     AppComponent,
     ContentComponent,
     SidebarComponent,
+    SidebarDevComponent,
     ColumnComponent,
     UserListComponent,
     UserDetailComponent,

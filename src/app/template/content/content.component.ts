@@ -26,10 +26,8 @@ export class ContentComponent implements OnInit {
   detailProjecttype: boolean = false;
   updateProjecttype: boolean = false;
 
-  planning: boolean = false;
-  listPlanning: boolean = false;
   detailPlanning: boolean = false;
-  updatePlanning: boolean = false;
+  
   detailQuotepdf: boolean = false;
 
   constructor(public router: Router)
@@ -156,22 +154,6 @@ export class ContentComponent implements OnInit {
         }
 
         // planning components
-        if(currentRoute == "/planning")
-        { 
-          this.planning = true;
-        }
-        else
-        {
-          this.planning = false;
-        }
-        if(currentRoute == "/planning/todo")
-        { 
-          this.listPlanning = true;
-        }
-        else
-        {
-          this.listPlanning = false;
-        }
         if(currentRoute == "/planning/todo/"+id)
         { 
           this.detailPlanning = true;
@@ -179,14 +161,6 @@ export class ContentComponent implements OnInit {
         else
         {
           this.detailPlanning = false;
-        }
-        if(currentRoute == "/planning/update/todo/"+id)
-        { 
-          this.updatePlanning = true;
-        }
-        else
-        {
-          this.updatePlanning = false;
         }
         
         // quotePdf components

@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
     }
     if(this.login.value.email === "dev" && this.login.value.password === "dev")
     {
-      this.route.navigateByUrl("/planning");
+      this.route.navigateByUrl("/planning/todo");
     }
   }
   

@@ -17,6 +17,7 @@ $nb-themes: nb-register-theme((
   // color-primary-700: #1a34b8,
   // color-primary-800: #102694,
   // color-primary-900: #091c7a,
+  // color-primary-hover:	#67ff59,	// change le hover sur tous les liens
   // color-basic-700: #091c7a,
   // color-basic-800: #091c7a,
   // color-basic-900: #091c7a,
@@ -30,12 +31,28 @@ $nb-themes: nb-register-theme((
   // border-basic-color-3: #7b08ff,
   // border-basic-color-4: #7b08ff,
   // border-basic-color-5: #7b08ff,
-  // text-basic-color: #7b08ff,
-  // text-disabled-color: #7b08ff,
-  // text-alternate-color: #7b08ff,
-  // text-hint-color: #7b08ff,
+  // text-primary-color:	#ff3333,	// marche pas
+  // text-basic-color: #7b08ff, // change la couleur de tout les mots sur le site
+  // text-hint-color: #31ff08, // change la couelur des flches du menu
+  // text-primary-hover-color: #538fff, // change la couleur du hover sur les termes du menu
+  // menu-item-active-text-color: #7b08ff, // marche pas
+  // menu-item-hover-text-color: #d3ff59, // change la couleur du hover sur les termes du menu
+  // menu-item-icon-hover-color: #f2ff3e, // marche pas
+  // menu-item-hover-background-color: #7b08ff, // change le background hover sur les liens de menu
+  // menu-item-active-background-color: #598bff, // marche pas
+  // menu-item-active-text-color: #ff5959, // marche pas
+  // menu-item-icon-active-color: #ff3333, // marche pas
+  // menu-item-icon-color:#3366ff, // change la couleur des fleches du menu
+  // menu-item-divider-color: #598bff, // change la couleur des traits entre les categories du menu
+  // menu-submenu-item-active-hover-text-color:	#e0ff33, // marche pas
+  // menu-submenu-item-icon-active-hover-color:	#3366ff	// marche pas
+  // menu-submenu-item-active-text-color:	#3366ff, // marche pas
+  // menu-submenu-item-active-hover-border-color: 	#ff3333, // marche pas
+	// menu-background-color: #598bff,	// change le background du menu
+  // divider-color:	#5bff32, // change la couleur des traits entre les categories du menu
 
-), dark, dark);
+
+), default, default);
 
 .menu-title {
   margin-left: 20px;
@@ -43,8 +60,4 @@ $nb-themes: nb-register-theme((
 
 .scrollable {
   margin-top: -85px !important;
-}
-
-.ng-tns-c158-16, .ng-tns-c158-15 {
-  padding-bottom: 10px;
 }

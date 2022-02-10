@@ -5,8 +5,7 @@ import { NbMenuItem, NbMenuService } from '@nebular/theme';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ['./sidebar.component.scss']
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SidebarComponent implements OnInit {
 
@@ -107,7 +106,9 @@ export class SidebarComponent implements OnInit {
     }
   ];
 
-  constructor(menu: NbMenuService, private router: Router) { 
+  
+
+  constructor(menu: NbMenuService, public router: Router) { 
     menu.onItemClick().subscribe((event) => {
       console.log(event);
       if (event.item.title === 'Créer un utilisateur') {
@@ -127,13 +128,12 @@ export class SidebarComponent implements OnInit {
       }
       if (event.item.title === 'Créer un devis') {
         this.router.navigate(['quotepdf/writing']);
-      }
-      
+      }   
     }); 
+    
   }
 
   ngOnInit(): void {
-
   }
 
 }

@@ -28,6 +28,8 @@ export class ColumnComponent implements OnInit {
 
   detailQuotepdf: boolean = false;
 
+  detailPlanning: boolean = false;
+
   constructor(public router: Router)
   { 
     this.router.events.subscribe((event: Event) => {
@@ -159,6 +161,16 @@ export class ColumnComponent implements OnInit {
         else
         {
           this.detailQuotepdf = false;
+        }
+
+        // planning components
+        if(currentRoute == "/planning/todo/"+id)
+        { 
+          this.detailPlanning = true;
+        }
+        else
+        {
+          this.detailPlanning = false;
         }
       }
       if (event instanceof NavigationError) {
