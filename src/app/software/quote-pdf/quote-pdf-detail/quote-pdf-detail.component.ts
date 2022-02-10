@@ -55,9 +55,18 @@ export class QuotePdfDetailComponent implements OnInit {
     }
   }
 
+  startProjectByQuotePdfId(id: number)
+  {
+    if(window.confirm("Lancer ce projet ?"))
+    {
+      this.myService.acceptQuotePdf(id).subscribe();
+    }
+
+  }
+
   deleteQuotePdfById(id: number)
   {
-    if(window.confirm("Spprimer ce devis ?"))
+    if(window.confirm("Supprimer ce devis ?"))
     {
       this.myService.deleteQuotePdf(id).subscribe();
       this.router.navigateByUrl("/quotepdf");

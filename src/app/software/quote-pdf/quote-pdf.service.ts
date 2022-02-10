@@ -65,11 +65,11 @@ export class QuotePdfService {
    * Dans le cas ou le quotePdf(devis) est validé, envoie le signal au serveur pour post
    * en async le projet du devis dans projectService, et les taches du devis dans todoService
    */
-  // acceptQuotePdf(id:number): Observable<acceptPdf>
-  // {
-  //   let acceptPdf = "https://localhost:9001/quotepdf/startproject/" + id;
-  //   return this.http.post<acceptPdf>(acceptPdf);
-  // }
+  acceptQuotePdf(id:number): Observable<acceptPdf>
+  {
+    let acceptPdf = "https://localhost:9001/quotepdf/startproject/" + id;
+    return this.http.get<acceptPdf>(acceptPdf);
+  }
 
   /**
     * 
