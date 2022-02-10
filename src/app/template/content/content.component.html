@@ -74,9 +74,9 @@
 </div>
 
 <!-- PLANNING -->
-<div *ngIf="planning">
-    <app-planning></app-planning>
-</div>
+<ng-template [ngIf]="router.url === '/planning'">
+    <app-planning-list></app-planning-list>
+</ng-template>
 
 <div *ngIf="listPlanning">
     <app-planning-list></app-planning-list>
