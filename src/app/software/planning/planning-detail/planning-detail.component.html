@@ -7,4 +7,10 @@
       <p>Durée de la tâche : {{todo.time}} minutes | Status : {{ todo.status }}</p>
       <p>User Id : {{todo.userId}}</p>
     </mat-card-content>
+    <mat-card-actions>
+      <h4>Status :</h4>
+      <a ><button mat-button (click)="updateTodoStatusById(todo.id, 'A Faire')">A faire</button></a>
+      <a ><button mat-button  (click)="updateTodoStatusById(todo.id, 'En Cour')">En cours</button></a>
+      <a ><button mat-button  (click)="updateTodoStatusById(todo.id, 'Fini')">Fini</button></a>
+    </mat-card-actions>
   </mat-card>

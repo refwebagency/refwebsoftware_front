@@ -50,7 +50,7 @@ export class TodoDetailComponent implements OnInit {
      * parametre l'id récuperé depuis l'url
      */
     // var id = this.route.snapshot.url[1].path;
-    this.myService.getTodo().subscribe((u => this.todo = u));
+    this.myService.getTodo().subscribe((t => this.todo = t));
     //console.log(id);
     
   }

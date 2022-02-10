@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, NavigationError, Router, Event } from '@angular/router';
+import { NavigationEnd, NavigationError, Router, Event, ActivatedRoute } from '@angular/router';
 import { Todo } from '../../models/todo';
 import { TodoService } from '../../todo/todo.service';
+import { PlanningService } from '../planning.service';
 
 @Component({
   selector: 'app-planning-detail',
@@ -15,8 +16,13 @@ export class PlanningDetailComponent implements OnInit {
   //represente un objet Todo
   todo: Todo = {} as Todo
 
+  // msgTodo = 'en cour';
+  // msgCurrent = 'en cour';
+  // msgDone = 'fini';
+
   constructor(
     private myService: TodoService,
+    private myPlanningService: PlanningService,
     private router: Router
   ) {
       /**
@@ -44,6 +50,18 @@ export class PlanningDetailComponent implements OnInit {
      */
     this.myService.getTodo().subscribe((u => this.todo = u));
     
+  }
+
+  updateTodoStatusById(todoId: any, todoStatus: any)
+  {
+    const newForm = {
+      id: todoId,
+      status: todoStatus
+    }
+    console.log(todoStatus)
+    this.myPlanningService.updateTodoStatus(todoId, newForm).subscribe();
+  
+  
   }
 
 }

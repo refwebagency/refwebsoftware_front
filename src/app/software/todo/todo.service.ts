@@ -41,9 +41,11 @@ export class TodoService {
    {
      var stringUrl = this.route.url;
      var id = stringUrl.match(/\d+/g);
-     // console.log(id);
+     console.log(id);
      let todoById = "https://localhost:6001/todo/" + id;
-     return this.http.get<Todo>(todoById);
+     return this.http.get<Todo>(todoById).pipe(
+      delay(1000), repeat()
+    );
    }
 
    /**
