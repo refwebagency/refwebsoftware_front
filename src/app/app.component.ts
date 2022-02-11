@@ -56,7 +56,7 @@ export class AppComponent {
         }    
 
         // sidebar-dev components
-        if(currentRoute == "/planning")
+        if(currentRoute == "/planning/" + id![0] + "/todo" || currentRoute == "/planning/" + id![0] + "/todo/" + id![1])
         { 
           this.planning = true;
         }

@@ -43,7 +43,6 @@ export class SpecializationWritingComponent implements OnInit {
     this.myService.addSpecialization(this.newSpecialization.value).subscribe(data => {
       this.msgTrue = true
     });
-    this.route.navigateByUrl("/specialization");
   }
 
 }

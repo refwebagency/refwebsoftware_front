@@ -12,4 +12,4 @@
 
 <ng-template [ngIf]="router.url === '/quotepdf' || detailQuotepdf || router.url === '/quotepdf/writing'"><app-quote-pdf-list></app-quote-pdf-list></ng-template>
 
-<ng-template [ngIf]="router.url === '/planning/todo' || detailPlanning"><app-planning-list></app-planning-list></ng-template>
+<ng-template [ngIf]="listPlanning || detailPlanning"><app-planning-list></app-planning-list></ng-template>

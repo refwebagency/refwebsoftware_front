@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Todo } from '../../models/todo';
-import { TodoService } from '../../todo/todo.service';
+import { User } from '../../models/user';
+import { PlanningService } from '../planning.service';
 
 @Component({
   selector: 'app-planning-list',
@@ -12,11 +13,12 @@ export class PlanningListComponent implements OnInit {
   //represente ma liste de Todos
   todos: Todo[] = []
   todo: Todo = {} as Todo
+  user: User = {} as User
   searchTerm!: string;
 
   //Initialisation d'une variable pour récuperer le typage du service
   constructor(
-    private myService: TodoService
+    private myService: PlanningService
   ) { }
 
   /**
@@ -24,8 +26,8 @@ export class PlanningListComponent implements OnInit {
    */
   ngOnInit(): void {
 
-    this.myService.getTodos().subscribe(u => this.todos = u);
-    
+    this.myService.getTodosByUserId().subscribe(t => this.todos = t);
+    this.myService.getUser().subscribe(u => this.user = u)
   }
 
 }

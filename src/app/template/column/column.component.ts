@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, NavigationError, Router, Event } from '@angular/router';
+import { NavigationEnd, NavigationError, Router, Event, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-column',
@@ -30,11 +30,12 @@ export class ColumnComponent implements OnInit {
 
   detailPlanning: boolean = false;
 
+  listPlanning: boolean = false;
+
   constructor(public router: Router)
   { 
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
-
         var route = this.router.url;
         var id = route.match(/\d+/g);
         const currentRoute = this.router.url;
@@ -164,22 +165,34 @@ export class ColumnComponent implements OnInit {
         }
 
         // planning components
-        if(currentRoute == "/planning/todo/"+id)
+        
+        if(currentRoute == "/planning/" + id![0] +"/todo")
+        { 
+          this.listPlanning = true;
+        }
+        else
+        {
+          this.listPlanning = false;
+        }
+        
+        
+        if(currentRoute == "/planning/" + id![0] +"/todo/"+id![1])
         { 
           this.detailPlanning = true;
         }
         else
         {
-          this.detailPlanning = false;
+          this.detailPlanning = false ;
         }
-      }
+      
       if (event instanceof NavigationError) {
         console.log(event.error);
       }
-    })
-  }
-
+    }})
+    }
+  
   ngOnInit(): void {
   }
 
 }
+

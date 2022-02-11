@@ -42,7 +42,7 @@ export class PlanningUpdateComponent implements OnInit {
     this.myService.updateTodo(todoId, newForm).subscribe(data => {
       this.msgTrue = true;
     })
-    this.route.navigateByUrl("/planning/todo");
+    //this.route.navigateByUrl("/planning/todo");
   }
 
 }

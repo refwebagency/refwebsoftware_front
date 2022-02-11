@@ -49,8 +49,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
 
   {path: 'planning', component: PlanningComponent},
-  {path: 'planning/todo', component: PlanningListComponent},
-  {path: 'planning/todo/:id', component: PlanningDetailComponent},
+  {path: 'planning/:id/todo', component: PlanningListComponent},
+  {path: 'planning/:id/todo/:id', component: PlanningDetailComponent},
   {path: 'planning/update/todo/:id', component: PlanningUpdateComponent},
 
   {path: 'todotemplate/writing', component: TodoTemplateWritingComponent},

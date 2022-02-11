@@ -10,14 +10,14 @@ import { NbMenuItem, NbMenuService } from '@nebular/theme';
 })
 export class SidebarDevComponent implements OnInit {
 
+
   items: NbMenuItem[] = [
     {
       title: 'Planning',
       expanded: false,
       children: [
         {
-          title: 'Voir les tâches',
-          link: 'planning'
+          title: 'Voir les tâches'
         },
       ],
     },
@@ -28,10 +28,14 @@ export class SidebarDevComponent implements OnInit {
   ];
   
   constructor(menu: NbMenuService, public router: Router) { 
+
     menu.onItemClick().subscribe((event) => {
       console.log(event);
+      var route = this.router.url;
+      var id = route.match(/\d+/g);
       if (event.item.title === 'Voir les tâches') {
-        this.router.navigate(['planning/todo']);
+        console.log(id)
+        this.router.navigate(['planning', id![0],'todo']);
       }   
     }); 
     

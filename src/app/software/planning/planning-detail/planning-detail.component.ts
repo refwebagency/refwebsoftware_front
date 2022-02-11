@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, NavigationError, Router, Event, ActivatedRoute } from '@angular/router';
 import { Todo } from '../../models/todo';
+import { User } from '../../models/user';
 import { TodoService } from '../../todo/todo.service';
 import { PlanningService } from '../planning.service';
 
@@ -16,13 +17,14 @@ export class PlanningDetailComponent implements OnInit {
   //represente un objet Todo
   todo: Todo = {} as Todo
 
+  user: User = {} as User
+
   // msgTodo = 'en cour';
   // msgCurrent = 'en cour';
   // msgDone = 'fini';
 
   constructor(
-    private myService: TodoService,
-    private myPlanningService: PlanningService,
+    private myService: PlanningService,
     private router: Router
   ) {
       /**
@@ -49,7 +51,7 @@ export class PlanningDetailComponent implements OnInit {
      * parametre l'id récuperé depuis l'url
      */
     this.myService.getTodo().subscribe((u => this.todo = u));
-    
+    this.myService.getUser().subscribe((u => this.user = u));
   }
 
   updateTodoStatusById(todoId: any, todoStatus: any)
@@ -59,9 +61,21 @@ export class PlanningDetailComponent implements OnInit {
       status: todoStatus
     }
     console.log(todoStatus)
-    this.myPlanningService.updateTodoStatus(todoId, newForm).subscribe();
-  
+    this.myService.updateTodoStatus(todoId, newForm).subscribe();
+    this.reloadCurrentRoute();
   
   }
+
+  /**
+   * permet de naviguer vers url ciblé en se basant sur l'url "/planning/:id/todo/:id",
+   * ainsi cela recharge le component en question, dans ce cas precis la méthode est appelé ci-dessus
+   * a chaques fois que le staus d'une tache est mis à jour
+   */
+  reloadCurrentRoute() {
+    let currentUrl = this.router.url;
+    this.router.navigateByUrl("/planning/" + this.user.id +"/todo", {skipLocationChange: true}).then(() => {
+        this.router.navigate([currentUrl]);
+    });
+}
 
 }

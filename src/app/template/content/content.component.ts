@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, Router, Event, NavigationError } from '@angular/router';
+import { NavigationEnd, Router, Event, NavigationError, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-content',
@@ -37,6 +37,7 @@ export class ContentComponent implements OnInit {
 
         var route = this.router.url;
         var id = route.match(/\d+/g);
+        
         const currentRoute = this.router.url;
 
         // user components
@@ -154,10 +155,13 @@ export class ContentComponent implements OnInit {
         }
 
         // planning components
-        if(currentRoute == "/planning/todo/"+id)
-        { 
-          this.detailPlanning = true;
-        }
+        if(id !== null)
+        {
+          if(currentRoute == "/planning/" + id[0] + "/todo/" +id[1])
+          { 
+            this.detailPlanning = true;
+          }
+        }   
         else
         {
           this.detailPlanning = false;
@@ -179,7 +183,6 @@ export class ContentComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 }
