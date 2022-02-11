@@ -51,7 +51,7 @@ export class QuotePdfDetailComponent implements OnInit {
     this.myService.getClient(this.quotePdf.project.clientId).subscribe((c => this.client = c))
     if(this.quotePdf.project.clientId === null)
     {
-      console.log("oukouk")
+      console.log("client inconnu")
     }
   }
 
@@ -59,9 +59,19 @@ export class QuotePdfDetailComponent implements OnInit {
   {
     if(window.confirm("Lancer ce projet ?"))
     {
-      this.myService.acceptQuotePdf(id).subscribe();
+      this.myService.acceptQuotePdf(id).subscribe() 
+      // delai d'une seconde pour d'executer le dispatch 
+      // sinon les deux méthodes s'exutent en même temps
+      // et donc pas de dispacth d'user sur les tâches
+      setTimeout(() => this.dispatch(), 1000)
     }
 
+  }
+  
+  dispatch()
+  {
+    this.myService.dispatchTodo().subscribe()
+    
   }
 
   deleteQuotePdfById(id: number)

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { delay, Observable, repeat } from 'rxjs';
+import { timeout } from 'rxjs-compat/operator/timeout';
 import { acceptPdf } from '../models/acceptPdf';
 import { Client } from '../models/client';
 import { ProjectType } from '../models/projectType';
@@ -67,8 +68,21 @@ export class QuotePdfService {
    */
   acceptQuotePdf(id:number): Observable<acceptPdf>
   {
+    console.log("méthode accept est exécutée")
     let acceptPdf = "https://localhost:9001/quotepdf/startproject/" + id;
     return this.http.get<acceptPdf>(acceptPdf);
+  }
+
+  /**
+   * A la suite de l'acceptation du devis, donc de la méthode ci-dessus, des taches vont être crées
+   * dans le service todoService back end
+   * @returns un dispatch des taches pour caler automatiquement toutes les taches
+   * par rapport au niveau et à la spécialisation de l'user
+   */
+  dispatchTodo()
+  {
+    console.log("méthode dispatch est exécutée")
+    return this.http.get("https://localhost:6001/todo/dispatch")
   }
 
   /**
