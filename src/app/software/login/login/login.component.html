@@ -32,4 +32,17 @@
         
     </form>
 
+    <div class="row justify-content-center mt-3">
+        <div class="col-3  mt-4 text-center">
+            <div *ngIf="msgError == true">
+                <h2 style="color:red">Email ou mot de passe incorrect !</h2>
+            </div>
+            <div *ngIf="msgGood == true">
+                <h4>Identité vérfiée</h4>
+                <h3>{{user.name}} {{user.lastName}}</h3>
+                <h2 style="color:rgb(8, 83, 247)">Bienvenue sur Ref Web Logiciel !</h2>
+            </div>
+        </div>
+    </div>
+
 </div>

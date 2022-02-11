@@ -40,10 +40,9 @@ export class AppComponent {
   { 
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
-        
-        var route = this.router.url;
-        var id = route.match(/\d+/g);
+
         const currentRoute = this.router.url;
+        var id = currentRoute.match(/\d+/g);
 
         // login components
         if(currentRoute == "/login")
@@ -54,7 +53,7 @@ export class AppComponent {
         {
           this.login = false;
         }    
-
+        if(currentRoute !== "/login"){
         // sidebar-dev components
         if(currentRoute == "/planning/" + id![0] + "/todo" || currentRoute == "/planning/" + id![0] + "/todo/" + id![1])
         { 
@@ -64,7 +63,7 @@ export class AppComponent {
         {
           this.planning = false;
         }   
-
+      
         // user components
         if(currentRoute == "/user/"+id)
         { 
@@ -213,6 +212,7 @@ export class AppComponent {
         else
         {
         this.detailQuotepdf = false;
+        }
         }
       }
       if (event instanceof NavigationError) {

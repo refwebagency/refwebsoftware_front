@@ -66,6 +66,7 @@ export class PlanningDetailComponent implements OnInit {
     }
     console.log(todoStatus);
     this.myService.updateTodoStatus(todoId, newForm).subscribe();
+    setTimeout(() => this.myService.eventPlanning(todoId, newForm), 1000);
     this.reloadCurrentRoute();
   
   }

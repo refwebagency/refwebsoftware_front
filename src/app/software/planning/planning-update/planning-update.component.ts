@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Specialization } from '../../models/specialization';
 import { Todo } from '../../models/todo';
 import { TodoService } from '../../todo/todo.service';
+import { PlanningService } from '../planning.service';
 
 @Component({
   selector: 'app-planning-update',
@@ -23,6 +24,7 @@ export class PlanningUpdateComponent implements OnInit {
   constructor(
 
     private myService: TodoService,
+    private planningService: PlanningService,
     private route: Router
   ) { }
 
@@ -42,6 +44,7 @@ export class PlanningUpdateComponent implements OnInit {
     this.myService.updateTodo(todoId, newForm).subscribe(data => {
       this.msgTrue = true;
     })
+    setTimeout(() => this.planningService.eventPlanning(todoId, newForm), 1000);
     //this.route.navigateByUrl("/planning/todo");
   }
 

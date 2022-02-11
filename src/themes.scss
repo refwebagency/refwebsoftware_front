@@ -24,7 +24,7 @@ $nb-themes: nb-register-theme((
   // color-basic-100: #091c7a,
   // background-basic-color-1: #ffb342,
   // background-basic-color-2: #00ff15,
-  // background-basic-color-3: #f72222,
+  // background-basic-color-3: #f72222, // change la couleur du content
   // background-basic-color-4: #7b08ff,
   // border-basic-color-1: #7b08ff,
   // border-basic-color-2: #7b08ff,
@@ -35,6 +35,7 @@ $nb-themes: nb-register-theme((
   // text-basic-color: #7b08ff, // change la couleur de tout les mots sur le site
   // text-hint-color: #31ff08, // change la couelur des flches du menu
   // text-primary-hover-color: #538fff, // change la couleur du hover sur les termes du menu
+  menu-text-line-height: 35px,
   // menu-item-active-text-color: #7b08ff, // marche pas
   // menu-item-hover-text-color: #d3ff59, // change la couleur du hover sur les termes du menu
   // menu-item-icon-hover-color: #f2ff3e, // marche pas
@@ -48,7 +49,7 @@ $nb-themes: nb-register-theme((
   // menu-submenu-item-icon-active-hover-color:	#3366ff	// marche pas
   // menu-submenu-item-active-text-color:	#3366ff, // marche pas
   // menu-submenu-item-active-hover-border-color: 	#ff3333, // marche pas
-	// menu-background-color: #598bff,	// change le background du menu
+	// menu-background: linear-gradient(rgb(202, 202, 255), white),	// change le background du menu
   // divider-color:	#5bff32, // change la couleur des traits entre les categories du menu
 
 
@@ -60,4 +61,33 @@ $nb-themes: nb-register-theme((
 
 .scrollable {
   margin-top: -85px !important;
+}
+
+.columns {
+  background: linear-gradient(rgb(130, 130, 255), white);
+}
+
+.mat-card {
+  background-color: rgb(230, 230, 230);
+}
+
+nb-menu, nb-card, app-sidebar {
+  background-color: rgba(189, 189, 189, 0.0) !important;
+}
+
+.menuNb1 {
+  background: linear-gradient(rgb(202, 202, 255), white);
+}
+
+.menuNb2 {
+  background: linear-gradient(rgb(202, 202, 255), white);
+}
+
+.menuNb3 {
+  background: linear-gradient(rgb(202, 202, 255), white);
+}
+
+.mat-card:hover
+{
+    background-color: #B8DDFF !important;
 }

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { delay, Observable, repeat } from 'rxjs';
+import { BehaviorSubject, delay, Observable, repeat } from 'rxjs';
 import { Todo } from '../models/todo';
 import { TodoStatus } from '../models/todoStatus';
 import { User } from '../models/user';
@@ -11,12 +11,23 @@ import { User } from '../models/user';
 })
 export class PlanningService {
 
+  user: User = {} as User
+  todos: Todo[] = []
+  todoChange: BehaviorSubject<Todo[]> = new BehaviorSubject(this.todos);
+  userChange: BehaviorSubject<User> = new BehaviorSubject(this.user);
+
   constructor(
 
     private http : HttpClient,
     private route: Router
   ) { }
    
+  eventPlanning(todo: any, user: any)
+  {
+    this.todoChange.next(todo);
+    this.userChange.next(user);
+  }
+
   updateTodoStatus(id: number, updateStatusData: any): Observable<TodoStatus>
   {
     return this.http.patch<TodoStatus>("https://localhost:6001/todo/updapte/todostatus/" + id, updateStatusData);

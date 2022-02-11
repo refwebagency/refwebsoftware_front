@@ -15,7 +15,8 @@ export class LoginComponent implements OnInit {
   //user represente mon objet user
   user: User = {} as User
 
-  msgTrue = false;
+  msgError = false;
+  msgGood = false;
 
   login!: FormGroup
 
@@ -25,7 +26,6 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // var id = this.route.snapshot.url[1].path;
     this.login = this.createFormGroup();
   }
 
@@ -42,14 +42,29 @@ export class LoginComponent implements OnInit {
   */
   post(){ 
     this.myService.getUserByEmail(this.login.value.email).subscribe(u => this.user = u);
+    setTimeout(() => this.redirectDev(), 1000)
+  }
+
+  redirectDev()
+  {
     if(this.user.email === this.login.value.email  && this.user.password === this.login.value.password) 
     {
-      window.location.replace("/planning/" + this.user.id +"/todo");
+      this.msgGood = true;
+      setTimeout(() => this.confirmLogin(), 1500)
     }
-    if(this.login.value.email === "admin" && this.login.value.password === "admin")
+    else if(this.login.value.email === "admin" && this.login.value.password === "admin")
     {
       this.route.navigateByUrl("/client");
     }
+    else
+    {
+      this.msgError = true;
+    }
+  }
+
+  confirmLogin()
+  {
+    window.location.replace("/planning/" + this.user.id +"/todo");
   }
   
 }
