@@ -42,13 +42,23 @@ export class LoginComponent implements OnInit {
   */
   post(){ 
     this.myService.getUserByEmail(this.login.value.email).subscribe(u => this.user = u);
+    setTimeout(() => this.redirectDev(), 2000)
+    
+  }
+
+  redirectDev()
+  {
     if(this.user.email === this.login.value.email  && this.user.password === this.login.value.password) 
     {
       window.location.replace("/planning/" + this.user.id +"/todo");
     }
-    if(this.login.value.email === "admin" && this.login.value.password === "admin")
+    else if(this.login.value.email === "admin" && this.login.value.password === "admin")
     {
       this.route.navigateByUrl("/client");
+    }
+    else
+    {
+      this.msgTrue = true;
     }
   }
   
