@@ -38,11 +38,12 @@ export class SpecializationWritingComponent implements OnInit {
    * Au clic du bouton submit dans le formulaire, récupere les valeurs
    * de newSpecialization
    */
-   post(){
-     console.log(this.newSpecialization.value.id);
+  post(){
+    console.log(this.newSpecialization.value.id);
     this.myService.addSpecialization(this.newSpecialization.value).subscribe(data => {
       this.msgTrue = true
     });
+    setTimeout(() => this.myService.eventSpecialization(this.newSpecialization.value.id), 1000);
     this.route.navigateByUrl("/specialization");
   }
 

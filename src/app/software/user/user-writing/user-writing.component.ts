@@ -12,7 +12,7 @@ import { UserService } from '../user.service';
 export class UserWritingComponent implements OnInit {
 
   newUser!: FormGroup;
-  specializations: Specialization[] = []
+  specializations: Specialization[] = [];
 
   constructor(
     private route: Router,
@@ -47,6 +47,8 @@ export class UserWritingComponent implements OnInit {
    post(){ 
     console.log(this.newUser.value.id);
     this.myService.addUser(this.newUser.value).subscribe();
+    this.myService.eventUser(this.newUser.value.id);
+    this.myService.reloadCurrentRoute();
     this.route.navigateByUrl("/user");
   }
 

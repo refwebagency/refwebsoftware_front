@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Specialization } from '../../models/specialization';
+import { SpecializationUpdateComponent } from '../specialization-update/specialization-update.component';
 import { SpecializationService } from '../specialization.service';
 
 
@@ -17,18 +18,15 @@ export class SpecializationListComponent implements OnInit {
   searchTerm!: string;
 
   //Initialisation d'une variable pour récuperer le typage du service
-  constructor(
-    private myService: SpecializationService,
-    private router: Router
-  ) { }
+  constructor(private myService: SpecializationService) 
+  { 
+    this.myService.specializationChange.subscribe(() => {
+      this.myService.getSpecializations().subscribe(c => this.specializations = c);
+      console.log("getSpecialization() pour sidebar2 déclenché")
+    })
+  }
 
-  /**
-   * à chaques nouveaux changement d'états, execute la requete getSpecializations
-   */
   ngOnInit(): void {
-
-    this.myService.getSpecializations().subscribe(s => this.specializations = s);
-    
   }
 
 }

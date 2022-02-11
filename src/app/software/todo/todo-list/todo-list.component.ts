@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Todo } from '../../models/todo';
 import { TodoService } from '../todo.service';
 
@@ -15,17 +16,15 @@ export class TodoListComponent implements OnInit {
   searchTerm!: string;
 
   //Initialisation d'une variable pour récuperer le typage du service
-  constructor(
-    private myService: TodoService
-  ) { }
+  constructor(private myService: TodoService) 
+  { 
+    this.myService.todoChange.subscribe(() => {
+      this.myService.getTodos().subscribe(c => this.todos = c);
+      console.log("getTodo() pour sidebar2 déclenché")
+    })
+  }
 
-  /**
-   * à chaques nouveaux changement d'états, execute la requete getTodos
-   */
   ngOnInit(): void {
-
-    this.myService.getTodos().subscribe(u => this.todos = u);
-    
   }
 
 }

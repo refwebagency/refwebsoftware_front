@@ -29,17 +29,14 @@ export class SpecializationDetailComponent implements OnInit {
        * et donc afficher le specialization adequat
        */
       this.router.events.subscribe((event: Event) => {
-        if (event instanceof NavigationStart) 
-        {
-          console.log("test")
-          const currentRoute = this.router.url;
-          
-        }
         if (event instanceof NavigationEnd) {
-          this.ngOnInit();
+          var stringUrl = this.router.url;
+          var id = stringUrl.match(/\d+/g);
+          if(stringUrl === "/specialization/" + id){
+            this.ngOnInit();
+          }
        }
-        if (event instanceof NavigationError) {
-          
+        if (event instanceof NavigationError) {     
           console.log(event.error);
       }
       })
@@ -65,6 +62,7 @@ export class SpecializationDetailComponent implements OnInit {
      if(window.confirm("Supprimer cette spécialisation ?"))
      {
       this.myService.deleteSpecialization(id).subscribe();
+      setTimeout(() => this.myService.eventSpecialization(id), 1000);
       this.router.navigateByUrl("/specialization");
      }  
    }

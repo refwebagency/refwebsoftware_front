@@ -38,12 +38,13 @@ export class ClientWritingComponent implements OnInit {
   }
 
   /**
-   * Au clic du bouton submit dans le formulaire, récupere les valeurs
-   * de newclient
-   */
-   post(){
-     console.log(this.newClient.value.id);
+  * Au clic du bouton submit dans le formulaire, récupere les valeurs
+  * de newclient
+  */
+  post(){
+    console.log(this.newClient.value.id);
     this.myService.addClient(this.newClient.value).subscribe();
+    setTimeout(() => this.myService.eventClient(this.newClient.value), 1000);
     this.route.navigateByUrl("/client");
   }
 

@@ -9,8 +9,25 @@
     </mat-card-content>
     <mat-card-actions>
       <h4>Status :</h4>
-      <a ><button mat-button (click)="updateTodoStatusById(todo.id, 'A Faire')">A faire</button></a>
-      <a ><button mat-button  (click)="updateTodoStatusById(todo.id, 'En Cour')">En cours</button></a>
-      <a ><button mat-button  (click)="updateTodoStatusById(todo.id, 'Fini')">Fini</button></a>
+<div class="row justify-content-center">
+      <div class="col-2" *ngIf="todo.status === 'A Faire'">
+        <a><button class="bg-primary text-white" mat-button (click)="updateTodoStatusById(todo.id, 'A Faire')">A faire</button></a>
+      </div>
+      <div class="col-2" *ngIf="todo.status !== 'A Faire'">
+        <a><button mat-button (click)="updateTodoStatusById(todo.id, 'A Faire')">A faire</button></a>
+      </div>
+      <div class="col-2" *ngIf="todo.status === 'En Cours'">
+        <a><button class="bg-primary text-white" mat-button (click)="updateTodoStatusById(todo.id, 'En Cours')">En cours</button></a>
+      </div>
+      <div class="col-2" *ngIf="todo.status !== 'En Cours'">
+        <a ><button mat-button (click)="updateTodoStatusById(todo.id, 'En Cours')">En cours</button></a>
+      </div>
+      <div class="col-2" *ngIf="todo.status === 'Fini'">
+        <a ><button class="bg-primary text-white" mat-button (click)="updateTodoStatusById(todo.id, 'Fini')">Fini</button></a>
+      </div>
+      <div class="col-2" *ngIf="todo.status !== 'Fini'">
+        <a ><button mat-button (click)="updateTodoStatusById(todo.id, 'Fini')">Fini</button></a>
+      </div>
+</div>
     </mat-card-actions>
   </mat-card>

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { NavigationEnd, NavigationError, Router, Event, NavigationStart } from '@angular/router';
+import { Specialization } from '../../models/specialization';
 import { User } from '../../models/user';
 import { UserService } from '../user.service';
 
@@ -14,19 +15,27 @@ export class UserListComponent implements OnInit {
   users: User[] = []
   user: User = {} as User
   searchTerm!: string;
+  specialization: Specialization = {} as Specialization
 
   //Initialisation d'une variable pour récuperer le typage du service
-  constructor(
-    private myService: UserService
-  ) { }
+  constructor(private router: Router, private myService: UserService)
+  {
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationEnd) {
+        this.ngOnInit();
+      }
+      if (event instanceof NavigationError) {
+        console.log(event.error);
+      }
+    }) 
 
-  /**
-   * à chaques nouveaux changement d'états, execute la requete getUsers
-   */
-  ngOnInit(): void {
-
-    this.myService.getUsers().subscribe(u => this.users = u);
-    
+    this.myService.userChange.subscribe(() => {
+      this.myService.getUsers().subscribe(c => this.users = c);
+      console.log("getUsers() pour sidebar2 déclenché")
+    })
   }
 
+  ngOnInit(): void {
+  }
+ 
 }

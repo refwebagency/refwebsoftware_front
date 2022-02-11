@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ProjectType } from '../../models/projectType';
 import { Specialization } from '../../models/specialization';
 import { TodoTemplateService } from '../todo-template.service';
@@ -18,9 +19,8 @@ export class TodoTemplateWritingComponent implements OnInit {
   msgTrue = false
 
   constructor(
-
-    private myService: TodoTemplateService
-
+    private myService: TodoTemplateService,
+    private route: Router,
   ) { }
 
   ngOnInit(): void {
@@ -41,14 +41,15 @@ export class TodoTemplateWritingComponent implements OnInit {
       projectTypeId: new FormControl("",[Validators.required])
     })
   }
-
-  
+ 
   post()
   {
     this.myService.addTodoTemplate(this.newTodoTemplate.value).subscribe(data => {
       console.log(data);
       this.msgTrue = true
     })
+    setTimeout(() => this.myService.eventTodoTemplate(this.newTodoTemplate.value), 1000);
+    this.route.navigateByUrl("/todotemplate");
   }
 
 }

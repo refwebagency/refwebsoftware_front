@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProjectType } from '../../models/projectType';
 import { ProjectTypeService } from '../project-type.service';
 
@@ -12,15 +13,15 @@ export class ProjectTypeListComponent implements OnInit {
   projectTypes: ProjectType[] = []
   searchTerm!: string;
 
-  constructor(
-
-    private myService : ProjectTypeService
-
-  ) { }
+  constructor(private myService : ProjectTypeService) 
+  { 
+    this.myService.projectTypeChange.subscribe(() => {
+      this.myService.getProjectTypes().subscribe(c => this.projectTypes = c);
+      console.log("getProjectTypes() pour sidebar2 declenché")
+    })
+  }
 
   ngOnInit(): void {
-
-    this.myService.getProjectTypes().subscribe(pt => this.projectTypes = pt);
   }
 
 }

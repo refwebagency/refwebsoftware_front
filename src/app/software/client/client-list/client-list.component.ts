@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Client } from '../../models/client';
 import { ClientService } from '../client.service';
 
@@ -13,15 +14,15 @@ export class ClientListComponent implements OnInit {
   client: Client = {} as Client
   searchTerm!: string;
 
-  constructor(
-
-    private myService : ClientService
-  ) { }
+  constructor(private myService : ClientService)
+  { 
+    this.myService.clientChange.subscribe(() => {
+      this.myService.getClients().subscribe(c => this.clients = c);
+      console.log("getClients() pour sidebar2 declenché")
+    })
+  }
 
   ngOnInit(): void {
-
-    this.myService.getClients().subscribe(c => this.clients = c);
-
   }
 
 }

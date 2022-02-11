@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
     this.myService.getUserByEmail(this.login.value.email).subscribe(u => this.user = u);
     if(this.user.email === this.login.value.email  && this.user.password === this.login.value.password) 
     {
-      this.route.navigateByUrl("/planning");
+      this.route.navigateByUrl("/planning/todo");
     }
     if(this.login.value.email === "admin" && this.login.value.password === "admin")
     {

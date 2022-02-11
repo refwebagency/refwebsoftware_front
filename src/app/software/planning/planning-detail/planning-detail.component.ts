@@ -34,7 +34,11 @@ export class PlanningDetailComponent implements OnInit {
        */
        this.router.events.subscribe((event: Event) => {
         if (event instanceof NavigationEnd) {
-          this.ngOnInit();
+          var stringUrl = this.router.url;
+          var id = stringUrl.match(/\d+/g);
+          if(id){
+            this.ngOnInit();
+          }
        }
         if (event instanceof NavigationError) {
           
@@ -60,8 +64,14 @@ export class PlanningDetailComponent implements OnInit {
     }
     console.log(todoStatus)
     this.myPlanningService.updateTodoStatus(todoId, newForm).subscribe();
-  
-  
+    this.reloadCurrentRoute()
   }
+
+  reloadCurrentRoute() {
+    let currentUrl = this.router.url;
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+        this.router.navigate([currentUrl]);
+    });
+}
 
 }

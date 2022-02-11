@@ -17,7 +17,8 @@ export class QuotePdfDetailComponent implements OnInit {
   constructor(
     private myService: QuotePdfService,
     private router: Router
-  ) {
+  ) 
+  {
     /**
      * écoute l'url lors du chargement de la page 
      * et lors de la fermeture de la page.
@@ -26,21 +27,18 @@ export class QuotePdfDetailComponent implements OnInit {
      * et donc afficher le devis adequat
      */
     this.router.events.subscribe((event: Event) => {
-      if (event instanceof NavigationStart) 
-      {
-        console.log("test")
-      }
       if (event instanceof NavigationEnd) {
-        this.ngOnInit();
-     }
+        var stringUrl = this.router.url;
+        var id = stringUrl.match(/\d+/g);
+        if(stringUrl === "/quotepdf/" + id){
+          this.ngOnInit();
+        }
+      }
       if (event instanceof NavigationError) {
-        
         console.log(event.error);
-    }
+      }
     })
-
-
-   }
+  }
 
   ngOnInit(): void {
     /**
@@ -69,6 +67,7 @@ export class QuotePdfDetailComponent implements OnInit {
     if(window.confirm("Supprimer ce devis ?"))
     {
       this.myService.deleteQuotePdf(id).subscribe();
+      setTimeout(() => this.myService.eventQuotePdf(id), 1000);
       this.router.navigateByUrl("/quotepdf");
     }
   }

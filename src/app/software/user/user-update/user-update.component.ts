@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, NavigationError, NavigationStart, Router, Event} from '@angular/router';
 import { Specialization } from '../../models/specialization';
 ;
 import { User } from '../../models/user';
@@ -18,14 +18,15 @@ export class UserUpdateComponent implements OnInit {
   //specializations represente une liste de Specialisations
   specializations: Specialization[] = []
   specialization: Specialization = {} as Specialization
-
+  
   msgTrue = false;
 
   constructor(
 
     private myService: UserService,
-    private route: Router
+    private router: Router
   ) { }
+  
 
   ngOnInit(): void {
     // var id = this.route.snapshot.url[1].path;
@@ -49,10 +50,9 @@ export class UserUpdateComponent implements OnInit {
 
     };
     console.log(newForm.specializationId);
-    this.myService.updateUser(userId, newForm).subscribe(data => {
-      this.msgTrue = true;
-    })
-    this.route.navigateByUrl("/user");
+    this.myService.updateUser(userId, newForm).subscribe();
+    this.myService.eventUser(userId);
+    this.router.navigateByUrl("/user");
   }
 
 }
