@@ -14,10 +14,9 @@ export class PlanningService {
   constructor(
 
     private http : HttpClient,
-    private route : Router
-
+    private route: Router
   ) { }
-
+   
   updateTodoStatus(id: number, updateStatusData: any): Observable<TodoStatus>
   {
     return this.http.patch<TodoStatus>("https://localhost:6001/todo/updapte/todostatus/" + id, updateStatusData);

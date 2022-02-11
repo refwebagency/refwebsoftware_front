@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { QuotePdf } from '../../models/quotePdf';
 import { QuotePdfService } from '../quote-pdf.service';
 
@@ -10,18 +11,17 @@ import { QuotePdfService } from '../quote-pdf.service';
 export class QuotePdfListComponent implements OnInit {
 
   quotesPdf: QuotePdf[] = []
-
   searchTerm!: string;
 
-  constructor(
-
-    private myService: QuotePdfService
-
-  ) { }
+  constructor(private myService: QuotePdfService) 
+  { 
+    this.myService.quotePdfChange.subscribe(() => {
+      this.myService.getQuotesPdf().subscribe(c => this.quotesPdf = c);
+      console.log("getQuotePdfs() pour sidebar2 déclenché")
+    })
+  }
 
   ngOnInit(): void {
-
-    this.myService.getQuotesPdf().subscribe(pdf => this.quotesPdf = pdf)
   }
 
 }

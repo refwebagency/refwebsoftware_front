@@ -28,13 +28,12 @@ export class ProjectTypeDetailComponent implements OnInit {
     * et donc afficher le user adequat
     */
    this.router.events.subscribe((event: Event) => {
-     if (event instanceof NavigationStart) 
-     {
-       console.log("test")
-       
-     }
      if (event instanceof NavigationEnd) {
-       this.ngOnInit();
+      var stringUrl = this.router.url;
+      var id = stringUrl.match(/\d+/g);
+      if(stringUrl === "/projecttype/" + id){
+        this.ngOnInit();
+      }
     }
      if (event instanceof NavigationError) {
        
@@ -44,12 +43,8 @@ export class ProjectTypeDetailComponent implements OnInit {
 }
 
 ngOnInit(): void {
- /**
-  * souscrit à la méthode getProjectType dans le service avec comme 
-  * parametre l'id récuperé depuis l'url
-  */
+
  this.myService.getProjectType().subscribe((pt => this.projectType = pt));
- //console.log(id);
  
 }
 
@@ -62,7 +57,8 @@ deleteProjectTypeById(id: number)
   if(window.confirm("Supprimer ce type de projet ?"))
   {
    this.myService.deleteProjectType(id).subscribe();
-   this.router.navigate([{ outlets: { projecttypedetail:null }}]);
+   setTimeout(() => this.myService.eventProjectType(id), 1000);
+   this.router.navigateByUrl("/projecttype");
   }  
 }
 

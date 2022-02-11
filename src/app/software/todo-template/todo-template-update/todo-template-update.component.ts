@@ -25,17 +25,14 @@ export class TodoTemplateUpdateComponent implements OnInit {
   msgTrue = false;
 
   constructor(
-
     private myService: TodoTemplateService,
     private route: Router
   ) { }
 
   ngOnInit(): void {
-    // var id = this.route.snapshot.url[1].path;
     this.myService.getTodoTemplate().subscribe((u => this.todoTemplate = u));
     this.myService.getSpecializations().subscribe(s => this.specializations = s);
     this.myService.getProjectTypes().subscribe(s => this.projectTypes = s);
-
   }
 
   updateTodoTemplateById(todoTemplateId: any, form: any)
@@ -53,6 +50,7 @@ export class TodoTemplateUpdateComponent implements OnInit {
     this.myService.updateTodoTemplate(todoTemplateId, newForm).subscribe(data => {
       this.msgTrue = true;
     })
+    setTimeout(() => this.myService.eventTodoTemplate(todoTemplateId), 1000);
     this.route.navigateByUrl("/todotemplate");
   }
 

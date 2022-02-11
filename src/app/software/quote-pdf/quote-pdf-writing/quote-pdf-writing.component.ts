@@ -25,10 +25,8 @@ export class QuotePdfWritingComponent implements OnInit {
   todoTemplates: TodoTemplate[] = []
 
   constructor(
-
     private myService: QuotePdfService,
     @Inject(FormBuilder) fb: FormBuilder
-
   ) { 
     //Form group de quotePdf contenant un objet project et une liste de todoTemplates
     this.newQuotePdf = fb.group({
@@ -99,6 +97,7 @@ export class QuotePdfWritingComponent implements OnInit {
    post(){ 
     
     this.myService.addQuotePdf(this.newQuotePdf.value).subscribe();
+    setTimeout(() => this.myService.eventQuotePdf(this.newQuotePdf.value), 1000);
     //this.route.navigateByUrl("/quotepdf");
     
   }

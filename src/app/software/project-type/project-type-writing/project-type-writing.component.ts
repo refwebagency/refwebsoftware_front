@@ -40,6 +40,7 @@ export class ProjectTypeWritingComponent implements OnInit {
    post(){
      console.log(this.newProjectType.value.id);
     this.myService.addProjectType(this.newProjectType.value).subscribe();
+    setTimeout(() => this.myService.eventProjectType(this.newProjectType.value), 1000);
     this.route.navigateByUrl("/projecttype");
   }
 }

@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Specialization } from '../../models/specialization';
-;
+import { Router } from '@angular/router';
 import { Client } from '../../models/client';
 import { ClientService } from '../client.service';
 
@@ -25,9 +23,7 @@ export class ClientUpdateComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // var id = this.route.snapshot.url[1].path;
     this.myService.getClient().subscribe((u => this.client = u));
-
   }
 
   updateClientById(clientId: any, form: any)
@@ -45,6 +41,7 @@ export class ClientUpdateComponent implements OnInit {
     this.myService.updateClient(clientId, newForm).subscribe(data => {
       this.msgTrue = true;
     })
+    setTimeout(() => this.myService.eventClient(clientId), 1000);
     this.route.navigateByUrl("/client");
   }
 

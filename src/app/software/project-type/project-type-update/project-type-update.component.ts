@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectType } from '../../models/projectType';
 import { ProjectTypeService } from '../project-type.service';
 
@@ -15,9 +15,8 @@ export class ProjectTypeUpdateComponent implements OnInit {
   msgTrue = false;
 
   constructor(
-
-    private myService: ProjectTypeService,
-    private route: ActivatedRoute
+    private router: Router,
+    private myService: ProjectTypeService
   ) { }
 
   ngOnInit(): void {
@@ -31,10 +30,11 @@ export class ProjectTypeUpdateComponent implements OnInit {
       id: ptId,
       name: form.value.name
     };
-
     this.myService.updateProjectType(ptId, newForm).subscribe(data => {
       this.msgTrue = true;
     })
+    setTimeout(() => this.myService.eventProjectType(ptId), 1000);
+    this.router.navigateByUrl("/projecttype");
   }
 
 }

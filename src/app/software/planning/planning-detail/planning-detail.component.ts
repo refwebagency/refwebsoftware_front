@@ -36,7 +36,11 @@ export class PlanningDetailComponent implements OnInit {
        */
        this.router.events.subscribe((event: Event) => {
         if (event instanceof NavigationEnd) {
-          this.ngOnInit();
+          var stringUrl = this.router.url;
+          var id = stringUrl.match(/\d+/g);
+          if(id){
+            this.ngOnInit();
+          }
        }
         if (event instanceof NavigationError) {
           
@@ -61,6 +65,7 @@ export class PlanningDetailComponent implements OnInit {
       status: todoStatus
     }
     console.log(todoStatus)
+<<<<<<< HEAD
     this.myService.updateTodoStatus(todoId, newForm).subscribe();
     this.reloadCurrentRoute();
   
@@ -74,6 +79,15 @@ export class PlanningDetailComponent implements OnInit {
   reloadCurrentRoute() {
     let currentUrl = this.router.url;
     this.router.navigateByUrl("/planning/" + this.user.id +"/todo", {skipLocationChange: true}).then(() => {
+=======
+    this.myPlanningService.updateTodoStatus(todoId, newForm).subscribe();
+    this.reloadCurrentRoute()
+  }
+
+  reloadCurrentRoute() {
+    let currentUrl = this.router.url;
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+>>>>>>> e8c56b9075bdb7d78c33771e70515fa9b3b66838
         this.router.navigate([currentUrl]);
     });
 }

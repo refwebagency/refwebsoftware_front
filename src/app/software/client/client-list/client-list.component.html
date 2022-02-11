@@ -4,7 +4,7 @@
         <li *ngFor="let client of clients | clientFilter:searchTerm">
             <a [routerLink]="['/client', client.id]" class="link primary">
             <mat-card class="clientlist">
-            <!-- charge le rooter outlet ayant le path client/:id et comme name clientdetail -->
+        
                 <h4 class="mat-title">{{ client.name }} | {{ client.lastName }}</h4>
                 <p class="mat-caption">{{ client.company }}</p>   
             </mat-card>

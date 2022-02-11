@@ -15,7 +15,6 @@ export class TodoListFilterPipe implements PipeTransform
             return todo;
         }
 
-        
             return todo.filter(todo => 
             todo.status.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1);
     }

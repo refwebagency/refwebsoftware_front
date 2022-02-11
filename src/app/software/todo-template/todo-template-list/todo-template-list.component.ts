@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TodoTemplate } from '../../models/todoTemplate';
 import { TodoTemplateService } from '../todo-template.service';
 
@@ -11,20 +12,17 @@ export class TodoTemplateListComponent implements OnInit {
 
   //todoTemplate represente ma liste de template de taches
   todoTemplates: TodoTemplate[] = []
-
   searchTerm!: string
 
-  constructor(
+  constructor(private myService : TodoTemplateService) 
+  {
+    this.myService.todoTemplateChange.subscribe(() => {
+      this.myService.getTodoTemplates().subscribe(c => this.todoTemplates = c);
+      console.log("getTodoTemplate() pour sidebar2 déclenché")
+    })
+  }
 
-    private myService : TodoTemplateService
-
-  ) { }
-
-  //recupere tous les todoTemplate à l'initialisation du component
   ngOnInit(): void {
-
-    this.myService.getTodoTemplates().subscribe(t => this.todoTemplates = t)
-
   }
 
 }

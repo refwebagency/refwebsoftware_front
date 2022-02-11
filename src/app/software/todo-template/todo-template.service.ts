@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { delay, Observable, repeat } from 'rxjs';
+import { BehaviorSubject, delay, Observable, repeat } from 'rxjs';
 import { ProjectType } from '../models/projectType';
 import { Specialization } from '../models/specialization';
 import { TodoTemplate } from '../models/todoTemplate';
@@ -14,36 +14,35 @@ export class TodoTemplateService {
   //todoTemplate represente ma liste de template de taches
   todoTemplates: TodoTemplate[] = []
   todoTemplate: TodoTemplate = {} as TodoTemplate
-  constructor(
+  todoTemplateChange: BehaviorSubject<TodoTemplate[]> = new BehaviorSubject(this.todoTemplates);
 
-    private http: HttpClient,
-    private route: Router
+  constructor(private http: HttpClient, private route: Router) { }
 
-  ) { }
+  eventTodoTemplate(todoTemplate: any)
+  {
+    this.todoTemplateChange.next(todoTemplate);
+  }
 
   /**
-   * @returns l'observable dans lequel on va avoir la liste des todoTemplate
-   */
-
-   getTodoTemplates(): Observable<TodoTemplate[]>
-   {
-     return this.http.get<TodoTemplate[]>("https://localhost:7001/todotemplate").pipe(
-       delay(1000),repeat()
-     );
-   }
+  * @returns l'observable dans lequel on va avoir la liste des todoTemplate
+  */
+  getTodoTemplates(): Observable<TodoTemplate[]>
+  {
+    return this.http.get<TodoTemplate[]>("https://localhost:7001/todotemplate");
+  }
 
   /**
   * 
   * @param todoTemplate 
   * @returns un modèle de tache par son id
   */
-   getTodoTemplate(): Observable<TodoTemplate>
-   {
-    let stringUrl = this.route.url;
-    let id = stringUrl.match(/\d+/g);
-    let todoTemplate = "https://localhost:7001/todotemplate/" + id;
-    return this.http.get<TodoTemplate>(todoTemplate);
-   }
+  getTodoTemplate(): Observable<TodoTemplate>
+  {
+  let stringUrl = this.route.url;
+  let id = stringUrl.match(/\d+/g);
+  let todoTemplate = "https://localhost:7001/todotemplate/" + id;
+  return this.http.get<TodoTemplate>(todoTemplate);
+  }
 
   /**
   * @param todoTemplate pour créer un nouveau modèle de tache, omit permet d'exclure l'id
@@ -54,40 +53,41 @@ export class TodoTemplateService {
      return this.http.post<TodoTemplate>('https://localhost:7001/todotemplate', todoTemplate)
    }
 
-   /**
-    * 
-    * @returns l'observable contenant la liste des specializations
-    * pour pouvoir assigner une spec lors de la création d'un todoTemplate
-    */
-    getSpecializations(): Observable<Specialization[]>
-    { 
-      return this.http.get<Specialization[]>("https://localhost:4001/specialization");
-    }
+  /**
+  * 
+  * @returns l'observable contenant la liste des specializations
+  * pour pouvoir assigner une spec lors de la création d'un todoTemplate
+  */
+  getSpecializations(): Observable<Specialization[]>
+  { 
+    return this.http.get<Specialization[]>("https://localhost:4001/specialization");
+  }
 
-   /**
-    * 
-    * @returns l'observable contenant la liste des types de projet
-    * pour pouvoir assigner un type de projet lors de la création d'un todoTemplate
-    */
-    getProjectTypes(): Observable<ProjectType[]>
-    { 
-      return this.http.get<ProjectType[]>("https://localhost:5001/projecttype");
-    }
+  /**
+  * 
+  * @returns l'observable contenant la liste des types de projet
+  * pour pouvoir assigner un type de projet lors de la création d'un todoTemplate
+  */
+  getProjectTypes(): Observable<ProjectType[]>
+  { 
+    return this.http.get<ProjectType[]>("https://localhost:5001/projecttype");
+  }
 
-    /**
-     * 
-     * @param id 
-     * @param updateFromData 
-     * @returns pour mettre a jour un todoTemplate
-     */
-     updateTodoTemplate(id: any, updateFromData: any): Observable<TodoTemplate>
-     {
-       return this.http.put<TodoTemplate>("https://localhost:7001/todotemplate/update/" + id, updateFromData);
-     }
+  /**
+  * 
+  * @param id 
+  * @param updateFromData 
+  * @returns pour mettre a jour un todoTemplate
+  */
+  updateTodoTemplate(id: any, updateFromData: any): Observable<TodoTemplate>
+  {
+    return this.http.put<TodoTemplate>("https://localhost:7001/todotemplate/update/" + id, updateFromData);
+  }
 
-    deleteTodoTemplate(id: number): Observable<TodoTemplate>
-    {
-      let todoTemplateDelete = "https://localhost:7001/todotemplate/" + id;
-      return this.http.delete<TodoTemplate>(todoTemplateDelete);
-    }
+  deleteTodoTemplate(id: number): Observable<TodoTemplate>
+  {
+    let todoTemplateDelete = "https://localhost:7001/todotemplate/" + id;
+    return this.http.delete<TodoTemplate>(todoTemplateDelete);
+  }
+  
 }

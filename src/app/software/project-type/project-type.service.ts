@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { delay, Observable, repeat } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { ProjectType } from '../models/projectType';
 
 @Injectable({
@@ -10,37 +10,39 @@ import { ProjectType } from '../models/projectType';
 export class ProjectTypeService {
 
   //projectTypes represente ma liste de projectType
-  private projectTypes: ProjectType[] = []
+  projectTypes: ProjectType[] = []
+  projectTypeChange: BehaviorSubject<ProjectType[]> = new BehaviorSubject(this.projectTypes);
 
   constructor(
-
     private http : HttpClient,
     private route : Router
-
   ) { }
+
+  eventProjectType(projectType: any)
+  {
+  this.projectTypeChange.next(projectType);
+  }
 
   /**
    * @returns un observable dans lequel on va avoir la liste des type de projets
    */
   getProjectTypes(): Observable<ProjectType[]>
   {
-    return this.http.get<ProjectType[]>("https://localhost:5001/projecttype").pipe(
-       delay(1000),repeat()
-     );
+    return this.http.get<ProjectType[]>("https://localhost:5001/projecttype");
   }
 
   /**
-   * 
-   * @param projectType 
-   * @returns un type de projet par son id
-   */
-   getProjectType(): Observable<ProjectType>
-   {
-     let stringUrl = this.route.url;
-     let id = stringUrl.match(/\d+/g);
-     let projectTypeId = "https://localhost:5001/projecttype/" + id;
-     return this.http.get<ProjectType>(projectTypeId);
-   }
+  * 
+  * @param projectType 
+  * @returns un type de projet par son id
+  */
+  getProjectType(): Observable<ProjectType>
+  {
+    let stringUrl = this.route.url;
+    let id = stringUrl.match(/\d+/g);
+    let projectTypeId = "https://localhost:5001/projecttype/" + id;
+    return this.http.get<ProjectType>(projectTypeId);
+  }
 
   /**
   * @param projectType pour créer un nouveau type de projet, omit permet d'exclure l'id
@@ -52,11 +54,11 @@ export class ProjectTypeService {
   }
 
   /**
-   * 
-   * @param id 
-   * @param updateFromData 
-   * @returns un type de projet mis à jour
-   */
+  * 
+  * @param id 
+  * @param updateFromData 
+  * @returns un type de projet mis à jour
+  */
   updateProjectType(id: number, updateFromData: any): Observable<ProjectType>
   {
     return this.http.put<ProjectType>("https://localhost:5001/projecttype/" + id, updateFromData);
@@ -71,4 +73,5 @@ export class ProjectTypeService {
     let projectTypeDelete = "https://localhost:5001/projectType/" + id;
     return this.http.delete<ProjectType>(projectTypeDelete);
   }
+  
 }

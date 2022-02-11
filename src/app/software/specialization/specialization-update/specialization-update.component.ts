@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Specialization } from '../../models/specialization';
 import { SpecializationService } from '../specialization.service';
 
@@ -17,9 +17,8 @@ export class SpecializationUpdateComponent implements OnInit {
   msgTrue = false;
 
   constructor(
-
-    private myService: SpecializationService,
-    private route: ActivatedRoute
+    private router: Router,
+    private myService: SpecializationService
   ) { }
 
   ngOnInit(): void {
@@ -38,6 +37,8 @@ export class SpecializationUpdateComponent implements OnInit {
     this.myService.updateSpecialization(specializationId, newForm).subscribe(data => {
       this.msgTrue = true;
     })
+    setTimeout(() => this.myService.eventSpecialization(specializationId), 1000);
+    this.router.navigateByUrl("/specialization");
   }
 
 }

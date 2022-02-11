@@ -49,6 +49,7 @@ export class TodoUpdateComponent implements OnInit {
     this.myService.updateTodo(todoId, newForm).subscribe(data => {
       this.msgTrue = true;
     })
+    setTimeout(() => this.myService.eventTodo(todoId), 1000);
     this.route.navigateByUrl("/todo");
   }
 }
