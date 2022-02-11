@@ -64,8 +64,7 @@ export class PlanningDetailComponent implements OnInit {
       id: todoId,
       status: todoStatus
     }
-    console.log(todoStatus)
-<<<<<<< HEAD
+    console.log(todoStatus);
     this.myService.updateTodoStatus(todoId, newForm).subscribe();
     this.reloadCurrentRoute();
   
@@ -79,15 +78,6 @@ export class PlanningDetailComponent implements OnInit {
   reloadCurrentRoute() {
     let currentUrl = this.router.url;
     this.router.navigateByUrl("/planning/" + this.user.id +"/todo", {skipLocationChange: true}).then(() => {
-=======
-    this.myPlanningService.updateTodoStatus(todoId, newForm).subscribe();
-    this.reloadCurrentRoute()
-  }
-
-  reloadCurrentRoute() {
-    let currentUrl = this.router.url;
-    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
->>>>>>> e8c56b9075bdb7d78c33771e70515fa9b3b66838
         this.router.navigate([currentUrl]);
     });
 }
